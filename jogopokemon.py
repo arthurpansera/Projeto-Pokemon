@@ -16,19 +16,19 @@ pokemons_iniciais = ["Bulbasaur","Squirtle","Charmander"]
 pokedex = []
 
 if pokemon_inicial == 1:
-    escolha = int(input("Então você quer ficar com Bulbasaur do tipo grama? (1- Sim / 2- Não)"))
+    escolha_inicial = int(input("Então você quer ficar com Bulbasaur do tipo grama? (1- Sim / 2- Não): "))
     print("Ótima escolha!")
     print("*Bulbasaur foi adicionado a sua Pokédex")
     pokedex.append("Bulbasaur")
     print(pokedex)
 elif pokemon_inicial == 2:
-    escolha = int(input("Então você quer ficar com Squirtle do tipo água? (1- Sim / 2- Não)"))
+    escolha_inicial = int(input("Então você quer ficar com Squirtle do tipo água? (1- Sim / 2- Não): "))
     print("Ótima escolha!")
     print("*Squirtle foi adicionado a sua Pokédex")
     pokedex.append("Squirtle")
     print(pokedex)
 elif pokemon_inicial == 3:
-    escolha = int(input("Então você quer ficar com Charmander do tipo fogo? (1- Sim / 2- Não)"))
+    escolha_inicial = int(input("Então você quer ficar com Charmander do tipo fogo? (1- Sim / 2- Não): "))
     print("Ótima escolha!")
     print("*Charmander foi adicionado a sua Pokédex")
     pokedex.append("Charmander")
