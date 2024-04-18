@@ -39,7 +39,7 @@ else:
 print(70*"-")
 
 print("\nO que você deseja fazer?")
-print("1. Entrar na caverna\n2. Entrar no mato\n3. Lista Pokémon na Pokédex\n4. Sair")
+print("1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
 escolha = int(input("Escolha uma opção: "))
 
 import random
