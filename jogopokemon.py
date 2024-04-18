@@ -30,19 +30,29 @@ else:
 
 print(70*"-")
 
-print("\nO que você deseja fazer?")
-print("1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
-escolha = int(input("Escolha uma opção: "))
-
 import random
 pokemonsCaverna = ["Zubat","Geodude","Paras"]
 pokemonsMato = ["Caterpie","Weedle","Pidgey","Rattata"]
+probCaverna = 0.35
+probMato = 0.5
+
+while escolha != 4:
+    print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
+    escolha = int(input("Escolha uma opção: "))
+    
+while escolha != 1 and escolha != 2 and escolha != 3 and escolha != 4:
+        escolha = int(input("Opção inválida! Escolha uma opção: "))
+    
 if escolha == 1:
     pokemon = random.choice(pokemonsCaverna)
     print(f"Você entrou na caverna e encontrou um {pokemon}")
+    escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
 elif escolha == 2:
     pokemon = random.choice(pokemonsMato)
     print(f"Você entrou no mato e encontrou um {pokemon}")
+    escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
 elif escolha == 3:
     for pokemon in pokedex:
         print(f"Pokémons na sua Pokédex:\n- {pokemon}")
+else:
+    print("Até logo!")
