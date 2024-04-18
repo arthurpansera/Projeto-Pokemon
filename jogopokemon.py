@@ -15,26 +15,18 @@ pokemon_inicial = int(input("1. Bulbasaur\n2. Squirtle\n3. Charmander\nFaça sua
 pokemons_iniciais = ["Bulbasaur","Squirtle","Charmander"]
 pokedex = []
 
-if pokemon_inicial == 1:
-    escolha_inicial = int(input("Então você quer ficar com Bulbasaur do tipo grama? (1- Sim / 2- Não): "))
-    print("Ótima escolha!")
-    print("*Bulbasaur foi adicionado a sua Pokédex")
-    pokedex.append("Bulbasaur")
-    print(pokedex)
-elif pokemon_inicial == 2:
-    escolha_inicial = int(input("Então você quer ficar com Squirtle do tipo água? (1- Sim / 2- Não): "))
-    print("Ótima escolha!")
-    print("*Squirtle foi adicionado a sua Pokédex")
-    pokedex.append("Squirtle")
-    print(pokedex)
-elif pokemon_inicial == 3:
-    escolha_inicial = int(input("Então você quer ficar com Charmander do tipo fogo? (1- Sim / 2- Não): "))
-    print("Ótima escolha!")
-    print("*Charmander foi adicionado a sua Pokédex")
-    pokedex.append("Charmander")
-    print(pokedex)
-else:
+while pokemon_inicial != 1 and pokemon_inicial != 2 and pokemon_inicial != 3:
     pokemon_inicial = int(input("Opção inválida. Faça sua escolha: "))
+
+if pokemon_inicial == 1:
+    print("Ótima escolha!\n*Bulbasaur foi adicionado a sua Pokédex\n")
+    pokedex.append("Bulbasaur")
+elif pokemon_inicial == 2:
+    print("Ótima escolha!\n*Squirtle foi adicionado a sua Pokédex\n")
+    pokedex.append("Squirtle")
+else:
+    print("Ótima escolha!\n*Charmander foi adicionado a sua Pokédex\n")
+    pokedex.append("Charmander")
 
 print(70*"-")
 
@@ -51,3 +43,6 @@ if escolha == 1:
 elif escolha == 2:
     pokemon = random.choice(pokemonsMato)
     print(f"Você entrou no mato e encontrou um {pokemon}")
+elif escolha == 3:
+    for pokemon in pokedex:
+        print(f"Pokémons na sua Pokédex:\n- {pokemon}")
