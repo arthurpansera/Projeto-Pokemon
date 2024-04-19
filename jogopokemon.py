@@ -53,13 +53,16 @@ while escolha < 5 and escolha >0:
             print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
             pokedex.append(pokemon)
         else:
-            print(f"O {pokemon} escapou")
-            while cont <4:
-                tentar_Nov = input("Deseja tentar novamente? (s/n): ")
-                cont=+1
-                if pokedex.append(pokemon) and random.random() < probCaverna:
+            print("O Pokémon escapou")
+            while cont < 3:
+                tentar_nov = input("Deseja tentar novamente? (s/n): ")
+                cont += 1
+                if tentar_nov == "s" and random.random() < probCaverna:
                     print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-            pokedex.append(pokemon)
+                    pokedex.append(pokemon)
+                    break
+                elif tentar_nov == "s" and random.random() > probCaverna:
+                    print("O Pokémon escapou")
     elif escolha == 2:
         pokemon = random.choice(pokemonsMato)
         print(f"Você entrou no mato e encontrou um {pokemon}")
@@ -68,7 +71,16 @@ while escolha < 5 and escolha >0:
             print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
             pokedex.append(pokemon)
         else:
-            print(f"O {pokemon} escapou")
+            print("O Pokémon escapou")
+            while cont < 3:
+                tentar_nov = input("Deseja tentar novamente? (s/n): ")
+                cont += 1
+                if tentar_nov == "s" and random.random() < probMato:
+                    print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                    pokedex.append(pokemon)
+                    break
+                elif tentar_nov == "s" and random.random() > probMato:
+                    print("O Pokémon escapou")
     elif escolha == 3:
         print("Pokémons na sua Pokédex:")
         for pokemon in pokedex:
