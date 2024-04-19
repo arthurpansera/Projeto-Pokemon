@@ -52,6 +52,8 @@ while escolha < 5 and escolha >0:
         if escolha_capturar == "s" and random.random() < probCaverna:
             print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
             pokedex.append(pokemon)
+        elif escolha_capturar == "n":
+            print("Você optou por não capturar o Pokémon")
         else:
             print("O Pokémon escapou")
             while cont < 3:
@@ -61,7 +63,10 @@ while escolha < 5 and escolha >0:
                     print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                     pokedex.append(pokemon)
                     break
-                elif tentar_nov == "s" and random.random() > probCaverna:
+                elif tentar_nov == "n":
+                    print("Você optou por não capturar o Pokémon")
+                    break
+                else:
                     print("O Pokémon escapou")
     elif escolha == 2:
         pokemon = random.choice(pokemonsMato)
@@ -70,6 +75,8 @@ while escolha < 5 and escolha >0:
         if escolha_capturar == "s" and random.random() < probMato:
             print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
             pokedex.append(pokemon)
+        elif escolha_capturar == "n":
+            print("Você optou por não capturar o Pokémon")
         else:
             print("O Pokémon escapou")
             while cont < 3:
@@ -79,7 +86,10 @@ while escolha < 5 and escolha >0:
                     print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                     pokedex.append(pokemon)
                     break
-                elif tentar_nov == "s" and random.random() > probMato:
+                elif tentar_nov == "n":
+                    print("Você optou por não capturar o Pokémon")
+                    break
+                else:
                     print("O Pokémon escapou")
     elif escolha == 3:
         print("Pokémons na sua Pokédex:")
