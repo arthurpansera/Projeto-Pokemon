@@ -49,48 +49,58 @@ while escolha < 5 and escolha >0:
         pokemon = random.choice(pokemonsCaverna)
         print(f"Você entrou na caverna e encontrou um {pokemon}")
         escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
-        if escolha_capturar == "s" and random.random() < probCaverna:
-            print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-            pokedex.append(pokemon)
+        if escolha_capturar == "s" and (pokemon in pokedex) == False:
+            if random.random() < probCaverna:
+                print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                pokedex.append(pokemon)
+            else:
+                print("O Pokémon escapou")
+                while cont < 3:
+                    tentar_nov = input("Deseja tentar novamente? (s/n): ")
+                    cont += 1
+                    if tentar_nov == "s" and random.random() < probCaverna:
+                        print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                        pokedex.append(pokemon)
+                        break
+                    elif tentar_nov == "n":
+                        print("Você optou por não capturar o Pokémon")
+                        break
+                    else:
+                        print("O Pokémon escapou")
+        elif escolha_capturar == "s" and (pokemon in pokedex) == True:
+            print("Você não pode capturar o mesmo Pokémon")
         elif escolha_capturar == "n":
             print("Você optou por não capturar o Pokémon")
         else:
-            print("O Pokémon escapou")
-            while cont < 3:
-                tentar_nov = input("Deseja tentar novamente? (s/n): ")
-                cont += 1
-                if tentar_nov == "s" and random.random() < probCaverna:
-                    print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-                    pokedex.append(pokemon)
-                    break
-                elif tentar_nov == "n":
-                    print("Você optou por não capturar o Pokémon")
-                    break
-                else:
-                    print("O Pokémon escapou")
+            print("Comando inválido")
     elif escolha == 2:
         pokemon = random.choice(pokemonsMato)
         print(f"Você entrou no mato e encontrou um {pokemon}")
         escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
-        if escolha_capturar == "s" and random.random() < probMato:
-            print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-            pokedex.append(pokemon)
+        if escolha_capturar == "s" and (pokemon in pokedex) == False:
+            if random.random() < probMato:
+                print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                pokedex.append(pokemon)
+            else:
+                print("O Pokémon escapou")
+                while cont < 3:
+                    tentar_nov = input("Deseja tentar novamente? (s/n): ")
+                    cont += 1
+                    if tentar_nov == "s" and random.random() < probMato:
+                        print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                        pokedex.append(pokemon)
+                        break
+                    elif tentar_nov == "n":
+                        print("Você optou por não capturar o Pokémon")
+                        break
+                    else:
+                        print("O Pokémon escapou")
+        elif escolha_capturar == "s" and (pokemon in pokedex) == True:
+            print("Você não pode capturar o mesmo Pokémon")
         elif escolha_capturar == "n":
             print("Você optou por não capturar o Pokémon")
         else:
-            print("O Pokémon escapou")
-            while cont < 3:
-                tentar_nov = input("Deseja tentar novamente? (s/n): ")
-                cont += 1
-                if tentar_nov == "s" and random.random() < probMato:
-                    print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-                    pokedex.append(pokemon)
-                    break
-                elif tentar_nov == "n":
-                    print("Você optou por não capturar o Pokémon")
-                    break
-                else:
-                    print("O Pokémon escapou")
+            print("Comando inválido")
     elif escolha == 3:
         print("Pokémons na sua Pokédex:")
         for pokemon in pokedex:
