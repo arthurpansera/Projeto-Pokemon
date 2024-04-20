@@ -37,10 +37,9 @@ pokemonsCaverna = ["Zubat","Geodude","Paras"]
 pokemonsMato = ["Caterpie","Weedle","Pidgey","Rattata"]
 probCaverna = 0.35
 probMato = 0.5
+pokebolas_extra = 3
 
-cont = 0
-
-while escolha < 5 and escolha >0:
+while escolha < 5 and escolha > 0:
     print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
     escolha = int(input("Escolha uma opção: "))
     if escolha != 1 and escolha != 2 and escolha != 3 and escolha != 4:
@@ -54,11 +53,14 @@ while escolha < 5 and escolha >0:
                 print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                 pokedex.append(pokemon)
             else:
-                print("O Pokémon escapou")
-                while cont < 3:
-                    tentar_nov = input("Deseja tentar novamente? (s/n): ")
-                    cont += 1
+                print("*O Pokémon escapou")
+                if pokebolas_extra == 0:
+                    print("Você não tem mais Pokébolas extra")
+                    print("*O Pokémon fugiu")
+                while pokebolas_extra > 0:
+                    tentar_nov = input(f"Você tem mais {pokebolas_extra} Pokébolas. Deseja tentar novamente? (s/n): ")
                     if tentar_nov == "s" and random.random() < probCaverna:
+                        pokebolas_extra -= 1
                         print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                         pokedex.append(pokemon)
                         break
@@ -66,7 +68,11 @@ while escolha < 5 and escolha >0:
                         print("Você optou por não capturar o Pokémon")
                         break
                     else:
-                        print("O Pokémon escapou")
+                        pokebolas_extra -= 1
+                        print("*O Pokémon escapou")
+                        if pokebolas_extra == 0:
+                            print("Acabaram suas Pokébolas extra")
+                            print("*O Pokémon fugiu")
         elif escolha_capturar == "s" and (pokemon in pokedex) == True:
             print("Você não pode capturar o mesmo Pokémon")
         elif escolha_capturar == "n":
@@ -82,11 +88,14 @@ while escolha < 5 and escolha >0:
                 print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                 pokedex.append(pokemon)
             else:
-                print("O Pokémon escapou")
-                while cont < 3:
-                    tentar_nov = input("Deseja tentar novamente? (s/n): ")
-                    cont += 1
+                print("*O Pokémon escapou")
+                if pokebolas_extra == 0:
+                    print("Você não tem mais Pokébolas extra")
+                    print("*O Pokémon fugiu")
+                while pokebolas_extra > 0:
+                    tentar_nov = input(f"Você tem mais {pokebolas_extra} Pokébolas. Deseja tentar novamente? (s/n): ")
                     if tentar_nov == "s" and random.random() < probMato:
+                        pokebolas_extra -= 1
                         print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                         pokedex.append(pokemon)
                         break
@@ -94,7 +103,11 @@ while escolha < 5 and escolha >0:
                         print("Você optou por não capturar o Pokémon")
                         break
                     else:
-                        print("O Pokémon escapou")
+                        pokebolas_extra -= 1
+                        print("*O Pokémon escapou")
+                        if pokebolas_extra == 0:
+                            print("Acabaram suas Pokébolas extra")
+                            print("*O Pokémon fugiu")
         elif escolha_capturar == "s" and (pokemon in pokedex) == True:
             print("Você não pode capturar o mesmo Pokémon")
         elif escolha_capturar == "n":
