@@ -2,6 +2,9 @@
 #Alunos: Arthur Rodrigues Pansera, Jean Inácio Praes Moura e Stefany Carlos de Oliveira
 #Turma: C
 
+import random
+
+
 def iniciar_jogo():
     print("\n---------------------------- JOGO POKÉMON ----------------------------")
     print("\nOlá! Eu sou o Professor Carvalho, um pesquisador Pokémon.")
@@ -10,6 +13,21 @@ def iniciar_jogo():
     nome = input("Antes de começar sua jornada, qual é o seu nome?\nInforme seu nome: ")
     print(f"Ótimo! Prazer em conhecê-lo, {nome}!\nPrepare-se para embarcar em uma aventura emocionante!\n")
     print("Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
+
+def sorteio_pokemon(lista_pokemons):
+    indice_sorteado = random.randint(0, len(lista_pokemons)-1)
+    pokemon_sorteado = lista_pokemons[indice_sorteado]
+    return pokemon_sorteado
+
+def capturar_pokemon(pokemon,prob):
+    sorteio = random.random()
+    if sorteio < prob:
+        pokedex.append(pokemon)
+        return print("Você capturou o pokemon")
+    else:
+        return print("O pokemon escapou")
+
+
 
 def escolher_pokemon_inicial():
     pokemon_inicial = int(input("1. Bulbasaur\n2. Squirtle\n3. Charmander\nFaça sua escolha: "))
@@ -32,7 +50,6 @@ def escolher_pokemon_inicial():
 
 def menu():
     escolha = 1
-    import random
     pokemonsCaverna = ["Zubat","Geodude","Paras"]
     pokemonsMato = ["Caterpie","Weedle","Pidgey","Rattata"]
     probCaverna = 0.35
@@ -44,7 +61,7 @@ def menu():
         print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
         escolha = int(input("Escolha uma opção: "))
         if escolha == 1:
-            pokemon = random.choice(pokemonsCaverna)
+            pokemon = sorteio_pokemon(pokemonsCaverna)
             print(f"Você entrou na caverna e encontrou um {pokemon}")
             escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
             if escolha_capturar == "s":
@@ -80,7 +97,7 @@ def menu():
             else:
                 print("Comando inválido")
         elif escolha == 2:
-            pokemon = random.choice(pokemonsMato)
+            pokemon = sorteio_pokemon(pokemonsMato)
             print(f"Você entrou no mato e encontrou um {pokemon}")
             escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
             if escolha_capturar == "s":

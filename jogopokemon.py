@@ -2,6 +2,16 @@
 #Alunos: Arthur Rodrigues Pansera, Jean Inácio Praes Moura e Stefany Carlos de Oliveira
 #Turma: C
 
+
+def sorteio_pokemon(pokemonsCaverna):
+    pokemon = random.choice(pokemonsCaverna)
+    return pokemon
+
+def sorteio_pokemon(pokemonsMato):
+    pokemon = random.choice(pokemonsMato)
+    return pokemon
+
+
 print("\n---------------------------- JOGO POKÉMON ----------------------------")
 
 print("\nOlá! Eu sou o Professor Carvalho, um pesquisador Pokémon.")
@@ -45,8 +55,8 @@ while escolha < 5 and escolha > 0:
     if escolha != 1 and escolha != 2 and escolha != 3 and escolha != 4:
         escolha = int(input("Opção inválida! Escolha uma opção: "))
     elif escolha == 1:
-        pokemon = random.choice(pokemonsCaverna)
-        print(f"Você entrou na caverna e encontrou um {pokemon}")
+        pokemons_mato = sorteio_pokemon(pokemonsCaverna)
+        print(f"Você encontrou um {pokemons_mato}")
         escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
         if escolha_capturar == "s" and (pokemon in pokedex) == False:
             if random.random() < probCaverna:
@@ -81,7 +91,8 @@ while escolha < 5 and escolha > 0:
             print("Comando inválido")
     elif escolha == 2:
         pokemon = random.choice(pokemonsMato)
-        print(f"Você entrou no mato e encontrou um {pokemon}")
+        pokemons_mato = sorteio_pokemon(pokemonsCaverna)
+        print(f"Você encontrou um {pokemons_mato}")
         escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
         if escolha_capturar == "s" and (pokemon in pokedex) == False:
             if random.random() < probMato:
