@@ -4,7 +4,6 @@
 
 import random
 
-
 def iniciar_jogo():
     print("\n---------------------------- JOGO POKÉMON ----------------------------")
     print("\nOlá! Eu sou o Professor Carvalho, um pesquisador Pokémon.")
@@ -27,8 +26,6 @@ def capturar_pokemon(pokemon,prob):
     else:
         return print("O pokemon escapou")
 
-
-
 def escolher_pokemon_inicial():
     pokemon_inicial = int(input("1. Bulbasaur\n2. Squirtle\n3. Charmander\nFaça sua escolha: "))
     pokedex = []
@@ -45,7 +42,6 @@ def escolher_pokemon_inicial():
     else:
         print("Ótima escolha!\n*Charmander foi adicionado a sua Pokédex\n")
         pokedex.append("Charmander")
-
     return pokedex
 
 def menu():
