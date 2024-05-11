@@ -50,7 +50,7 @@ def menu():
     pokemonsMato = ["Caterpie","Weedle","Pidgey","Rattata"]
     probCaverna = 0.35
     probMato = 0.5
-    pokebolas_extras = 3
+    pokebolas = 3
 
     while escolha in [1, 2, 3]:
         print(70*"-")
@@ -60,20 +60,21 @@ def menu():
             pokemon = sorteio_pokemon(pokemonsCaverna)
             print(f"Você entrou na caverna e encontrou um {pokemon}")
             escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
-            if escolha_capturar == "s":
+            if escolha_capturar == "s" and pokebolas != 0:
                 if pokemon not in pokedex:
+                    pokebolas -= 1
                     if random.random() < probCaverna:
                         print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                         pokedex.append(pokemon)
                     else:
                         print("*O Pokémon escapou")
-                        if pokebolas_extras == 0:
-                            print("Você não tem mais Pokébolas extras")
+                        if pokebolas == 0:
+                            print("Você não tem mais Pokébolas")
                             print("*O Pokémon fugiu")
-                        while pokebolas_extras > 0:
-                            tentar_nov = input(f"Você tem mais {pokebolas_extras} Pokébolas. Deseja tentar novamente? (s/n): ")
+                        while pokebolas > 0:
+                            tentar_nov = input(f"Você tem mais {pokebolas} Pokébolas. Deseja tentar novamente? (s/n): ")
                             if tentar_nov == "s" and random.random() < probCaverna:
-                                pokebolas_extras -= 1
+                                pokebolas -= 1
                                 print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                                 pokedex.append(pokemon)
                                 break
@@ -81,13 +82,15 @@ def menu():
                                 print("Você optou por não capturar o Pokémon")
                                 break
                             else:
-                                pokebolas_extras -= 1
+                                pokebolas -= 1
                                 print("*O Pokémon escapou")
-                                if pokebolas_extras == 0:
-                                    print("Acabaram suas Pokébolas extras")
+                                if pokebolas == 0:
+                                    print("Acabaram suas Pokébolas")
                                     print("*O Pokémon fugiu")
                 else:
                     print("Você não pode capturar o mesmo Pokémon")
+            elif escolha_capturar == "s" and pokebolas == 0:
+                    print("Acabaram suas Pokébolas. Você não consegue capturar o Pokémon.")
             elif escolha_capturar == "n":
                 print("Você optou por não capturar o Pokémon")
             else:
@@ -96,20 +99,21 @@ def menu():
             pokemon = sorteio_pokemon(pokemonsMato)
             print(f"Você entrou no mato e encontrou um {pokemon}")
             escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
-            if escolha_capturar == "s":
+            if escolha_capturar == "s" and pokebolas != 0:
                 if pokemon not in pokedex:
+                    pokebolas -= 1
                     if random.random() < probMato:
                         print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                         pokedex.append(pokemon)
                     else:
                         print("*O Pokémon escapou")
-                        if pokebolas_extras == 0:
-                            print("Você não tem mais Pokébolas extras")
+                        if pokebolas == 0:
+                            print("Você não tem mais Pokébolas")
                             print("*O Pokémon fugiu")
-                        while pokebolas_extras > 0:
-                            tentar_nov = input(f"Você tem mais {pokebolas_extras} Pokébolas. Deseja tentar novamente? (s/n): ")
+                        while pokebolas > 0:
+                            tentar_nov = input(f"Você tem mais {pokebolas} Pokébolas. Deseja tentar novamente? (s/n): ")
                             if tentar_nov == "s" and random.random() < probMato:
-                                pokebolas_extras -= 1
+                                pokebolas -= 1
                                 print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
                                 pokedex.append(pokemon)
                                 break
@@ -117,13 +121,15 @@ def menu():
                                 print("Você optou por não capturar o Pokémon")
                                 break
                             else:
-                                pokebolas_extras -= 1
+                                pokebolas -= 1
                                 print("*O Pokémon escapou")
-                                if pokebolas_extras == 0:
-                                    print("Acabaram suas Pokébolas extras")
+                                if pokebolas == 0:
+                                    print("Acabaram suas Pokébolas")
                                     print("*O Pokémon fugiu")
                 else:
                     print("Você não pode capturar o mesmo Pokémon")
+            elif escolha_capturar == "s" and pokebolas == 0:
+                    print("Acabaram suas Pokébolas. Você não consegue capturar o Pokémon.")
             elif escolha_capturar == "n":
                 print("Você optou por não capturar o Pokémon")
             else:
