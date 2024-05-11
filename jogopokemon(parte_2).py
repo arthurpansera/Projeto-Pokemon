@@ -1,4 +1,4 @@
-#Projeto: Jogo Pokémon Simplificado em Python (Atualizado com def)
+#Projeto: Jogo Pokémon Simplificado em Python (Parte 2)
 #Alunos: Arthur Rodrigues Pansera, Jean Inácio Praes Moura e Stefany Carlos de Oliveira
 #Turma: C
 
