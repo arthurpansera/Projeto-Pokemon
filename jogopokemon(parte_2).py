@@ -22,9 +22,9 @@ def capturar_pokemon(pokemon,prob):
     sorteio = random.random()
     if sorteio < prob:
         pokedex.append(pokemon)
-        return print("Você capturou o pokemon")
+        return print("Você capturou o Pokémon")
     else:
-        return print("O pokemon escapou")
+        return print("O Pokémon escapou")
 
 def escolher_pokemon_inicial():
     pokemon_inicial = int(input("1. Bulbasaur\n2. Squirtle\n3. Charmander\nFaça sua escolha: "))
