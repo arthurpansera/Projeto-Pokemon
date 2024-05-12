@@ -13,6 +13,15 @@ def iniciar_jogo():
     print(f"Ótimo! Prazer em conhecê-lo, {nome}!\nPrepare-se para embarcar em uma aventura emocionante!\n")
     print("Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
 
+def encontrar_pokebolas():
+    pokebolas_ecnontradas = random.randint(0,2)
+    if pokebolas_ecnontradas == 1:
+        return print("Você encontrou 1 Pokébola")
+    elif pokebolas_ecnontradas == 2:
+        return print("Você encontrou 2 Pokébolas")
+    else:
+        return print("Você não encontrou Pokébolas")
+
 def sorteio_pokemon(lista_pokemons):
     indice_sorteado = random.randint(0, len(lista_pokemons)-1)
     pokemon_sorteado = lista_pokemons[indice_sorteado]
