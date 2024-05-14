@@ -56,7 +56,7 @@ def menu():
     probMato = 0.5
     pokebolas = 3
 
-    while escolha in [1, 2, 3]:
+    while True:
         print(70*"-")
         print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
         escolha = int(input("Escolha uma opção: "))
@@ -165,6 +165,7 @@ def menu():
             break
         else:
             print("Opção inválida! Escolha uma opção válida.")
+            continue
 
 iniciar_jogo()
 pokedex = escolher_pokemon_inicial()
