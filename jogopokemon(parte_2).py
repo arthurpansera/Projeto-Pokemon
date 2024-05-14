@@ -14,13 +14,8 @@ def iniciar_jogo():
     print("Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
 
 def encontrar_pokebolas():
-    pokebolas_ecnontradas = random.randint(0,2)
-    if pokebolas_ecnontradas == 1:
-        return print("Você encontrou 1 Pokébola")
-    elif pokebolas_ecnontradas == 2:
-        return print("Você encontrou 2 Pokébolas")
-    else:
-        return print("Você não encontrou Pokébolas")
+    num = random.randint(0,2)
+    return num
 
 def sorteio_pokemon(lista_pokemons):
     indice_sorteado = random.randint(0, len(lista_pokemons)-1)
@@ -66,6 +61,15 @@ def menu():
         print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
         escolha = int(input("Escolha uma opção: "))
         if escolha == 1:
+            pokebolas_encontradas = encontrar_pokebolas()
+            if pokebolas_encontradas == 1:
+                pokebolas += 1
+                print("Você encontrou 1 Pokébola")
+            elif pokebolas_encontradas == 2:
+                pokebolas += 2
+                print("Você encontrou 2 Pokébolas")
+            else:
+                print("Você não encontrou Pokébolas")
             pokemon = sorteio_pokemon(pokemonsCaverna)
             print(f"Você entrou na caverna e encontrou um {pokemon}")
             escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
@@ -105,6 +109,15 @@ def menu():
             else:
                 print("Comando inválido")
         elif escolha == 2:
+            pokebolas_encontradas = encontrar_pokebolas()
+            if pokebolas_encontradas == 1:
+                pokebolas += 1
+                print("Você encontrou 1 Pokébola")
+            elif pokebolas_encontradas == 2:
+                pokebolas += 2
+                print("Você encontrou 2 Pokébolas")
+            else:
+                print("Você não encontrou Pokébolas")
             pokemon = sorteio_pokemon(pokemonsMato)
             print(f"Você entrou no mato e encontrou um {pokemon}")
             escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
