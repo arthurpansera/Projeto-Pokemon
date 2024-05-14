@@ -50,6 +50,7 @@ def escolher_pokemon_inicial():
 
 def menu():
     escolha = 1
+    mochila = []
     pokemonsCaverna = ["Zubat","Geodude","Paras"]
     pokemonsMato = ["Caterpie","Weedle","Pidgey","Rattata"]
     probCaverna = 0.35
@@ -58,7 +59,7 @@ def menu():
 
     while True:
         print(70*"-")
-        print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Sair")
+        print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Olhar itens na mochila\n5. Sair")
         escolha = int(input("Escolha uma opção: "))
         if escolha == 1:
             pokebolas_encontradas = encontrar_pokebolas()
@@ -161,6 +162,11 @@ def menu():
             for pokemon in pokedex:
                 print(f"- {pokemon}")
         elif escolha == 4:
+            mochila.append(f"{pokebolas} Pokébolas")
+            print("Itens na sua mochila:")
+            for item in mochila:
+                print(f"- {item}")
+        elif escolha == 5:
             print("Até logo!")
             break
         else:
