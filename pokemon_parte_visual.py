@@ -73,7 +73,7 @@ lbl_attack.pack()
 lbl_defense = tk.Label(frame_right, text="")
 lbl_defense.pack()
 
-btn_exit = tk.Button(frame_left, text="Sair", command=janela.quit)
+btn_exit = tk.Button(janela, text="Sair", command=janela.quit)
 btn_exit.pack(pady=10)
 
 #Rodar janela
