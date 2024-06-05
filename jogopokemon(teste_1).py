@@ -3,6 +3,16 @@
 #Turma: C
 
 import random
+import tkinter as tk
+from tkinter import ttk
+from PIL import Image, ImageTk
+import pandas as pd
+
+dados = pd.read_csv("Pokemon.csv")
+
+pokemons = [
+    dados
+]
 
 def iniciar_jogo():
     print("\n---------------------------- JOGO POKÉMON ----------------------------")
