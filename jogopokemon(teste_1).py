@@ -2,6 +2,7 @@
 #Alunos: Arthur Rodrigues Pansera, Jean Inácio Praes Moura e Stefany Carlos de Oliveira
 #Turma: C
 
+import Pokemon.csv
 import random
 import tkinter as tk
 from tkinter import ttk
