@@ -192,16 +192,16 @@ frame_menu.pack()
 label_titulo = tk.Label(frame_menu, text="Jogo Pokémon", font=("Helvetica", 20))
 label_titulo.pack(pady=10)
 
-btn_caverna = tk.Button(frame_menu, text="Entrar na caverna", command=entrar_caverna)
+btn_caverna = tk.Button(frame_menu, text="Entrar na caverna", command= entrar_caverna)
 btn_caverna.pack(pady=5)
 
-btn_mato = tk.Button(frame_menu, text="Entrar no mato", command=entrar_mato)
+btn_mato = tk.Button(frame_menu, text="Entrar no mato", command= entrar_mato)
 btn_mato.pack(pady=5)
 
-btn_pokedex = tk.Button(frame_menu, text="Listar Pokémons na Pokédex", command=show_pokedex)
+btn_pokedex = tk.Button(frame_menu, text="Listar Pokémons na Pokédex", command= show_pokedex)
 btn_pokedex.pack(pady=5)
 
-btn_mochila = tk.Button(frame_menu, text="Olhar itens na mochila", command=show_mochila)
+btn_mochila = tk.Button(frame_menu, text="Olhar itens na mochila", command= show_mochila)
 btn_mochila.pack(pady=5)
 
 btn_sair = tk.Button(frame_menu, text="Sair", command=root.destroy)

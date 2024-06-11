@@ -2,6 +2,7 @@
 #Alunos: Arthur Rodrigues Pansera, Jean Inácio Praes Moura e Stefany Carlos de Oliveira
 #Turma: C
 
+import visualSteh
 import random
 
 def iniciar_jogo():

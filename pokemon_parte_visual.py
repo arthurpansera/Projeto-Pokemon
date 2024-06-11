@@ -1,32 +1,31 @@
+
 import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
-
-#Dados de exemplo em uma matriz
-pokedex = [
+# Dados de exemplo em uma matriz
+pokemons = [
     ["Pikachu", "imagens/pikachu.png", "Electric", 35, 55, 40],
-    ["Bulbasaur", "imagens/bulbasaur.png", "Grass", 45, 49, 60],
-    ["Charmander", "imagens/charmander.png", "Fire", 39, 52, 42]
+    ["Bulbasaur", "imagens/bulbasaur.png", "Grass/Poison", 45, 49, 49],
+    ["Charmander", "imagens/charmander.png", "Fire", 39, 52, 43]
 ]
-
-#Função para atualizar a exibição do Pokémon(Imagem e dados)
+# Função para atualizar a exibição do Pokémon
 def update_pokemon_display(event):
-    pokemon_selecionado = listbox_pokemon.curselection()
-    if pokemon_selecionado:
-        #A posição 0 nos dá o índice da listbox
-        index = pokemon_selecionado[0]
-        pokemon = pokedex[index]
-
+    selection = listbox.curselection()
+    if selection:
+        index = selection[0]
+        pokemon = pokemons[index]
         # Atualizar nome
         lbl_name.config(text=pokemon[0])
+        # Atualizar imagem
+        img = Image.open(pokemon[1])
+        img = ImageTk.PhotoImage(img)
+        lbl_image.config(image=img)
+        lbl_image.image_types(img)
+        img.resize(200,200)
 
-        #Pegar a imagem e padronizar
-        img_pokemon = Image.open(pokemon[1])
-        img_pokemon = img_pokemon.resize((200,200), Image.ANTIALIAS)
-        img_pokemon = ImageTk.PhotoImage(img_pokemon)
-        lbl_image.config(image=img_pokemon)
-        lbl_image.image = img_pokemon
-        #Manter uma referência à imagem para evitar que seja coletada pelo garbage collector
+
+        # Manter uma referência à imagem para evitar que
+        #seja coletada pelo garbage collector
 
         # Atualizar atributos
         lbl_type.config(text=f"Type: {pokemon[2]}")
@@ -34,33 +33,29 @@ def update_pokemon_display(event):
         lbl_attack.config(text=f"Attack: {pokemon[4]}")
         lbl_defense.config(text=f"Defense: {pokemon[5]}")
 
-#Inicializando a janela
-janela = tk.Tk()
-janela.title("Jogo Pokémon")
+# Interface principal
+root = tk.Tk()
+root.title("Pokemon Selector")
 
-#Frame é uma região do layout(janela)
-#grid(l,c) determina a posição que vai ficar na janela
-frame_left = tk.Frame(janela)
+# Layout principal
+frame_left = tk.Frame(root)
 frame_left.pack(side=tk.LEFT, padx=10, pady=10)
 
-frame_right = tk.Frame(janela)
-frame_right.pack(side=tk.RIGHT, padx=10, pady=10)
+frame_right = tk.Frame(root)
+frame_right.pack(side=tk.RIGHT, padx=0, pady=0)
 
-#Label é um texto na tela
-lbl_select = tk.Label(frame_left, text="Selecione um pokémon: ")
+lbl_select = tk.Label(frame_left, text="Select a Pokemon:")
 lbl_select.pack()
 
-#Alimentando o listbox com Pokémons
-listbox_pokemon = tk.Listbox(frame_left)
-for pokemon in pokedex:
-    listbox_pokemon.insert(tk.END, pokemon[0])
-listbox_pokemon.pack()
+listbox = tk.Listbox(frame_left)
+for pokemon in pokemons:
+    listbox.insert(tk.END, pokemon[0])
+listbox.pack()
 
-listbox_pokemon.bind('<<ListBoxSelect>>', update_pokemon_display)
+listbox.bind('<<ListboxSelect>>', update_pokemon_display)
 
 lbl_name = tk.Label(frame_right, text="", font=("Helvetica", 20))
 lbl_name.pack()
-
 lbl_image = tk.Label(frame_right)
 lbl_image.pack()
 
@@ -73,8 +68,6 @@ lbl_attack.pack()
 lbl_defense = tk.Label(frame_right, text="")
 lbl_defense.pack()
 
-btn_exit = tk.Button(janela, text="Sair", command=janela.quit)
+btn_exit = tk.Button(root, text="Exit", command=root.quit)
 btn_exit.pack(pady=10)
-
-#Rodar janela
-janela.mainloop()
+root.mainloop()
