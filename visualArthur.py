@@ -10,7 +10,7 @@ def iniciar_jogo():
     # Definindo tela inicial com imagem do Pokémon Fire Red
     canvas.delete("all")
     imagem_inicio = Image.open("imagens/rattata.png")
-    imagem_inicio = imagem_inicio.resize((500, 500), Image.ANTIALIAS)
+    imagem_inicio = imagem_inicio.resize((500, 500))
     foto_inicio = ImageTk.PhotoImage(imagem_inicio)
     canvas.create_image(0, 0, anchor="nw", image=foto_inicio)
     canvas.image = foto_inicio
@@ -35,7 +35,7 @@ def escolher_pokemon_inicial(label_fala):
     # Criar tela para escolha do Pokémon inicial
     canvas.delete("all")
     imagem_pokebolas = Image.open("pokebolas.png")
-    imagem_pokebolas = imagem_pokebolas.resize((500, 500), Image.ANTIALIAS)
+    imagem_pokebolas = imagem_pokebolas.resize((500, 500))
     foto_pokebolas = ImageTk.PhotoImage(imagem_pokebolas)
     canvas.create_image(0, 0, anchor="nw", image=foto_pokebolas)
     canvas.image = foto_pokebolas
