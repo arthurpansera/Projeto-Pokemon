@@ -25,7 +25,6 @@ def atualizar_informacoes_pokemon(event):
         lbl_image.config(image=imagePokemon)
         lbl_image.image_types(imagePokemon)
 
-
 #Configurações da Janela
 janela = Tk()
 janela.title("Jogo Pokemon")
@@ -55,6 +54,10 @@ listbox = tk.Listbox(janela)
 for pokemon in pokemons:
     listbox.insert(tk.END, pokemon[0])
 
+frame_pokemon = Frame(janela, width=670, height=510, relief="flat", bg='lightgray')
+frame_pokemon.grid(row=1, column=0, padx=330, pady=0)
+
+
 listbox.place(x=1000, y=600)
 
 listbox.bind('<<ListboxSelect>>', atualizar_informacoes_pokemon)
@@ -75,7 +78,6 @@ lbl_type.place(x=700, y=610)
 
 lbl_secondtype = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 17"), fg="black")
 lbl_secondtype.place(x=700, y=640)
-
 
 
 #Informações do Pokemon
@@ -165,6 +167,5 @@ imagePikachuIcone = imagePikachuIcone.resize((60, 63))
 imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
 btn_Pikachu = Button(janela, image=imagePikachuIcone, text=(f"Pikachu   "), width=160, height=55, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 15"), bg='white', fg='black')
 btn_Pikachu.place(x=10, y=640)
-
 
 janela.mainloop()

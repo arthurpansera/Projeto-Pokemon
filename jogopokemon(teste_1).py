@@ -4,11 +4,11 @@
 
 import random
 import tkinter as tk
-from tkinter import ttk
+from tkinter import *
 from PIL import Image, ImageTk
 import pandas as pd
 
-dados = pd.read_csv("Pokemon.csv")
+dados = pd.read_csv("pokemons.csv")
 
 pokemons = [
     dados
@@ -26,9 +26,16 @@ def iniciar_jogo():
     print(f"Ótimo! Prazer em conhecê-lo, {nome}!\nPrepare-se para embarcar em uma aventura emocionante!\n")
     print("Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
 
-def encontrar_pokebolas():
-    num = random.randint(0,2)
-    return num
+def encontrar_pokebolas(pokebolas):
+    pokebolas_encontradas = random.randint(0,2)
+    if pokebolas_encontradas == 1:
+        pokebolas += 1
+        return print("Você encontrou 1 Pokébola")
+    elif pokebolas_encontradas == 2:
+        pokebolas += 2
+        return print("Você encontrou 2 Pokébolas")
+    else:
+        return print("Você não encontrou Pokébolas")
 
 def sorteio_pokemon(lista_pokemons):
     indice_sorteado = random.randint(0, len(lista_pokemons)-1)
@@ -61,124 +68,119 @@ def escolher_pokemon_inicial():
         pokedex.append("Charmander")
     return pokedex
 
+def entrar_caverna(pokemon, pokebolas, probCaverna):
+    print(f"Você entrou na caverna e encontrou um {pokemon}")
+    escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
+    if escolha_capturar == "s" and pokebolas != 0:
+        if pokemon not in pokedex:
+            pokebolas -= 1
+            if random.random() < probCaverna:
+                print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                pokedex.append(pokemon)
+            else:
+                print("*O Pokémon escapou")
+                if pokebolas == 0:
+                    print("Você não tem mais Pokébolas")
+                    print("*O Pokémon fugiu")
+                while pokebolas > 0:
+                    tentar_nov = input(f"Você tem mais {pokebolas} Pokébolas. Deseja tentar novamente? (s/n): ")
+                    if tentar_nov == "s" and random.random() < probCaverna:
+                        pokebolas -= 1
+                        print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                        pokedex.append(pokemon)
+                        break
+                    elif tentar_nov == "n":
+                        print("Você optou por não capturar o Pokémon")
+                        break
+                    else:
+                        pokebolas -= 1
+                        print("*O Pokémon escapou")
+                        if pokebolas == 0:
+                            print("Acabaram suas Pokébolas")
+                            print("*O Pokémon fugiu")
+        else:
+            print("Você não pode capturar o mesmo Pokémon")
+    elif escolha_capturar == "s" and pokebolas == 0:
+        print("Acabaram suas Pokébolas. Você não consegue capturar o Pokémon.")
+    elif escolha_capturar == "n":
+        print("Você optou por não capturar o Pokémon")
+    else:
+        print("Comando inválido")
+
+def entrar_mato(pokemon, pokebolas, probMato):
+    print(f"Você entrou no mato e encontrou um {pokemon}")
+    escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
+    if escolha_capturar == "s" and pokebolas != 0:
+        if pokemon not in pokedex:
+            pokebolas -= 1
+            if random.random() < probMato:
+                print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                pokedex.append(pokemon)
+            else:
+                print("*O Pokémon escapou")
+                if pokebolas == 0:
+                    print("Você não tem mais Pokébolas")
+                    print("*O Pokémon fugiu")
+                    while pokebolas > 0:
+                        tentar_nov = input(f"Você tem mais {pokebolas} Pokébolas. Deseja tentar novamente? (s/n): ")
+                        if tentar_nov == "s" and random.random() < probMato:
+                            pokebolas -= 1
+                            print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
+                            pokedex.append(pokemon)
+                            break
+                        elif tentar_nov == "n":
+                            print("Você optou por não capturar o Pokémon")
+                            break
+                        else:
+                            pokebolas -= 1
+                            print("*O Pokémon escapou")
+                            if pokebolas == 0:
+                                print("Acabaram suas Pokébolas")
+                                print("*O Pokémon fugiu")
+        else:
+            print("Você não pode capturar o mesmo Pokémon")
+    elif escolha_capturar == "s" and pokebolas == 0:
+        print("Acabaram suas Pokébolas. Você não consegue capturar o Pokémon.")
+    elif escolha_capturar == "n":
+        print("Você optou por não capturar o Pokémon")
+    else:
+        print("Comando inválido")
+
+def mostrar_pokedex(pokemon, pokedex):
+    print("Pokémons na sua Pokédex:")
+    for pokemon in pokedex:
+        print(f"- {pokemon}")
+
+def mostrar_mochila(pokebolas):
+    mochila = []
+    mochila.append(f"{pokebolas} Pokébolas")
+    print("Itens na sua mochila:")
+    for item in mochila:
+        print(f"- {item}")
+
 def menu():
     escolha = 1
-    mochila = []
     pokemonsCaverna = ["Zubat","Geodude","Paras"]
     pokemonsMato = ["Caterpie","Weedle","Pidgey","Rattata"]
     probCaverna = 0.35
     probMato = 0.5
     pokebolas = 3
-
     while True:
         print(70*"-")
         print("\nO que você deseja fazer?\n1. Entrar na caverna\n2. Entrar no mato\n3. Listar Pokémon na Pokédex\n4. Olhar itens na mochila\n5. Sair")
         escolha = int(input("Escolha uma opção: "))
         if escolha == 1:
-            pokebolas_encontradas = encontrar_pokebolas()
-            if pokebolas_encontradas == 1:
-                pokebolas += 1
-                print("Você encontrou 1 Pokébola")
-            elif pokebolas_encontradas == 2:
-                pokebolas += 2
-                print("Você encontrou 2 Pokébolas")
-            else:
-                print("Você não encontrou Pokébolas")
+            encontrar_pokebolas(pokebolas)
             pokemon = sorteio_pokemon(pokemonsCaverna)
-            print(f"Você entrou na caverna e encontrou um {pokemon}")
-            escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
-            if escolha_capturar == "s" and pokebolas != 0:
-                if pokemon not in pokedex:
-                    pokebolas -= 1
-                    if random.random() < probCaverna:
-                        print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-                        pokedex.append(pokemon)
-                    else:
-                        print("*O Pokémon escapou")
-                        if pokebolas == 0:
-                            print("Você não tem mais Pokébolas")
-                            print("*O Pokémon fugiu")
-                        while pokebolas > 0:
-                            tentar_nov = input(f"Você tem mais {pokebolas} Pokébolas. Deseja tentar novamente? (s/n): ")
-                            if tentar_nov == "s" and random.random() < probCaverna:
-                                pokebolas -= 1
-                                print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-                                pokedex.append(pokemon)
-                                break
-                            elif tentar_nov == "n":
-                                print("Você optou por não capturar o Pokémon")
-                                break
-                            else:
-                                pokebolas -= 1
-                                print("*O Pokémon escapou")
-                                if pokebolas == 0:
-                                    print("Acabaram suas Pokébolas")
-                                    print("*O Pokémon fugiu")
-                else:
-                    print("Você não pode capturar o mesmo Pokémon")
-            elif escolha_capturar == "s" and pokebolas == 0:
-                    print("Acabaram suas Pokébolas. Você não consegue capturar o Pokémon.")
-            elif escolha_capturar == "n":
-                print("Você optou por não capturar o Pokémon")
-            else:
-                print("Comando inválido")
+            entrar_caverna(pokemon, pokebolas, probCaverna)
         elif escolha == 2:
-            pokebolas_encontradas = encontrar_pokebolas()
-            if pokebolas_encontradas == 1:
-                pokebolas += 1
-                print("Você encontrou 1 Pokébola")
-            elif pokebolas_encontradas == 2:
-                pokebolas += 2
-                print("Você encontrou 2 Pokébolas")
-            else:
-                print("Você não encontrou Pokébolas")
+            encontrar_pokebolas(pokebolas)
             pokemon = sorteio_pokemon(pokemonsMato)
-            print(f"Você entrou no mato e encontrou um {pokemon}")
-            escolha_capturar = input("Deseja tentar capturar este Pokémon? (s/n): ")
-            if escolha_capturar == "s" and pokebolas != 0:
-                if pokemon not in pokedex:
-                    pokebolas -= 1
-                    if random.random() < probMato:
-                        print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-                        pokedex.append(pokemon)
-                    else:
-                        print("*O Pokémon escapou")
-                        if pokebolas == 0:
-                            print("Você não tem mais Pokébolas")
-                            print("*O Pokémon fugiu")
-                        while pokebolas > 0:
-                            tentar_nov = input(f"Você tem mais {pokebolas} Pokébolas. Deseja tentar novamente? (s/n): ")
-                            if tentar_nov == "s" and random.random() < probMato:
-                                pokebolas -= 1
-                                print(f"Você capturou o {pokemon}\n*{pokemon} foi adicionado a sua Pokédex")
-                                pokedex.append(pokemon)
-                                break
-                            elif tentar_nov == "n":
-                                print("Você optou por não capturar o Pokémon")
-                                break
-                            else:
-                                pokebolas -= 1
-                                print("*O Pokémon escapou")
-                                if pokebolas == 0:
-                                    print("Acabaram suas Pokébolas")
-                                    print("*O Pokémon fugiu")
-                else:
-                    print("Você não pode capturar o mesmo Pokémon")
-            elif escolha_capturar == "s" and pokebolas == 0:
-                    print("Acabaram suas Pokébolas. Você não consegue capturar o Pokémon.")
-            elif escolha_capturar == "n":
-                print("Você optou por não capturar o Pokémon")
-            else:
-                print("Comando inválido")
+            entrar_mato(pokemon, pokebolas, probMato)
         elif escolha == 3:
-            print("Pokémons na sua Pokédex:")
-            for pokemon in pokedex:
-                print(f"- {pokemon}")
+            mostrar_pokedex(pokemon, pokedex)
         elif escolha == 4:
-            mochila.append(f"{pokebolas} Pokébolas")
-            print("Itens na sua mochila:")
-            for item in mochila:
-                print(f"- {item}")
+            mostrar_mochila(pokebolas)
         elif escolha == 5:
             print("Até logo!")
             break
@@ -198,10 +200,10 @@ btn_caverna.pack(pady=5)
 btn_mato = tk.Button(frame_menu, text="Entrar no mato", command= entrar_mato)
 btn_mato.pack(pady=5)
 
-btn_pokedex = tk.Button(frame_menu, text="Listar Pokémons na Pokédex", command= show_pokedex)
+btn_pokedex = tk.Button(frame_menu, text="Listar Pokémons na Pokédex", command= mostrar_pokedex)
 btn_pokedex.pack(pady=5)
 
-btn_mochila = tk.Button(frame_menu, text="Olhar itens na mochila", command= show_mochila)
+btn_mochila = tk.Button(frame_menu, text="Olhar itens na mochila", command= mostrar_mochila)
 btn_mochila.pack(pady=5)
 
 btn_sair = tk.Button(frame_menu, text="Sair", command=root.destroy)

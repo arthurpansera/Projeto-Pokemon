@@ -163,6 +163,7 @@ def menu():
             for pokemon in pokedex:
                 print(f"- {pokemon}")
         elif escolha == 4:
+            mochila.clear()
             mochila.append(f"{pokebolas} Pokébolas")
             print("Itens na sua mochila:")
             for item in mochila:
