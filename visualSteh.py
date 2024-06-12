@@ -25,7 +25,6 @@ def update_pokemon_display(event):
         lbl_speed.config(text=f"Velocidade: {pokemon[9]}")
         lbl_total.config(text=f"Total: {pokemon[10]}")
 
-
 #Configurações da Janela
 janela = Tk()
 janela.title("Jogo Pokemon")
@@ -48,7 +47,6 @@ pokemons = [
     ['Pikachu','imagens/pikachu.png','ELECTRIC','',55,40,35,50,50,90,320]
 ]
 
-
 frame_pokemon = Frame(janela, width=670, height=510, relief="flat", bg='lightgray')
 frame_pokemon.grid(row=1, column=0, padx=330, pady=0)
 
@@ -63,12 +61,5 @@ lbl_secondtype.place(x=150, y=50)
 
 lbl_image = tk.Label(frame_pokemon)
 lbl_image.pack()
-
-
-
-
-
-
-
 
 janela.mainloop()
