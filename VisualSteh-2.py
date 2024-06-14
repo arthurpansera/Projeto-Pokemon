@@ -92,7 +92,21 @@ def escolher_pokemon_inicial(event):
 
 ##### DAQUI PARA CIMA ESTA DANDO CERTO, AGORA É SÓ CONTINUAR ARRUMANDO #####   
 
+def evento_botao_pokemon_inicial(nome):
+    if nome == 'Squirtle':
+        print("squirtle")
+    else:
+        print("teste")
+
+
+def escolher_bulbasaur(event):
+    pokedex.append()
+
+
 def iniciar_menu(pokemon_inicial):
+    
+
+
     global image
     image.delete("all")
 
@@ -109,6 +123,8 @@ def iniciar_menu(pokemon_inicial):
 
     # Adicionar opções do menu
     btn_caverna = tk.Button(menu_frame, text="Entrar na caverna", command=lambda: entrar_caverna(pokemon_inicial))
+
+
     btn_caverna.pack(pady=10, fill=tk.X)
 
     btn_mato = tk.Button(menu_frame, text="Entrar no mato", command=lambda: entrar_mato(pokemon_inicial))
@@ -191,7 +207,7 @@ imagem_caixaTexto2.place(x=55, y=50)
 btn_bulbasaurInicial = tk.Button(frame_pokemonInicial,command=lambda: iniciar_menu("Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_bulbasaurInicial.place(x=320, y=520,anchor="center")
 
-btn_squirtleInicial = tk.Button(frame_pokemonInicial,command=lambda: iniciar_menu("Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_squirtleInicial = tk.Button(frame_pokemonInicial,command=lambda: evento_botao_pokemon_inicial(nome="Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_squirtleInicial.place(x=605, y=520, anchor="center")
 
 btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: iniciar_menu("Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
@@ -199,6 +215,8 @@ btn_charmanderInicial.place(x=895, y=520, anchor="center")
 
 lbl_escolhaPokemon = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
 lbl_escolhaPokemon.place(x=80, y=78)
+
+pokedex = []
 
 
 

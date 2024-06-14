@@ -1,5 +1,5 @@
-#Name, imagem, Primary Type,Secondary type,Attack,Defense,HP,Sp.Attack,Sp.Defense,Speed,Total, imagem do icone
-'Bulbasaur','imagens/bulbasaur.png', 'GRASS,POISON','',49,49,45,65,65,45,318
+#Name, imagem, Primary Type,Secondary type,Attack,Defense,HP,Sp.Attack,Sp.Defense,Speed,Total
+'Bulbasaur','imagens/bulbasaur.png', 'GRASS','POISON',49,49,45,65,65,45,318
 'Charmander','imagens/charmander.png','FIRE','',52,43,39,60,50,65,309
 'Squirtle','imagens/squirtle.png','WATER','',48,65,44,50,64,43,314
 'Caterpie','imagens/caterpie.png','BUG','',30,35,45,20,20,45,195
