@@ -9,7 +9,7 @@ def iniciar_jogo():
     global canvas
     # Definindo tela inicial com imagem do Pokémon Fire Red
     canvas.delete("all")
-    imagem_inicio = Image.open("imagens/tela_inicial.jpg")
+    imagem_inicio = Image.open("imagens/tela-inicial.png")
     imagem_inicio = imagem_inicio.resize((500, 500))
     foto_inicio = ImageTk.PhotoImage(imagem_inicio)
     canvas.create_image(0, 0, anchor="nw", image=foto_inicio)

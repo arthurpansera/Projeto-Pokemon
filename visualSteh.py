@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
 
+
 def atualizar_informacoes_bulbasaur(event):
         lbl_name.config(text=pokemons[0][0])
         lbl_type.config(text=f"Tipo: {pokemons[0][2]}")
@@ -152,6 +153,7 @@ def atualizar_informacoes_rattata(event):
         imagePokemon = ImageTk.PhotoImage(imagePokemon)
         lbl_image.config(image=imagePokemon)
         lbl_image.image_types(imagePokemon)
+        
 
 def atualizar_informacoes_ekans(event):
         lbl_name.config(text=pokemons[8][0])
@@ -195,10 +197,9 @@ def atualizar_informacoes_pikachu(event):
 janela = Tk()
 janela.title("Jogo Pokemon")
 janela.geometry("1200x1000")
-janela.config(bg="white")
 janela.iconphoto(False, PhotoImage(file="imagens/logo1.png"))
 janela.resizable(width=False,height=False)
-janela.config(bg = "#d93035")
+janela.config(bg ="#d93035")
 
 pokemons = [
     #Name, imagem, Primary Type,Secondary type,Attack,Defense,HP,Sp.Attack,Sp.Defense,Speed,Total, imagem do icone
@@ -226,7 +227,7 @@ infoImage = Image.open("imagens/info.png")
 infoImage = infoImage.resize((750, 250))
 infoImage = ImageTk.PhotoImage(infoImage)
 lbl_infoImage = Label(janela, image=infoImage, bg="#d93035")
-lbl_infoImage.place(x=325, y=580)
+lbl_infoImage.place(x=330, y=580)
 
 lbl_name = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 30 bold"), fg="black", bg="#e3e3e3")
 lbl_name.place(x=780, y=485)
@@ -237,39 +238,39 @@ lbl_image.place(x=473, y=90)
 
 #Habilidade do Pokemons
 lbl_habilities = Label(janela, text="Habilidade", relief="flat", anchor=CENTER, font=("Fixedsys 23"), fg="black", bg="#8dc73f")
-lbl_habilities.place(x=780, y=610)
+lbl_habilities.place(x=790, y=610)
 
 lbl_type = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 17"), fg="black", bg="#8dc73f")
-lbl_type.place(x=780, y=650)
+lbl_type.place(x=790, y=650)
 
 lbl_secondtype = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 17"), fg="black", bg="#8dc73f")
-lbl_secondtype.place(x=780, y=680)
+lbl_secondtype.place(x=790, y=680)
 
 
 #Informações do Pokemon
 lbl_status = Label(janela, text="Status", relief="flat", anchor=CENTER, font=("Fixedsys 23"), fg="black", bg="#8dc73f")
-lbl_status.place(x=380, y=610)
+lbl_status.place(x=400, y=610)
 
 lbl_hp = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
-lbl_hp.place(x=380, y=650)
+lbl_hp.place(x=400, y=650)
 
 lbl_attack = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
-lbl_attack.place(x=380, y=680)
+lbl_attack.place(x=400, y=680)
 
 lbl_defense = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
-lbl_defense.place(x=380, y=710)
+lbl_defense.place(x=400, y=710)
 
 lbl_spAttack = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
-lbl_spAttack.place(x=380, y=740)
+lbl_spAttack.place(x=400, y=740)
 
 lbl_spDefense = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
-lbl_spDefense.place(x=380, y=770)
+lbl_spDefense.place(x=400, y=770)
 
 lbl_speed = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
-lbl_speed.place(x=520, y=650)
+lbl_speed.place(x=540, y=650)
 
 lbl_total = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
-lbl_total.place(x=520, y=680)
+lbl_total.place(x=540, y=680)
 
 
 #Botoes para Cada Pokemon
