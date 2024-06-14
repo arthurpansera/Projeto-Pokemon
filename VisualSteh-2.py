@@ -46,10 +46,7 @@ def exibir_fala_professor(event):
     image_backgroundTeacher = image_backgroundTeacher.resize((1200, 850))
     image_backgroundTeacher = ImageTk.PhotoImage(image_backgroundTeacher)
     imagem_fundoProfessor.config(image=image_backgroundTeacher)
-    imagem_fundoProfessor.image_types = image_backgroundTeacher
-
-
-##### DAQUI PARA CIMA ESTA DANDO CERTO, AGORA É SÓ CONTINUAR ARRUMANDO, DEPOIS DO TRABALHO EU CONTINUO #####   
+    imagem_fundoProfessor.image_types = image_backgroundTeacher  
 
 def escolher_pokemon_inicial(event):
     imagem_caixaTexto.destroy()
@@ -83,6 +80,8 @@ def escolher_pokemon_inicial(event):
     image_pokeball3 = ImageTk.PhotoImage(image_pokeball3)
     imagem_pokebola3.config(image=image_pokeball3)
     imagem_pokebola3.image_types = image_pokeball3
+
+##### DAQUI PARA CIMA ESTA DANDO CERTO, AGORA É SÓ CONTINUAR ARRUMANDO #####   
 
 def iniciar_menu(pokemon_inicial):
     global image
@@ -127,7 +126,12 @@ def mostrar_pokedex():
 def mostrar_mochila():
     print("Itens na sua mochila:")
 
-#imagem e botão da tela inicial
+
+###Precisa definir as variaveis no programa principal, igual ta daqui para baixo, pois quando a gente clica em um botão
+### e vai para uma próxima tela, usamos o .destroy() para excluir as coisas da tela anterior
+### Caso a variável não seja definida no programa principal, o .destroy() não funciona
+
+#tela inicial
 imagem_telaInicial = tk.Canvas(janela, width=1200, height=1000)
 imagem_telaInicial.pack()
 
@@ -180,8 +184,6 @@ btn_squirtleInicial.place(x=600, y=450, anchor="center")
 
 btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: iniciar_menu("Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg='black', fg='white')
 btn_charmanderInicial.place(x=890, y=450, anchor="center")
-
-
 
 
 iniciar_jogo()
