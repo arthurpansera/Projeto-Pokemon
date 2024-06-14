@@ -1,4 +1,7 @@
 Name,Name2,Primary Type,Secondary type,Attack,Defense,HP,Sp.Attack,Sp.Defense,Speed,Total
+
+
+
 Bulbasaur,,GRASS,POISON,49,49,45,65,65,45,318
 Ivysaur,,GRASS,POISON,62,63,60,80,80,60,405
 Venusaur,,GRASS,POISON,82,83,80,100,100,80,525

@@ -8,7 +8,7 @@ janela.title("Jogo Pokemon")
 janela.geometry("1200x1000")
 janela.iconphoto(False, PhotoImage(file="imagens/logo1.png"))
 janela.resizable(width=False,height=False)
-janela.config(bg = "#d93035")
+janela.config(bg ="#d93035")
 
 def iniciar_jogo():
     # Definindo tela inicial com imagem do Pokémon Fire Red
@@ -18,7 +18,7 @@ def iniciar_jogo():
     image_homeScreen = ImageTk.PhotoImage(image_homeScreen)
     imagem_telaInicial.create_image(0,0, anchor="nw", image=image_homeScreen)
     imagem_telaInicial.image_types = image_homeScreen
-    # Adicionando botão "Jogar
+    # Adicionando botão "Jogar"
     btn_jogar.config(text="Jogar")
     
 
@@ -80,6 +80,15 @@ def escolher_pokemon_inicial(event):
     image_pokeball3 = ImageTk.PhotoImage(image_pokeball3)
     imagem_pokebola3.config(image=image_pokeball3)
     imagem_pokebola3.image_types = image_pokeball3
+
+    image_textBox2 = Image.open("imagens/caixa-texto2.png")
+    image_textBox2 = image_textBox2.resize((1130, 110))
+    image_textBox2 = ImageTk.PhotoImage(image_textBox2)
+    imagem_caixaTexto2.config(image=image_textBox2)
+    imagem_caixaTexto2.image_types = image_textBox2
+
+    lbl_escolhaPokemon.config(text="Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
+
 
 ##### DAQUI PARA CIMA ESTA DANDO CERTO, AGORA É SÓ CONTINUAR ARRUMANDO #####   
 
@@ -161,29 +170,36 @@ btn_proximo = tk.Button(frame_falaprofessor, command=lambda:escolher_pokemon_ini
 btn_proximo.place(x=1040, y=690)
 
 #Tela de escolher o pokemon inicial
-frame_pokemonInicial = tk.Frame(janela, width=1200, height=1000, bg="#7FC9B5")
+frame_pokemonInicial = tk.Frame(janela, width=1200, height=1000, bg="#3A8C73")
 frame_pokemonInicial.pack()
 
-imagem_mesaPokebola = Label(frame_pokemonInicial, bg="#7FC9B5")
-imagem_mesaPokebola.place(x=130, y=120)
+imagem_mesaPokebola = Label(frame_pokemonInicial, bg="#3A8C73")
+imagem_mesaPokebola.place(x=130, y=200)
 
 imagem_pokebola1 = Label(frame_pokemonInicial, bg="#88c088")
-imagem_pokebola1.place(x=215, y=210)
+imagem_pokebola1.place(x=215, y=290)
 
 imagem_pokebola2 = Label(frame_pokemonInicial, bg="#88c088")
-imagem_pokebola2.place(x=500, y=210)
+imagem_pokebola2.place(x=500, y=290)
 
 imagem_pokebola3 = Label(frame_pokemonInicial, bg="#88c088")
-imagem_pokebola3.place(x=790, y=210)
+imagem_pokebola3.place(x=790, y=290)
 
-btn_bulbasaurInicial = tk.Button(frame_pokemonInicial,command=lambda: iniciar_menu("Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg='black', fg='white')
-btn_bulbasaurInicial.place(x=315, y=450,anchor="center")
+imagem_caixaTexto2 = Label(frame_pokemonInicial, bg="#3A8C73")
+imagem_caixaTexto2.place(x=55, y=50)
 
-btn_squirtleInicial = tk.Button(frame_pokemonInicial,command=lambda: iniciar_menu("Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg='black', fg='white')
-btn_squirtleInicial.place(x=600, y=450, anchor="center")
+btn_bulbasaurInicial = tk.Button(frame_pokemonInicial,command=lambda: iniciar_menu("Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_bulbasaurInicial.place(x=320, y=520,anchor="center")
 
-btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: iniciar_menu("Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg='black', fg='white')
-btn_charmanderInicial.place(x=890, y=450, anchor="center")
+btn_squirtleInicial = tk.Button(frame_pokemonInicial,command=lambda: iniciar_menu("Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_squirtleInicial.place(x=605, y=520, anchor="center")
+
+btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: iniciar_menu("Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_charmanderInicial.place(x=895, y=520, anchor="center")
+
+lbl_escolhaPokemon = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
+lbl_escolhaPokemon.place(x=80, y=78)
+
 
 
 iniciar_jogo()
