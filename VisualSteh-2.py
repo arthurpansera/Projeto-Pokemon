@@ -2,6 +2,15 @@ import random
 import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
+import pandas as pd
+
+dados_pokemons = pd.read_csv('listaPokemons.csv')
+
+pokedex = dados_pokemons[(dados_pokemons["Bulbasaur"])]
+
+lista_pokemons_pokedex = pokedex.tolist()
+
+print(lista_pokemons_pokedex)
 
 janela = Tk()
 janela.title("Jogo Pokemon")
@@ -93,10 +102,12 @@ def escolher_pokemon_inicial(event):
 ##### DAQUI PARA CIMA ESTA DANDO CERTO, AGORA É SÓ CONTINUAR ARRUMANDO #####   
 
 def evento_botao_pokemon_inicial(nome):
-    if nome == 'Squirtle':
-        print("squirtle")
-    else:
-        print("teste")
+    if nome == 'Bulbasaur':
+        print("Bulbasaur")
+    elif nome == 'Squirtle':
+        print("Squirtle")
+    elif nome == 'Charmander':
+        print("Charmander")
 
 
 def escolher_bulbasaur(event):
@@ -204,13 +215,13 @@ imagem_pokebola3.place(x=790, y=290)
 imagem_caixaTexto2 = Label(frame_pokemonInicial, bg="#3A8C73")
 imagem_caixaTexto2.place(x=55, y=50)
 
-btn_bulbasaurInicial = tk.Button(frame_pokemonInicial,command=lambda: iniciar_menu("Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_bulbasaurInicial = tk.Button(frame_pokemonInicial,command=lambda: evento_botao_pokemon_inicial(nome="Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_bulbasaurInicial.place(x=320, y=520,anchor="center")
 
 btn_squirtleInicial = tk.Button(frame_pokemonInicial,command=lambda: evento_botao_pokemon_inicial(nome="Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_squirtleInicial.place(x=605, y=520, anchor="center")
 
-btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: iniciar_menu("Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_charmanderInicial.place(x=895, y=520, anchor="center")
 
 lbl_escolhaPokemon = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
