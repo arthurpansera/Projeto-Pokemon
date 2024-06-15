@@ -2,22 +2,7 @@ import random
 import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
-import pandas as pd
-
-dados_pokemons = pd.read_csv('listaPokemons.csv')
-
-pokedex = dados_pokemons[(dados_pokemons["Bulbasaur"])]
-
-lista_pokemons_pokedex = pokedex.tolist()
-
-print(lista_pokemons_pokedex)
-
-janela = Tk()
-janela.title("Jogo Pokemon")
-janela.geometry("1200x1000")
-janela.iconphoto(False, PhotoImage(file="imagens/logo1.png"))
-janela.resizable(width=False,height=False)
-janela.config(bg ="#d93035")
+import csv
 
 def iniciar_jogo():
     # Definindo tela inicial com imagem do Pokémon Fire Red
@@ -56,6 +41,7 @@ def exibir_fala_professor(event):
     image_backgroundTeacher = ImageTk.PhotoImage(image_backgroundTeacher)
     imagem_fundoProfessor.config(image=image_backgroundTeacher)
     imagem_fundoProfessor.image_types = image_backgroundTeacher  
+
 
 def escolher_pokemon_inicial(event):
     imagem_caixaTexto.destroy()
@@ -97,42 +83,60 @@ def escolher_pokemon_inicial(event):
     imagem_caixaTexto2.image_types = image_textBox2
 
     lbl_escolhaPokemon.config(text="Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
-
-
-##### DAQUI PARA CIMA ESTA DANDO CERTO, AGORA É SÓ CONTINUAR ARRUMANDO #####   
+ 
 
 def evento_botao_pokemon_inicial(nome):
+    imagem_pokebola1.destroy()
+    imagem_pokebola2.destroy()
+    imagem_pokebola3.destroy()
+    btn_bulbasaurInicial.destroy()
+    btn_squirtleInicial.destroy()
+    btn_charmanderInicial.destroy()
+    lbl_escolhaPokemon.destroy()
+
     if nome == 'Bulbasaur':
-        print("Bulbasaur")
+        with open("pokemonsIniciais.csv", "r") as pokemons_data:
+            dados_pokemons = csv.reader(pokemons_data, delimiter=",")
+            for i, linha in enumerate(dados_pokemons):
+                if i == 1:
+                    pokedex.append(linha)
+                    lbl_escolheuBulbasaur.config(text="Ótima escolha! Bulbasaur foi adicionado a sua Pokédex\n")
+                    image_bulbasaur = Image.open("imagens/bulbasaur.png")
+                    image_bulbasaur = image_bulbasaur.resize((250, 250))
+                    image_bulbasaur = ImageTk.PhotoImage(image_bulbasaur)
+                    imagem_bulbasauro.config(image=image_bulbasaur)
+                    imagem_bulbasauro.image_types = image_bulbasaur
+
     elif nome == 'Squirtle':
-        print("Squirtle")
+        with open("pokemonsIniciais.csv", "r") as pokemons_data:
+            dados_pokemons = csv.reader(pokemons_data, delimiter=",")
+            for i, linha in enumerate(dados_pokemons):
+                if i == 2:
+                    pokedex.append(linha)
+                    lbl_escolheuSquirtle.config(text="Ótima escolha! Squirtle foi adicionado a sua Pokédex\n")
+
+                    image_squirtle = Image.open("imagens/squirtle.png")
+                    image_squirtle = image_squirtle.resize((250, 250))
+                    image_squirtle = ImageTk.PhotoImage(image_squirtle)
+                    imagem_squirtle.config(image=image_squirtle)
+                    imagem_squirtle.image_types = image_squirtle
+
     elif nome == 'Charmander':
-        print("Charmander")
+        with open("pokemonsIniciais.csv", "r") as pokemons_data:
+            dados_pokemons = csv.reader(pokemons_data, delimiter=",")
+            for i, linha in enumerate(dados_pokemons):
+                if i == 3:
+                    pokedex.append(linha)
+                    lbl_escolheuCharmander.config(text="Ótima escolha! Charmander foi adicionado a sua Pokédex\n")
+                    image_charmander = Image.open("imagens/charmander.png")
+                    image_charmander = image_charmander.resize((250, 250))
+                    image_charmander = ImageTk.PhotoImage(image_charmander)
+                    imagem_charmander.config(image=image_charmander)
+                    imagem_charmander.image_types = image_charmander
 
-
-def escolher_bulbasaur(event):
-    pokedex.append()
-
-
-def iniciar_menu(pokemon_inicial):
-    
-
-
-    global image
-    image.delete("all")
-
-    # Adicionar menu na esquerda
+'''def iniciar_menu(pokemon_inicial):
     menu_frame = tk.Frame(janela)
     menu_frame.place(relx=0, rely=0, relwidth=0.2, relheight=1)
-
-    # Definir imagem de fundo
-    imagem_casa = Image.open("casa_inicial.png")
-    imagem_casa = imagem_casa.resize((800, 500), Image.ANTIALIAS)
-    foto_casa = ImageTk.PhotoImage(imagem_casa)
-    image.create_image(0, 0, anchor="nw", image=foto_casa)
-    image.image_types = foto_casa
-
-    # Adicionar opções do menu
     btn_caverna = tk.Button(menu_frame, text="Entrar na caverna", command=lambda: entrar_caverna(pokemon_inicial))
 
 
@@ -148,7 +152,7 @@ def iniciar_menu(pokemon_inicial):
     btn_mochila.pack(pady=10, fill=tk.X)
 
     btn_sair = tk.Button(menu_frame, text="Sair", command=janela.destroy)
-    btn_sair.pack(pady=10, fill=tk.X)
+    btn_sair.pack(pady=10, fill=tk.X)'''
 
 def entrar_caverna(pokemon):
     print(f"Você entrou na caverna e encontrou um {pokemon}")
@@ -166,6 +170,15 @@ def mostrar_mochila():
 ###Precisa definir as variaveis no programa principal, igual ta daqui para baixo, pois quando a gente clica em um botão
 ### e vai para uma próxima tela, usamos o .destroy() para excluir as coisas da tela anterior
 ### Caso a variável não seja definida no programa principal, o .destroy() não funciona
+
+janela = Tk()
+janela.title("Jogo Pokemon")
+janela.geometry("1200x1000")
+janela.iconphoto(False, PhotoImage(file="imagens/logo1.png"))
+janela.resizable(width=False,height=False)
+janela.config(bg ="#d93035")
+
+pokedex = []
 
 #tela inicial
 imagem_telaInicial = tk.Canvas(janela, width=1200, height=1000)
@@ -215,6 +228,7 @@ imagem_pokebola3.place(x=790, y=290)
 imagem_caixaTexto2 = Label(frame_pokemonInicial, bg="#3A8C73")
 imagem_caixaTexto2.place(x=55, y=50)
 
+#Botões para escolher o pokemon inicial
 btn_bulbasaurInicial = tk.Button(frame_pokemonInicial,command=lambda: evento_botao_pokemon_inicial(nome="Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_bulbasaurInicial.place(x=320, y=520,anchor="center")
 
@@ -224,11 +238,33 @@ btn_squirtleInicial.place(x=605, y=520, anchor="center")
 btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_charmanderInicial.place(x=895, y=520, anchor="center")
 
+#Mensagem da caixa de texto
 lbl_escolhaPokemon = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
 lbl_escolhaPokemon.place(x=80, y=78)
 
-pokedex = []
+lbl_escolheuBulbasaur = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
+lbl_escolheuBulbasaur.place(x=140, y=90)
 
+lbl_escolheuSquirtle = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
+lbl_escolheuSquirtle.place(x=140, y=90)
+
+lbl_escolheuCharmander = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
+lbl_escolheuCharmander.place(x=140, y=90)
+
+imagem_bulbasauro = Label(frame_pokemonInicial, bg="#88c088")
+imagem_bulbasauro.place(x=217, y=280)
+
+imagem_squirtle = Label(frame_pokemonInicial, bg="#88c088")
+imagem_squirtle.place(x=500, y=290)
+
+imagem_charmander = Label(frame_pokemonInicial, bg="#88c088")
+imagem_charmander.place(x=760, y=290)
+
+
+
+
+
+pokedex = []
 
 
 iniciar_jogo()

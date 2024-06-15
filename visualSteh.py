@@ -222,7 +222,6 @@ borderImage = ImageTk.PhotoImage(borderImage)
 lbl_borderImage = Label(janela, image=borderImage, bg="#d93035")
 lbl_borderImage.place(x=400, y=20)
 
-
 infoImage = Image.open("imagens/info.png")
 infoImage = infoImage.resize((750, 250))
 infoImage = ImageTk.PhotoImage(infoImage)
@@ -272,9 +271,7 @@ lbl_speed.place(x=540, y=650)
 lbl_total = Label(janela, text="", relief="flat", anchor=CENTER, font=("Fixedsys 15"), fg="black", bg="#8dc73f")
 lbl_total.place(x=540, y=680)
 
-
 #Botoes para Cada Pokemon
-
 imageBulbasaurIcone = Image.open("imagens/icone-bulbasaur.png")
 imageBulbasaurIcone = imageBulbasaurIcone.resize((60, 63))
 imageBulbasaurIcone = ImageTk.PhotoImage(imageBulbasaurIcone)

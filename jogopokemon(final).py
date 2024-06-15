@@ -48,6 +48,8 @@ def escolher_pokemon_inicial():
         pokedex.append("Charmander")
     return pokedex
 
+#daqui pra cima já fo feito
+
 def menu():
     escolha = 1
     mochila = []
