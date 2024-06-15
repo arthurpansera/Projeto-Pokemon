@@ -115,7 +115,6 @@ def evento_botao_pokemon_inicial(nome):
                 if i == 2:
                     pokedex.append(linha)
                     lbl_escolheuSquirtle.config(text="Ótima escolha! Squirtle foi adicionado a sua Pokédex\n")
-
                     image_squirtle = Image.open("imagens/squirtle.png")
                     image_squirtle = image_squirtle.resize((150, 150))
                     image_squirtle = ImageTk.PhotoImage(image_squirtle)
@@ -135,7 +134,19 @@ def evento_botao_pokemon_inicial(nome):
                     imagem_charmander.config(image=image_charmander)
                     imagem_charmander.image_types = image_charmander
 
-'''def iniciar_menu(pokemon_inicial):
+    btn_avancar = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_avancar), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+    btn_avancar.place(x=655, y=390)
+
+def iniciar_menu(pokemon_inicial):
+    imagem_caixaTexto2.destroy()
+    lbl_escolheuBulbasaur.destroy()
+    lbl_escolheuSquirtle.destroy()
+    lbl_escolheuCharmander.destroy()
+    imagem_bulbasauro.destroy()
+    imagem_squirtle.destroy()
+    imagem_charmander.destroy()
+    imagem_mesaPokebola.destroy()
+
     menu_frame = tk.Frame(janela)
     menu_frame.place(relx=0, rely=0, relwidth=0.2, relheight=1)
     btn_caverna = tk.Button(menu_frame, text="Entrar na caverna", command=lambda: entrar_caverna(pokemon_inicial))
@@ -153,7 +164,7 @@ def evento_botao_pokemon_inicial(nome):
     btn_mochila.pack(pady=10, fill=tk.X)
 
     btn_sair = tk.Button(menu_frame, text="Sair", command=janela.destroy)
-    btn_sair.pack(pady=10, fill=tk.X)'''
+    btn_sair.pack(pady=10, fill=tk.X)
 
 def entrar_caverna(pokemon):
     print(f"Você entrou na caverna e encontrou um {pokemon}")
@@ -211,62 +222,57 @@ btn_proximo = tk.Button(frame_falaprofessor, command=lambda:escolher_pokemon_ini
 btn_proximo.place(x=670, y=480)
 
 #Tela de escolher o pokemon inicial
-frame_pokemonInicial = tk.Frame(janela, width=800, height=600, bg="#3A8C73")
-frame_pokemonInicial.pack()
+frame_pokebolas = tk.Frame(janela, width=800, height=600, bg="#3A8C73")
+frame_pokebolas.pack()
 
-imagem_caixaTexto2 = Label(frame_pokemonInicial, bg="#3A8C73")
+imagem_caixaTexto2 = Label(frame_pokebolas, bg="#3A8C73")
 imagem_caixaTexto2.place(x=30, y=50)
 
-imagem_mesaPokebola = Label(frame_pokemonInicial, bg="#3A8C73")
+imagem_mesaPokebola = Label(frame_pokebolas, bg="#3A8C73")
 imagem_mesaPokebola.place(x=60, y=150)
 
-imagem_pokebola1 = Label(frame_pokemonInicial, bg="#88c088")
+imagem_pokebola1 = Label(frame_pokebolas, bg="#88c088")
 imagem_pokebola1.place(x=150, y=220)
 
-imagem_pokebola2 = Label(frame_pokemonInicial, bg="#88c088")
+imagem_pokebola2 = Label(frame_pokebolas, bg="#88c088")
 imagem_pokebola2.place(x=345, y=220)
 
-imagem_pokebola3 = Label(frame_pokemonInicial, bg="#88c088")
+imagem_pokebola3 = Label(frame_pokebolas, bg="#88c088")
 imagem_pokebola3.place(x=540, y=220)
 
-#Botões para escolher o pokemon inicial
-btn_bulbasaurInicial = tk.Button(frame_pokemonInicial,command=lambda: evento_botao_pokemon_inicial(nome="Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
-btn_bulbasaurInicial.place(x=220, y=400,anchor="center")
-
-btn_squirtleInicial = tk.Button(frame_pokemonInicial,command=lambda: evento_botao_pokemon_inicial(nome="Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
-btn_squirtleInicial.place(x=415, y=400, anchor="center")
-
-btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
-btn_charmanderInicial.place(x=608, y=400, anchor="center")
-
 #Mensagem da caixa de texto
-lbl_escolhaPokemon = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
+lbl_escolhaPokemon = Label(frame_pokebolas, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
 lbl_escolhaPokemon.place(x=72, y=78)
 
-lbl_escolheuBulbasaur = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
+#Botões para escolher o pokemon inicial
+btn_bulbasaurInicial = tk.Button(frame_pokebolas,command=lambda: evento_botao_pokemon_inicial(nome="Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_bulbasaurInicial.place(x=220, y=400,anchor="center")
+
+btn_squirtleInicial = tk.Button(frame_pokebolas,command=lambda: evento_botao_pokemon_inicial(nome="Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_squirtleInicial.place(x=415, y=400, anchor="center")
+
+btn_charmanderInicial = tk.Button(frame_pokebolas,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_charmanderInicial.place(x=608, y=400, anchor="center")
+
+lbl_escolheuBulbasaur = Label(frame_pokebolas, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
 lbl_escolheuBulbasaur.place(x=130, y=90)
 
-lbl_escolheuSquirtle = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
+lbl_escolheuSquirtle = Label(frame_pokebolas, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
 lbl_escolheuSquirtle.place(x=130, y=90)
 
-lbl_escolheuCharmander = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
+lbl_escolheuCharmander = Label(frame_pokebolas, text="",  relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
 lbl_escolheuCharmander.place(x=130, y=90)
 
-imagem_bulbasauro = Label(frame_pokemonInicial, bg="#88c088")
+imagem_bulbasauro = Label(frame_pokebolas, bg="#88c088")
 imagem_bulbasauro.place(x=150, y=220)
 
-imagem_squirtle = Label(frame_pokemonInicial, bg="#88c088")
+imagem_squirtle = Label(frame_pokebolas, bg="#88c088")
 imagem_squirtle.place(x=345, y=230)
 
-imagem_charmander = Label(frame_pokemonInicial, bg="#88c088")
+imagem_charmander = Label(frame_pokebolas, bg="#88c088")
 imagem_charmander.place(x=540, y=230)
 
-
-
-
-
 pokedex = []
-
 
 iniciar_jogo()
 janela.mainloop()
