@@ -390,6 +390,26 @@ def atualizar_informacoes_pikachu(event):
                     imagePokemon = ImageTk.PhotoImage(imagePokemon)
                     lbl_image.config(image=imagePokemon)
                     lbl_image.image_types(imagePokemon)
+def atualizar_informacoes_pokedex(nome):
+    if nome == 'Bulbasaur':
+        for i, linha in enumerate(pokedex):
+            if i == nome:
+                lbl_name.config(text=linha[0])
+                lbl_type.config(text=f"Tipo: {linha[2]}")
+                lbl_secondtype.config(text=f"Tipo secundário: {linha[3]}")
+                lbl_attack.config(text=f"Ataque: {linha[4]}")
+                lbl_defense.config(text=f"Defensa: {linha[5]}")
+                lbl_hp.config(text=f"HP: {linha[6]}")
+                lbl_spAttack.config(text=f"Velocidade de Ataque: {linha[7]}")
+                lbl_spDefense.config(text=f"Velocidade de Defesa: {linha[8]}")
+                lbl_speed.config(text=f"Velocidade: {linha[9]}")
+                lbl_total.config(text=f"Total: {linha[10]}")
+                #Atualizar imagem
+                imagePokemon = Image.open(linha)
+                imagePokemon = imagePokemon.resize((476, 373))
+                imagePokemon = ImageTk.PhotoImage(imagePokemon)
+                lbl_image.config(image=imagePokemon)
+                lbl_image.image_types(imagePokemon)
 
 #Talvez isso ajude:
     elif nome == 'Squirtle':
@@ -467,7 +487,6 @@ btn_squirtleInicial.place(x=605, y=520, anchor="center")
 btn_charmanderInicial = Button(frame_pokemonInicial,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=CENTER, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_charmanderInicial.place(x=895, y=520, anchor="center")
 
-
 #Mensagem da caixa de texto
 lbl_escolhaPokemon = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
 lbl_escolhaPokemon.place(x=80, y=78)
@@ -509,7 +528,6 @@ lbl_menu_principal.place(x=265, y=87)
 #TELA DA POKEDEX#
 frame_pokedex = Frame(janela, width=1200, height=1000, bg ="#d93035")
 frame_pokedex.pack()
-
 
 pokedex = [
     #Name, imagem, Primary Type,Secondary type,Attack,Defense,HP,Sp.Attack,Sp.Defense,Speed,Total
