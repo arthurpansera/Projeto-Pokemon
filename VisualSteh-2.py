@@ -461,7 +461,6 @@ btn_squirtleInicial.place(x=605, y=520, anchor="center")
 btn_charmanderInicial = tk.Button(frame_pokemonInicial,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_charmanderInicial.place(x=895, y=520, anchor="center")
 
-
 #Mensagem da caixa de texto
 lbl_escolhaPokemon = Label(frame_pokemonInicial, text="",  relief="flat", height=2, font=("Fixedsys 18"), fg="#20506E", bg="#d8e3e3")
 lbl_escolhaPokemon.place(x=80, y=78)
