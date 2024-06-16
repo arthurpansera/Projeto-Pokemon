@@ -148,56 +148,36 @@ def evento_botao_pokemon_inicial(nome):
                     btn_proximo2 = tk.Button(frame_pokemonInicial, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=680, y=68)
 
-def iniciar_menu(event):
-    frame_pokemonInicial.destroy()
-
-    btn_caverna = Button(frame_menu, text="Entrar na caverna", command=lambda:entrar_caverna(), width=22, height=1, relief="raised", anchor=CENTER, padx=0, pady=5, font=("Fixedsys 18"), bg="#ffc100", fg="#6E5820")
-    btn_caverna.place(x= 230, y=175)
-
-    btn_mato = Button(frame_menu, text="Entrar no mato", command=lambda:entrar_mato(), width=22, height=1, relief="raised", anchor=CENTER, padx=0, pady=5, font=("Fixedsys 18"), bg="#ffc100", fg="#6E5820")
-    btn_mato.place(x=230, y=250)
-
-    btn_pokedex = Button(frame_menu, text="Pokédex",command=lambda:mostrar_pokedex(btn_pokedex), width=22, height=1, relief="raised", anchor=CENTER, padx=0, pady=5, font=("Fixedsys 18"), bg="#ffc100", fg="#6E5820")
-    btn_pokedex.place(x=230, y=325)
-
-    btn_mochila = Button(frame_menu, text="Mostrar Mochila",command=lambda:mostrar_mochila(btn_mochila), width=22, height=1, relief="raised", anchor=CENTER, padx=0, pady=5, font=("Fixedsys 18"), bg="#ffc100", fg="#6E5820")
-    btn_mochila.place(x=230, y=400)
-
-    btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=22, height=1, relief="raised", anchor=CENTER, padx=0, pady=5, font=("Fixedsys 18"), bg="#ffc100", fg="#6E5820")
-    btn_sair.place(x=230, y=475)
-
-
-
-def entrar_caverna(pokemon):
-    frame_menu.pack_forget()
-    frame_caverna.pack()
-
-def entrar_mato(pokemon):
-    frame_menu.pack_forget
-    frame_caverna.pack()
 
 def mostrar_pokedex(event):
-    frame_menu.pack_forget()
-    frame_pokedex.pack()
+    frame_menu.destroy()
 
-def pokedex_to_menu(event):
-    frame_pokedex.pack_forget()
-    frame_menu.pack()
+def entrar_caverna(event):
+    frame_menu.destroy()
 
-def caverna_to_menu(event):
-    frame_caverna.pack_forget()
-    frame_menu.pack()
+    image_cave = Image.open("imagens/caverna.png")
+    image_cave = image_cave.resize((800, 600))
+    image_cave = ImageTk.PhotoImage(image_cave)
+    imagem_caverna.config(image=image_cave)
+    imagem_caverna.image_types = image_cave
 
-def mato_to_menu(event):
-    frame_mato.pack_forget()
-    frame_menu.pack()
+    image_textBox3 = Image.open("imagens/caixa-texto3.png")
+    image_textBox3 = image_textBox3.resize((700, 90))
+    image_textBox3 = ImageTk.PhotoImage(image_textBox3)
+    imagem_caixaTexto3.config(image=image_textBox3)
+    imagem_caixaTexto3.image_types = image_textBox3
+
+    lbl_pokebolasCaverna.config(text="Ao entrar na caverna,\n" 
+                           f"você encontrou Pokébolas")
 
 
-
+def entrar_mato():
+    print("ol")
 
 
 def mostrar_mochila(event):
     print("Mostrar mochila")
+
 
 def atualizar_informacoes_bulbasaur(event):
     lbl_name.config(text=pokedex[0][0])
@@ -389,56 +369,26 @@ def atualizar_informacoes_pikachu(event):
     lbl_image.config(image=imagePokemon)
     lbl_image.image_types(imagePokemon)
 
+def iniciar_menu(event):
+    frame_pokemonInicial.destroy()
+
+    btn_caverna = Button(frame_menu, text="Entrar na caverna", command=lambda:entrar_caverna(btn_caverna), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_caverna.place(x=290, y=200)
+
+    btn_mato = Button(frame_menu, text="Entrar no mato", command=lambda:entrar_mato(btn_mato), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_mato.place(x=290, y=270)
+
+    btn_pokedex = Button(frame_menu, text="Pokédex",command=lambda:mostrar_pokedex(btn_pokedex), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_pokedex.place(x=290, y=340)
+
+    btn_mochila = Button(frame_menu, text="Mostrar Mochila",command=lambda:mostrar_mochila(btn_mochila), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_mochila.place(x=290, y=410)
+
+    btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_sair.place(x=290, y=480)
+
 
 ##Tentando fazer uma função para todos os pokemons, acredito que vai precisar, mas essa aqui em baixo ainda n funciona
-
-'''def atualizar_informacoes_pokedex(nome):
-        if nome == 'Bulbasaur':
-            for i, linha in enumerate(pokedex):
-                if i == nome:
-                    lbl_name.config(text=linha[0])
-                    lbl_type.config(text=f"Tipo: {linha[2]}")
-                    lbl_secondtype.config(text=f"Tipo secundário: {linha[3]}")
-                    lbl_attack.config(text=f"Ataque: {linha[4]}")
-                    lbl_defense.config(text=f"Defensa: {linha[5]}")
-                    lbl_hp.config(text=f"HP: {linha[6]}")
-                    lbl_spAttack.config(text=f"Velocidade de Ataque: {linha[7]}")
-                    lbl_spDefense.config(text=f"Velocidade de Defesa: {linha[8]}")
-                    lbl_speed.config(text=f"Velocidade: {linha[9]}")
-                    lbl_total.config(text=f"Total: {linha[10]}")
-                    # Atualizar imagem
-                    imagePokemon = Image.open(linha)
-                    imagePokemon = imagePokemon.resize((476, 373))
-                    imagePokemon = ImageTk.PhotoImage(imagePokemon)
-                    lbl_image.config(image=imagePokemon)
-                    lbl_image.image_types(imagePokemon)
-def atualizar_informacoes_pokedex(nome):
-    if nome == 'Bulbasaur':
-        for i, linha in enumerate(pokedex):
-            if i == nome:
-                lbl_name.config(text=linha[0])
-                lbl_type.config(text=f"Tipo: {linha[2]}")
-                lbl_secondtype.config(text=f"Tipo secundário: {linha[3]}")
-                lbl_attack.config(text=f"Ataque: {linha[4]}")
-                lbl_defense.config(text=f"Defensa: {linha[5]}")
-                lbl_hp.config(text=f"HP: {linha[6]}")
-                lbl_spAttack.config(text=f"Velocidade de Ataque: {linha[7]}")
-                lbl_spDefense.config(text=f"Velocidade de Defesa: {linha[8]}")
-                lbl_speed.config(text=f"Velocidade: {linha[9]}")
-                lbl_total.config(text=f"Total: {linha[10]}")
-                #Atualizar imagem
-                imagePokemon = Image.open(linha)
-                imagePokemon = imagePokemon.resize((476, 373))
-                imagePokemon = ImageTk.PhotoImage(imagePokemon)
-                lbl_image.config(image=imagePokemon)
-                lbl_image.image_types(imagePokemon)
-
-#Talvez isso ajude:
-    elif nome == 'Squirtle':
-        with open("pokemonsIniciais.csv", "r") as pokemons_data:
-            dados_pokemons = csv.reader(pokemons_data, delimiter=",")
-            for i, linha in enumerate(dados_pokemons):
-                if i == 2:'''
 
 #Definindo as variáveis
 
@@ -448,8 +398,6 @@ janela.geometry("800x600")
 janela.iconphoto(False, PhotoImage(file="imagens/logo1.png"))
 janela.resizable(width=False,height=False)
 janela.config(bg ="#d93035")
-
-'''pokedex = []'''
 
 #TELA INICIAÇ#
 imagem_telaInicial = tk.Canvas(janela, width=800, height=600)
@@ -545,10 +493,8 @@ imagem_borda_menu_principal.place(x=155, y=40)
 lbl_menu_principal = Label(frame_menu, text="Menu Principal", relief="flat", width=17, height=1, font=("Fixedsys 30"), fg="#20506E", bg="#d8e3e3")
 lbl_menu_principal.place(x=245, y=70)
 
-
-
 #TELA DA POKEDEX#
-frame_pokedex = Frame(janela, width=1200, height=1000, bg ="#d93035")
+frame_pokedex = Frame(janela, width=800, height=600, bg ="#d93035")
 frame_pokedex.pack()
 
 pokedex = [
@@ -582,13 +528,6 @@ lbl_name.place(x=510, y=335)
 
 lbl_image = Label(frame_pokedex, bg="#598f60")
 lbl_image.place(x=315, y=73)
-
-image_back = Image.open("imagens/setinha-voltar.png")
-image_back = image_back.resize((45, 30))
-image_back = ImageTk.PhotoImage(image_back)
-btn_voltar = Button(frame_pokedex, command=lambda:mostrar_menu(btn_voltar), image=image_back, width=45, height=30, relief="raised", anchor=NW, padx=1, pady=1, bg='#e3e3e3')
-btn_voltar.place(x=15, y=30)
-
 
 
 #Habilidade  do Pokemons
@@ -686,6 +625,20 @@ imagePikachuIcone = imagePikachuIcone.resize((40, 43))
 imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
 btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(btn_Pikachu), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
 btn_Pikachu.place(x=10, y=530)
+
+frame_caverna = tk.Frame(janela, width=800, height=600, bg="#76a2b4")
+frame_caverna.pack()
+
+imagem_caverna = Label(frame_caverna, bg="#76a2b4")
+imagem_caverna.place(x=0, y=0)
+
+imagem_caixaTexto3 = Label(frame_caverna, bg="#587873")
+imagem_caixaTexto3.place(x=50, y=400)
+
+lbl_pokebolasCaverna = Label(frame_caverna, text="",  relief="flat", font=("Fixedsys 15"), fg="black", bg="#d8e3e3")
+lbl_pokebolasCaverna.place(x= 75, y=430)
+
+
 
 iniciar_jogo()
 janela.mainloop()

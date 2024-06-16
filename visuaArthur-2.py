@@ -162,8 +162,9 @@ def iniciar_menu(event, pokebolas):
     btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
     btn_sair.place(x=290, y=480)
 
-def entrar_caverna(event, pokebolas):
-    frame_menu.destroy()
+def entrar_caverna(event):
+    frame_menu.pack_forget()
+    frame_entrarCaverna.pack()
 
     pokebolas_encontradas = encontrar_pokebolas()
     pokebolas += pokebolas_encontradas
@@ -208,8 +209,25 @@ def menu_caverna(event, pokebolas):
 def entrar_mato(event):
     print("Oi")
 
+def entrar_mato(pokemon):
+    frame_menu.pack_forget
+    frame_entrarCaverna.pack()
+
 def mostrar_pokedex(event):
-    frame_menu.destroy()
+    frame_menu.pack_forget()
+    frame_pokedex.pack()
+
+def pokedex_to_menu(event):
+    frame_pokedex.pack_forget()
+    frame_menu.pack()
+
+'''def caverna_to_menu(event):
+    frame_caverna.pack_forget()
+    frame_menu.pack()
+
+def mato_to_menu(event):
+    frame_mato.pack_forget()
+    frame_menu.pack()'''
 
 def mostrar_mochila(event):
     print("Itens na sua mochila:")
@@ -582,13 +600,13 @@ lbl_pokemonCaverna.place(x=270, y=68)
 imagem_menuCaverna = Label(frame_menuCaverna, bg="#ECECEC")
 imagem_menuCaverna.place(x=535, y=220)
 
-#Frame pokedex
-frame_pokedex = Frame(janela, width=1200, height=1000, bg="#d93035")
+#TELA DA POKEDEX#
+frame_pokedex = Frame(janela, width=1200, height=1000, bg ="#d93035")
 frame_pokedex.pack()
 
 pokedex = [
     #Name, imagem, Primary Type,Secondary type,Attack,Defense,HP,Sp.Attack,Sp.Defense,Speed,Total
-    ['Bulbasaur','imagens/bulbasaur.png', 'GRASS,POISON','',49,49,45,65,65,45,318,],
+    ['Bulbasaur','imagens/bulbasaur.png', 'GRASS','POISON',49,49,45,65,65,45,318,],
     ['Charmander','imagens/charmander.png','FIRE','',52,43,39,60,50,65,309,],
     ['Squirtle','imagens/squirtle.png','WATER','',48,65,44,50,64,43,314,],
     ['Caterpie','imagens/caterpie.png','BUG','',30,35,45,20,20,45,195, ],
@@ -617,6 +635,12 @@ lbl_name.place(x=510, y=335)
 
 lbl_image = Label(frame_pokedex, bg="#598f60")
 lbl_image.place(x=315, y=73)
+
+image_back = Image.open("imagens/setinha-voltar.png")
+image_back = image_back.resize((45, 30))
+image_back = ImageTk.PhotoImage(image_back)
+btn_voltar = Button(frame_pokedex, command=lambda:pokedex_to_menu(btn_voltar), image=image_back, width=45, height=30, relief="raised", anchor=NW, padx=1, pady=1, bg='#e3e3e3')
+btn_voltar.place(x=15, y=30)
 
 #Habilidade  do Pokemons
 lbl_habilities = Label(frame_pokedex, text="Habilidade", relief="flat", anchor=CENTER, font=("Fixedsys 13"), fg="black", bg="#8dc73f")
@@ -658,61 +682,61 @@ imageBulbasaurIcone = Image.open("imagens/icone-bulbasaur.png")
 imageBulbasaurIcone = imageBulbasaurIcone.resize((40, 43))
 imageBulbasaurIcone = ImageTk.PhotoImage(imageBulbasaurIcone)
 btn_Bulbasaur = Button(frame_pokedex, command=lambda: atualizar_informacoes_bulbasaur(btn_Bulbasaur), image=imageBulbasaurIcone, text=(f"Bulbasaur "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Bulbasaur.place(x=10, y=50)
+btn_Bulbasaur.place(x=10, y=80)
 
 imageCharmanderIcone = Image.open("imagens/icone-charmander.png")
 imageCharmanderIcone = imageCharmanderIcone.resize((40, 43))
 imageCharmanderIcone = ImageTk.PhotoImage(imageCharmanderIcone)
 btn_Charmander = Button(frame_pokedex,command=lambda: atualizar_informacoes_charmander(btn_Charmander), image=imageCharmanderIcone, text=(f"Charmander"), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Charmander.place(x=10, y=100)
+btn_Charmander.place(x=10, y=130)
 
 imageSquirtleIcone = Image.open("imagens/icone-squirtle.png")
 imageSquirtleIcone = imageSquirtleIcone.resize((40, 43))
 imageSquirtleIcone = ImageTk.PhotoImage(imageSquirtleIcone)
 btn_Squirtle= Button(frame_pokedex,command=lambda:atualizar_informacoes_squirtle(btn_Squirtle), image=imageSquirtleIcone, text=(f"Squirtle  "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Squirtle.place(x=10, y=150)
+btn_Squirtle.place(x=10, y=180)
 
 imageCaterpieIcone = Image.open("imagens/icone-caterpie.png")
 imageCaterpieIcone = imageCaterpieIcone.resize((40, 43))
 imageCaterpieIcone = ImageTk.PhotoImage(imageCaterpieIcone)
 btn_Caterpie= Button(frame_pokedex,command=lambda:atualizar_informacoes_caterpie(btn_Caterpie), image=imageCaterpieIcone, text=(f"Caterpie  "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Caterpie.place(x=10, y=200)
+btn_Caterpie.place(x=10, y=230)
 
 imageWeedleIcone = Image.open("imagens/icone-weedle.png")
 imageWeedleIcone = imageWeedleIcone.resize((40, 43))
 imageWeedleIcone = ImageTk.PhotoImage(imageWeedleIcone)
 btn_Weedle= Button(frame_pokedex, command=lambda:atualizar_informacoes_weedle(btn_Weedle), image=imageWeedleIcone, text=(f"Weedle    "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Weedle.place(x=10, y=250)
+btn_Weedle.place(x=10, y=280)
 
 imagePidgeyIcone = Image.open("imagens/icone-pidgey.png")
 imagePidgeyIcone = imagePidgeyIcone.resize((40, 43))
 imagePidgeyIcone = ImageTk.PhotoImage(imagePidgeyIcone)
 btn_Pidgey= Button(frame_pokedex, command=lambda:atualizar_informacoes_pidgey(btn_Pidgey), image=imagePidgeyIcone, text=(f"Pidgey    "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Pidgey.place(x=10, y=300)
+btn_Pidgey.place(x=10, y=330)
 
 imageSpearowIcone = Image.open("imagens/icone-spearow.png")
 imageSpearowIcone = imageSpearowIcone.resize((40, 43))
 imageSpearowIcone = ImageTk.PhotoImage(imageSpearowIcone)
 btn_Spearow= Button(frame_pokedex, command=lambda:atualizar_informacoes_spearow(btn_Spearow), image=imageSpearowIcone, text=(f"Spearow   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Spearow.place(x=10, y=350)
+btn_Spearow.place(x=10, y=380)
 
 imageRattataIcone = Image.open("imagens/icone-rattata.png")
 imageRattataIcone = imageRattataIcone.resize((40, 43))
 imageRattataIcone = ImageTk.PhotoImage(imageRattataIcone)
 btn_Rattata= Button(frame_pokedex,command=lambda:atualizar_informacoes_rattata(btn_Rattata), image=imageRattataIcone, text=(f"Rattata   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Rattata.place(x=10, y=400)
+btn_Rattata.place(x=10, y=430)
 
 imageEkansIcone = Image.open("imagens/icone-ekans.png")
 imageEkansIcone = imageEkansIcone.resize((40, 43))
 imageEkansIcone = ImageTk.PhotoImage(imageEkansIcone)
 btn_Ekans = Button(frame_pokedex, command=lambda:atualizar_informacoes_ekans(btn_Ekans), image=imageEkansIcone, text=(f"Ekans     "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Ekans.place(x=10, y=450)
+btn_Ekans.place(x=10, y=480)
 
 imagePikachuIcone = Image.open("imagens/icone-pikachu.png")
 imagePikachuIcone = imagePikachuIcone.resize((40, 43))
 imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
 btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(btn_Pikachu), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
-btn_Pikachu.place(x=10, y=500)
+btn_Pikachu.place(x=10, y=530)
 
 iniciar_jogo()
 janela.mainloop()
