@@ -365,25 +365,25 @@ def atualizar_informacoes_pikachu(event):
 ##Tentando fazer uma função para todos os pokemons, acredito que vai precisar, mas essa aqui em baixo ainda n funciona
 
 def atualizar_informacoes_pokedex(nome):
-        if nome == 'Bulbasaur':
-            for i, linha in enumerate(pokedex):
-                if i == nome:
-                    lbl_name.config(text=linha[0])
-                    lbl_type.config(text=f"Tipo: {linha[2]}")
-                    lbl_secondtype.config(text=f"Tipo secundário: {linha[3]}")
-                    lbl_attack.config(text=f"Ataque: {linha[4]}")
-                    lbl_defense.config(text=f"Defensa: {linha[5]}")
-                    lbl_hp.config(text=f"HP: {linha[6]}")
-                    lbl_spAttack.config(text=f"Velocidade de Ataque: {linha[7]}")
-                    lbl_spDefense.config(text=f"Velocidade de Defesa: {linha[8]}")
-                    lbl_speed.config(text=f"Velocidade: {linha[9]}")
-                    lbl_total.config(text=f"Total: {linha[10]}")
-                    # Atualizar imagem
-                    imagePokemon = Image.open(linha)
-                    imagePokemon = imagePokemon.resize((476, 373))
-                    imagePokemon = ImageTk.PhotoImage(imagePokemon)
-                    lbl_image.config(image=imagePokemon)
-                    lbl_image.image_types(imagePokemon)
+    if nome == 'Bulbasaur':
+        for i, linha in enumerate(pokedex):
+            if i == nome:
+                lbl_name.config(text=linha[0])
+                lbl_type.config(text=f"Tipo: {linha[2]}")
+                lbl_secondtype.config(text=f"Tipo secundário: {linha[3]}")
+                lbl_attack.config(text=f"Ataque: {linha[4]}")
+                lbl_defense.config(text=f"Defensa: {linha[5]}")
+                lbl_hp.config(text=f"HP: {linha[6]}")
+                lbl_spAttack.config(text=f"Velocidade de Ataque: {linha[7]}")
+                lbl_spDefense.config(text=f"Velocidade de Defesa: {linha[8]}")
+                lbl_speed.config(text=f"Velocidade: {linha[9]}")
+                lbl_total.config(text=f"Total: {linha[10]}")
+                #Atualizar imagem
+                imagePokemon = Image.open(linha)
+                imagePokemon = imagePokemon.resize((476, 373))
+                imagePokemon = ImageTk.PhotoImage(imagePokemon)
+                lbl_image.config(image=imagePokemon)
+                lbl_image.image_types(imagePokemon)
 
 #Talvez isso ajude:
 '''elif nome == 'Squirtle':

@@ -172,6 +172,208 @@ def mostrar_pokedex():
 def mostrar_mochila():
     print("Itens na sua mochila:")
 
+def atualizar_informacoes_bulbasaur(event):
+    lbl_name.config(text=pokedex[0][0])
+    lbl_type.config(text=f"Tipo: {pokedex[0][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[0][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[0][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[0][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[0][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[0][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[0][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[0][9]}")
+    lbl_total.config(text=f"Total: {pokedex[0][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[0][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_charmander(event):
+    lbl_name.config(text=pokedex[1][0])
+    lbl_type.config(text=f"Tipo: {pokedex[1][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[1][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[1][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[1][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[1][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[1][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[1][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[1][9]}")
+    lbl_total.config(text=f"Total: {pokedex[1][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[1][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_squirtle(event):
+    lbl_name.config(text=pokedex[2][0])
+    lbl_type.config(text=f"Tipo: {pokedex[2][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[2][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[2][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[2][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[2][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[2][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[2][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[2][9]}")
+    lbl_total.config(text=f"Total: {pokedex[2][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[2][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_caterpie(event):
+    lbl_name.config(text=pokedex[3][0])
+    lbl_type.config(text=f"Tipo: {pokedex[3][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[3][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[3][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[3][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[3][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[3][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[3][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[3][9]}")
+    lbl_total.config(text=f"Total: {pokedex[3][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[3][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_weedle(event):
+    lbl_name.config(text=pokedex[4][0])
+    lbl_type.config(text=f"Tipo: {pokedex[4][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[4][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[4][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[4][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[4][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[4][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[4][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[4][9]}")
+    lbl_total.config(text=f"Total: {pokedex[4][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[4][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_pidgey(event):
+    lbl_name.config(text=pokedex[5][0])
+    lbl_type.config(text=f"Tipo: {pokedex[5][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[5][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[5][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[5][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[5][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[5][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[5][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[5][9]}")
+    lbl_total.config(text=f"Total: {pokedex[5][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[5][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_spearow(event):
+    lbl_name.config(text=pokedex[6][0])
+    lbl_type.config(text=f"Tipo: {pokedex[6][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[6][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[6][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[6][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[6][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[6][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[6][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[6][9]}")
+    lbl_total.config(text=f"Total: {pokedex[6][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[6][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_rattata(event):
+    lbl_name.config(text=pokedex[7][0])
+    lbl_type.config(text=f"Tipo: {pokedex[7][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[7][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[7][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[7][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[7][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[7][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[7][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[7][9]}")
+    lbl_total.config(text=f"Total: {pokedex[7][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[7][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+def atualizar_informacoes_ekans(event):
+    lbl_name.config(text=pokedex[8][0])
+    lbl_type.config(text=f"Tipo: {pokedex[8][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[8][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[8][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[8][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[8][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[8][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[8][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[8][9]}")
+    lbl_total.config(text=f"Total: {pokedex[8][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[8][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)        
+
+def atualizar_informacoes_pikachu(event):
+    lbl_name.config(text=pokedex[9][0])
+    lbl_type.config(text=f"Tipo: {pokedex[9][2]}")
+    lbl_secondtype.config(text=f"Tipo secundário: {pokedex[9][3]}")
+    lbl_attack.config(text=f"Ataque: {pokedex[9][4]}")
+    lbl_defense.config(text=f"Defensa: {pokedex[9][5]}")
+    lbl_hp.config(text=f"HP: {pokedex[9][6]}")
+    lbl_spAttack.config(text=f"Velocidade de Ataque: {pokedex[9][7]}")
+    lbl_spDefense.config(text=f"Velocidade de Defesa: {pokedex[9][8]}")
+    lbl_speed.config(text=f"Velocidade: {pokedex[9][9]}")
+    lbl_total.config(text=f"Total: {pokedex[9][10]}")
+    # Atualizar imagem
+    imagePokemon = Image.open(pokedex[9][1])
+    imagePokemon = imagePokemon.resize((476, 373))
+    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+    lbl_image.config(image=imagePokemon)
+    lbl_image.image_types(imagePokemon)
+
+##Tentando fazer uma função para todos os pokemons, acredito que vai precisar, mas essa aqui em baixo ainda n funciona
+
+def atualizar_informacoes_pokedex(nome):
+        if nome == 'Bulbasaur':
+            for i, linha in enumerate(pokedex):
+                if i == nome:
+                    lbl_name.config(text=linha[0])
+                    lbl_type.config(text=f"Tipo: {linha[2]}")
+                    lbl_secondtype.config(text=f"Tipo secundário: {linha[3]}")
+                    lbl_attack.config(text=f"Ataque: {linha[4]}")
+                    lbl_defense.config(text=f"Defensa: {linha[5]}")
+                    lbl_hp.config(text=f"HP: {linha[6]}")
+                    lbl_spAttack.config(text=f"Velocidade de Ataque: {linha[7]}")
+                    lbl_spDefense.config(text=f"Velocidade de Defesa: {linha[8]}")
+                    lbl_speed.config(text=f"Velocidade: {linha[9]}")
+                    lbl_total.config(text=f"Total: {linha[10]}")
+                    # Atualizar imagem
+                    imagePokemon = Image.open(linha)
+                    imagePokemon = imagePokemon.resize((476, 373))
+                    imagePokemon = ImageTk.PhotoImage(imagePokemon)
+                    lbl_image.config(image=imagePokemon)
+                    lbl_image.image_types(imagePokemon)
 
 ###Precisa definir as variaveis no programa principal, igual ta daqui para baixo, pois quando a gente clica em um botão
 ### e vai para uma próxima tela, usamos o .destroy() para excluir as coisas da tela anterior
