@@ -162,7 +162,7 @@ def iniciar_menu(event, pokebolas):
     btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
     btn_sair.place(x=290, y=480)
 
-def entrar_caverna(event):
+def entrar_caverna(event, pokebolas):
     frame_menu.pack_forget()
     frame_entrarCaverna.pack()
 
