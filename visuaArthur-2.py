@@ -139,16 +139,16 @@ def evento_botao_pokemon_inicial(nome):
                     btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=650, y=387)
 
-def iniciar_menu(pokemon_inicial):
+def iniciar_menu(pokemon):
     frame_pokebolas.destroy()
 
     menu_frame = tk.Frame(janela)
     menu_frame.place(relx=0, rely=0, relwidth=0.2, relheight=1)
-    btn_caverna = tk.Button(menu_frame, text="Entrar na caverna", command=lambda: entrar_caverna(pokemon_inicial))
 
+    btn_caverna = tk.Button(menu_frame, text="Entrar na caverna", command=lambda: entrar_caverna(pokemon))
     btn_caverna.pack(pady=10, fill=tk.X)
 
-    btn_mato = tk.Button(menu_frame, text="Entrar no mato", command=lambda: entrar_mato(pokemon_inicial))
+    btn_mato = tk.Button(menu_frame, text="Entrar no mato", command=lambda: entrar_mato(pokemon))
     btn_mato.pack(pady=10, fill=tk.X)
 
     btn_pokedex = tk.Button(menu_frame, text="Listar Pokémons na Pokédex", command=mostrar_pokedex)
@@ -161,6 +161,14 @@ def iniciar_menu(pokemon_inicial):
     btn_sair.pack(pady=10, fill=tk.X)
 
 def entrar_caverna(pokemon):
+    frame_menu.destroy()
+
+    image_cave = Image.open("imagens/caverna.png")
+    image_cave = image_cave.resize((700, 200))
+    image_cave = ImageTk.PhotoImage(image_cave)
+    imagem_caverna.config(image=image_cave)
+    imagem_caverna.image_types = image_cave
+
     print(f"Você entrou na caverna e encontrou um {pokemon}")
 
 def entrar_mato(pokemon):
@@ -468,10 +476,15 @@ imagem_squirtle.place(x=345, y=230)
 imagem_charmander = Label(frame_pokebolas, bg="#88c088")
 imagem_charmander.place(x=540, y=230)
 
-frame_menu = Frame(janela, width=1200, height=1000, bg="#3A8C73")
+frame_menu = Frame(janela, width=800, height=600, bg="#3A8C73")
 frame_menu.pack()
 
-frame_pokedex = Frame(janela, width=1200, height=1000, bg ="#d93035")
+#Frame caverna
+frame_caverna = Frame(janela, width=800, height=600, bg="#")
+
+
+#Frame pokedex
+frame_pokedex = Frame(janela, width=800, height=600, bg ="#d93035")
 frame_pokedex.pack()
 
 pokedex = [
