@@ -136,6 +136,11 @@ def encontrar_pokebolas():
     num = random.randint(0,2)
     return num
 
+def sorteio_pokemon(lista_pokemons):
+    indice_sorteado = random.randint(0, len(lista_pokemons)-1)
+    pokemon_sorteado = lista_pokemons[indice_sorteado]
+    return pokemon_sorteado
+
 def iniciar_menu(event):
     frame_pokebolas.destroy()
 
@@ -159,10 +164,9 @@ def entrar_caverna(event):
     frame_caverna.pack()
 
     pokebolas_encontradas = encontrar_pokebolas()
-    lbl_pokebolasCaverna.config(text="Ao entrar na caverna,\n" 
-                           f"você encontrou {pokebolas_encontradas} Pokébolas")
+    lbl_pokebolasCaverna.config(text=f"Você encontrou {pokebolas_encontradas} Pokébolas")
     image_textBox3 = Image.open("imagens/caixa-texto3.png")
-    image_textBox3 = image_textBox3.resize((700, 200))
+    image_textBox3 = image_textBox3.resize((620, 80))
     image_textBox3 = ImageTk.PhotoImage(image_textBox3)
     imagem_caixaTexto3.config(image=image_textBox3)
     imagem_caixaTexto3.image_types = image_textBox3
@@ -172,6 +176,20 @@ def entrar_caverna(event):
     image_cave = ImageTk.PhotoImage(image_cave)
     imagem_caverna.create_image(0,0, anchor="nw", image=image_cave)
     imagem_caverna.image_types = image_cave
+
+def menu_caverna(event):
+    lbl_pokebolasCaverna.destroy()
+    imagem_caixaTexto3.destroy()
+    btn_proximo3.destroy()
+
+    pokemonsCaverna = ["Weedle","Rattata","Ekans"]
+    pokemon = sorteio_pokemon(pokemonsCaverna)
+    lbl_pokemonCaverna.config(text=f"Um {pokemon} selvagem apareceu!")
+    image_textBox4 = Image.open("imagens/caixa-texto3.png")
+    image_textBox4 = image_textBox4.resize((620, 80))
+    image_textBox4 = ImageTk.PhotoImage(image_textBox4)
+    imagem_caixaTexto4.config(image=image_textBox4)
+    imagem_caixaTexto4.image_types = image_textBox4
 
 def entrar_mato(event):
     print("Oi")
@@ -459,7 +477,7 @@ imagem_fundoProfessor.place(x=0, y=0)
 imagem_caixaTexto = Label(frame_falaprofessor, bg="#587873")
 imagem_caixaTexto.place(x=55, y=350)
 
-lbl_fala = Label(frame_falaprofessor, text="",  relief="flat", font=("Fixedsys 17"), fg="black", bg="#d8e3e3")
+lbl_fala = Label(frame_falaprofessor, text="",  relief="flat", pady=5, font=("Fixedsys 17"), fg="black", bg="#d8e3e3")
 lbl_fala.place(x=115, y=400)
 
 imagem_professor = Label(frame_falaprofessor, bg="#b9d4cd")
@@ -543,10 +561,19 @@ imagem_caverna = tk.Canvas(frame_caverna, width=800, height=600)
 imagem_caverna.pack()
 
 imagem_caixaTexto3 = Label(frame_caverna, bg="#587873")
-imagem_caixaTexto3.place(x=55, y=350)
+imagem_caixaTexto3.place(x=88, y=50)
 
-lbl_pokebolasCaverna = Label(frame_caverna, text="",  relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
-lbl_pokebolasCaverna.place(x=115, y=400)
+lbl_pokebolasCaverna = Label(frame_caverna, text="", relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
+lbl_pokebolasCaverna.place(x=275, y=78)
+
+btn_proximo3 = tk.Button(frame_caverna, command=lambda:menu_caverna(btn_proximo3), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+btn_proximo3.place(x=625, y=70)
+
+imagem_caixaTexto4 = Label(frame_caverna, bg="#587873")
+imagem_caixaTexto4.place(x=88, y=50)
+
+lbl_pokemonCaverna = Label(frame_caverna, text="", relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
+lbl_pokemonCaverna.place(x=270, y=78)
 
 #TELA DA POKEDEX#
 frame_pokedex = Frame(janela, width=1200, height=1000, bg ="#d93035")
