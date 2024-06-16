@@ -45,11 +45,6 @@ def exibir_fala_professor(event):
 
 
 def escolher_pokemon_inicial(event):
-    imagem_caixaTexto.destroy()
-    imagem_professor.destroy()
-    imagem_fundoProfessor.destroy()
-    lbl_fala.destroy()
-    btn_proximo.destroy()
     frame_falaprofessor.destroy()
 
     # Criar tela para escolha do Pokémon inicial
@@ -139,26 +134,23 @@ def evento_botao_pokemon_inicial(nome):
                     btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=650, y=387)
 
-def iniciar_menu(pokemon):
+def iniciar_menu(event):
     frame_pokebolas.destroy()
 
-    menu_frame = tk.Frame(janela)
-    menu_frame.place(relx=0, rely=0, relwidth=0.2, relheight=1)
+    btn_caverna = Button(frame_menu, text="Entrar na caverna", command=lambda:entrar_caverna(pokemon), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_caverna.place(x=290, y=200)
 
-    btn_caverna = tk.Button(menu_frame, text="Entrar na caverna", command=lambda: entrar_caverna(pokemon))
-    btn_caverna.pack(pady=10, fill=tk.X)
+    btn_mato = Button(frame_menu, text="Entrar no mato", command=lambda:entrar_mato(), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_mato.place(x=290, y=270)
 
-    btn_mato = tk.Button(menu_frame, text="Entrar no mato", command=lambda: entrar_mato(pokemon))
-    btn_mato.pack(pady=10, fill=tk.X)
+    btn_pokedex = Button(frame_menu, text="Pokédex",command=lambda:mostrar_pokedex(btn_pokedex), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_pokedex.place(x=290, y=340)
 
-    btn_pokedex = tk.Button(menu_frame, text="Listar Pokémons na Pokédex", command=mostrar_pokedex)
-    btn_pokedex.pack(pady=10, fill=tk.X)
+    btn_mochila = Button(frame_menu, text="Mostrar Mochila",command=lambda:mostrar_mochila(btn_mochila), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_mochila.place(x=290, y=410)
 
-    btn_mochila = tk.Button(menu_frame, text="Olhar itens na mochila", command=mostrar_mochila)
-    btn_mochila.pack(pady=10, fill=tk.X)
-
-    btn_sair = tk.Button(menu_frame, text="Sair", command=janela.destroy)
-    btn_sair.pack(pady=10, fill=tk.X)
+    btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_sair.place(x=290, y=480)
 
 def entrar_caverna(pokemon):
     frame_menu.destroy()
@@ -396,7 +388,7 @@ janela.config(bg ="#d93035")
 
 pokedex = []
 
-#tela inicial
+#Tela inicial
 imagem_telaInicial = tk.Canvas(janela, width=800, height=600)
 imagem_telaInicial.pack()
 
@@ -476,14 +468,31 @@ imagem_squirtle.place(x=345, y=230)
 imagem_charmander = Label(frame_pokebolas, bg="#88c088")
 imagem_charmander.place(x=540, y=230)
 
-frame_menu = Frame(janela, width=800, height=600, bg="#3A8C73")
+#Frame menu
+frame_menu = Frame(janela, width=800, height=600, bg="#474c86")
 frame_menu.pack()
 
-#Frame caverna
-frame_caverna = Frame(janela, width=800, height=600, bg="#")
+image_border_main_menu = Image.open("imagens/borda-menu-principal.png")
+image_border_main_menu = image_border_main_menu.resize((650, 150))
+image_border_main_menu = ImageTk.PhotoImage(image_border_main_menu)
+imagem_borda_menu_principal = Label(frame_menu, image=image_border_main_menu, bg="#474c86")
+imagem_borda_menu_principal.place(x=80, y=30)
 
+lbl_menu_principal = Label(frame_menu, text="Menu Principal", relief="flat", width=18, height=1, font=("Fixedsys 34"), fg="#20506E", bg="#d8e3e3")
+lbl_menu_principal.place(x=120, y=80)
+
+#Frame caverna
+frame_caverna = tk.Frame(janela, width=800, height=600, bg="#f2f2f2")
+frame_caverna.pack()
+
+imagem_caverna = tk.Canvas(janela, width=800, height=600)
+imagem_caverna.pack()
 
 #Frame pokedex
+frame_pokedex = Frame(janela, width=800, height=600, bg ="#d93035")
+frame_pokedex.pack()
+
+#Teça da pokedex
 frame_pokedex = Frame(janela, width=800, height=600, bg ="#d93035")
 frame_pokedex.pack()
 
