@@ -492,7 +492,6 @@ frame_menu.pack()
 frame_pokedex = Frame(janela, width=1200, height=1000, bg ="#d93035")
 frame_pokedex.pack()
 
-
 pokedex = [
     #Name, imagem, Primary Type,Secondary type,Attack,Defense,HP,Sp.Attack,Sp.Defense,Speed,Total
     ['Bulbasaur','imagens/bulbasaur.png', 'GRASS,POISON','',49,49,45,65,65,45,318,],
