@@ -14,7 +14,7 @@ def iniciar_jogo():
     imagem_telaInicial.image_types = image_homeScreen
     # Adicionando botão "Jogar"
     btn_jogar.config(text="Jogar")
-    
+
 def exibir_fala_professor(event):
     btn_jogar.destroy()
     imagem_telaInicial.destroy()
@@ -41,6 +41,9 @@ def exibir_fala_professor(event):
     image_backgroundTeacher = ImageTk.PhotoImage(image_backgroundTeacher)
     imagem_fundoProfessor.config(image=image_backgroundTeacher)
     imagem_fundoProfessor.image_types = image_backgroundTeacher  
+
+pokebolas = 3
+mochilas = []
 
 def escolher_pokemon_inicial(event):
     frame_falaprofessor.destroy()
@@ -78,7 +81,7 @@ def escolher_pokemon_inicial(event):
 
     lbl_escolhaPokemon.config(text="Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
  
-def evento_botao_pokemon_inicial(nome):
+def evento_botao_pokemon_inicial(nome, pokebolas):
     imagem_pokebola1.destroy()
     imagem_pokebola2.destroy()
     imagem_pokebola3.destroy()
@@ -99,7 +102,7 @@ def evento_botao_pokemon_inicial(nome):
                     image_bulbasaur = ImageTk.PhotoImage(image_bulbasaur)
                     imagem_bulbasauro.config(image=image_bulbasaur)
                     imagem_bulbasauro.image_types = image_bulbasaur
-                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2, pokebolas=3), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=650, y=387)
 
     elif nome == 'Squirtle':
@@ -114,7 +117,7 @@ def evento_botao_pokemon_inicial(nome):
                     image_squirtle = ImageTk.PhotoImage(image_squirtle)
                     imagem_squirtle.config(image=image_squirtle)
                     imagem_squirtle.image_types = image_squirtle
-                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2, pokebolas=3), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=650, y=387)
 
     elif nome == 'Charmander':
@@ -129,7 +132,7 @@ def evento_botao_pokemon_inicial(nome):
                     image_charmander = ImageTk.PhotoImage(image_charmander)
                     imagem_charmander.config(image=image_charmander)
                     imagem_charmander.image_types = image_charmander
-                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2, pokebolas=3), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=650, y=387)
 
 def encontrar_pokebolas():
@@ -141,13 +144,13 @@ def sorteio_pokemon(lista_pokemons):
     pokemon_sorteado = lista_pokemons[indice_sorteado]
     return pokemon_sorteado
 
-def iniciar_menu(event):
+def iniciar_menu(event, pokebolas):
     frame_pokebolas.destroy()
 
-    btn_caverna = Button(frame_menu, text="Entrar na caverna", command=lambda:entrar_caverna(btn_caverna), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_caverna = Button(frame_menu, text="Entrar na caverna", command=lambda:entrar_caverna(btn_caverna, pokebolas), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
     btn_caverna.place(x=290, y=200)
 
-    btn_mato = Button(frame_menu, text="Entrar no mato", command=lambda:entrar_mato(btn_mato), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
+    btn_mato = Button(frame_menu, text="Entrar no mato", command=lambda:entrar_mato(btn_mato, pokebolas), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
     btn_mato.place(x=290, y=270)
 
     btn_pokedex = Button(frame_menu, text="Pokédex",command=lambda:mostrar_pokedex(btn_pokedex), width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
@@ -159,10 +162,11 @@ def iniciar_menu(event):
     btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=20, height=1, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 15"), bg="#ffdf00", fg="#6E5820")
     btn_sair.place(x=290, y=480)
 
-def entrar_caverna(event):
+def entrar_caverna(event, pokebolas):
     frame_menu.destroy()
 
     pokebolas_encontradas = encontrar_pokebolas()
+    pokebolas += pokebolas_encontradas
     lbl_pokebolasCaverna.config(text=f"Você encontrou {pokebolas_encontradas} Pokébolas")
     image_textBox3 = Image.open("imagens/caixa-texto3.png")
     image_textBox3 = image_textBox3.resize((620, 80))
@@ -170,25 +174,36 @@ def entrar_caverna(event):
     imagem_caixaTexto3.config(image=image_textBox3)
     imagem_caixaTexto3.image_types = image_textBox3
 
-    image_cave = Image.open("imagens/caverna.png")
-    image_cave = image_cave.resize((800, 600))
-    image_cave = ImageTk.PhotoImage(image_cave)
-    imagem_caverna.create_image(0,0, anchor="nw", image=image_cave)
-    imagem_caverna.image_types = image_cave
+    image_cave1 = Image.open("imagens/caverna.png")
+    image_cave1 = image_cave1.resize((800, 600))
+    image_cave1 = ImageTk.PhotoImage(image_cave1)
+    imagem_caverna1.create_image(0,0, anchor="nw", image=image_cave1)
+    imagem_caverna1.image_types = image_cave1
 
-def menu_caverna(event):
-    lbl_pokebolasCaverna.destroy()
-    imagem_caixaTexto3.destroy()
-    btn_proximo3.destroy()
+def menu_caverna(event, pokebolas):
+    frame_entrarCaverna.destroy()
+
+    image_cave2 = Image.open("imagens/caverna.png")
+    image_cave2 = image_cave2.resize((800, 600))
+    image_cave2 = ImageTk.PhotoImage(image_cave2)
+    imagem_caverna2.create_image(0,0, anchor="nw", image=image_cave2)
+    imagem_caverna2.image_types = image_cave2
 
     pokemonsCaverna = ["Weedle","Rattata","Ekans"]
     pokemon = sorteio_pokemon(pokemonsCaverna)
-    lbl_pokemonCaverna.config(text=f"Um {pokemon} selvagem apareceu!")
+    lbl_pokemonCaverna.config(text=f"Um {pokemon} selvagem apareceu!\n"
+                              "O que você deseja fazer?")
     image_textBox4 = Image.open("imagens/caixa-texto3.png")
     image_textBox4 = image_textBox4.resize((620, 80))
     image_textBox4 = ImageTk.PhotoImage(image_textBox4)
     imagem_caixaTexto4.config(image=image_textBox4)
     imagem_caixaTexto4.image_types = image_textBox4
+
+    image_cave_menu = Image.open("imagens/caixa-texto3.png")
+    image_cave_menu = image_cave_menu.resize((170, 150))
+    image_cave_menu = ImageTk.PhotoImage(image_cave_menu)
+    imagem_menuCaverna.config(image=image_cave_menu)
+    imagem_menuCaverna.image_types = image_cave_menu
 
 def entrar_mato(event):
     print("Oi")
@@ -495,13 +510,13 @@ lbl_escolhaPokemon = Label(frame_pokebolas, text="", relief="flat", height=2, fo
 lbl_escolhaPokemon.place(x=72, y=78)
 
 #Botões para escolher o pokemon inicial
-btn_bulbasaurInicial = tk.Button(frame_pokebolas,command=lambda: evento_botao_pokemon_inicial(nome="Bulbasaur"), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_bulbasaurInicial = tk.Button(frame_pokebolas,command=lambda: evento_botao_pokemon_inicial(nome="Bulbasaur", pokebolas=3), text="Bulbasaur", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_bulbasaurInicial.place(x=220, y=400,anchor="center")
 
-btn_squirtleInicial = tk.Button(frame_pokebolas,command=lambda: evento_botao_pokemon_inicial(nome="Squirtle"), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_squirtleInicial = tk.Button(frame_pokebolas,command=lambda: evento_botao_pokemon_inicial(nome="Squirtle", pokebolas=3), text="Squirtle", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_squirtleInicial.place(x=415, y=400, anchor="center")
 
-btn_charmanderInicial = tk.Button(frame_pokebolas,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander"), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
+btn_charmanderInicial = tk.Button(frame_pokebolas,  command=lambda: evento_botao_pokemon_inicial(nome="Charmander", pokebolas=3), text="Charmander", width=10, height=0, relief="raised", anchor=NW, padx=35, pady=2, font=("Fixedsys 17"), bg="#F0D882", fg="#6E5820")
 btn_charmanderInicial.place(x=608, y=400, anchor="center")
 
 lbl_escolheuBulbasaur = Label(frame_pokebolas, text="", relief="flat", height=2, font=("Fixedsys 17"), fg="#20506E", bg="#d8e3e3")
@@ -535,27 +550,37 @@ imagem_borda_menu_principal.place(x=80, y=30)
 lbl_menu_principal = Label(frame_menu, text="Menu Principal", relief="flat", width=18, height=1, font=("Fixedsys 34"), fg="#20506E", bg="#d8e3e3")
 lbl_menu_principal.place(x=120, y=80)
 
-#Frame caverna
-frame_caverna = Frame(janela, width=800, height=600, bg="#f2f2f2")
-frame_caverna.pack()
+#Frame entrar na caverna
+frame_entrarCaverna = Frame(janela, width=800, height=600, bg="#f2f2f2")
+frame_entrarCaverna.pack()
 
-imagem_caverna = tk.Canvas(frame_caverna, width=800, height=600)
-imagem_caverna.pack()
+imagem_caverna1 = tk.Canvas(frame_entrarCaverna, width=800, height=600)
+imagem_caverna1.pack()
 
-imagem_caixaTexto3 = Label(frame_caverna, bg="#587873")
+imagem_caixaTexto3 = Label(frame_entrarCaverna, bg="#587873")
 imagem_caixaTexto3.place(x=88, y=50)
 
-lbl_pokebolasCaverna = Label(frame_caverna, text="", relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
+lbl_pokebolasCaverna = Label(frame_entrarCaverna, text="", relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
 lbl_pokebolasCaverna.place(x=275, y=78)
 
-btn_proximo3 = tk.Button(frame_caverna, command=lambda:menu_caverna(btn_proximo3), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+btn_proximo3 = tk.Button(frame_entrarCaverna, command=lambda:menu_caverna(btn_proximo3, pokebolas), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
 btn_proximo3.place(x=625, y=70)
 
-imagem_caixaTexto4 = Label(frame_caverna, bg="#587873")
+#Frame menu caverna
+frame_menuCaverna = Frame(janela, width=800, height=600, bg="#f2f2f2")
+frame_menuCaverna.pack()
+
+imagem_caverna2 = tk.Canvas(frame_menuCaverna, width=800, height=600)
+imagem_caverna2.pack()
+
+imagem_caixaTexto4 = Label(frame_menuCaverna, bg="#587873")
 imagem_caixaTexto4.place(x=88, y=50)
 
-lbl_pokemonCaverna = Label(frame_caverna, text="", relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
-lbl_pokemonCaverna.place(x=270, y=78)
+lbl_pokemonCaverna = Label(frame_menuCaverna, text="", relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
+lbl_pokemonCaverna.place(x=270, y=68)
+
+imagem_menuCaverna = Label(frame_menuCaverna, bg="#ECECEC")
+imagem_menuCaverna.place(x=535, y=220)
 
 #Frame pokedex
 frame_pokedex = Frame(janela, width=1200, height=1000, bg="#d93035")
