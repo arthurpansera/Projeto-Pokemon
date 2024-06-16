@@ -51,8 +51,8 @@ def escolher_pokemon_inicial(event):
     lbl_fala.destroy()
     btn_proximo.destroy()
     frame_falaprofessor.destroy()
+
     # Criar tela para escolha do Pokémon inicial
-    
     image_tablePokeball = Image.open("imagens/mesa-pokebola.png")
     image_tablePokeball = image_tablePokeball.resize((700, 450))
     image_tablePokeball = ImageTk.PhotoImage(image_tablePokeball)
@@ -106,6 +106,8 @@ def evento_botao_pokemon_inicial(nome):
                     image_bulbasaur = ImageTk.PhotoImage(image_bulbasaur)
                     imagem_bulbasauro.config(image=image_bulbasaur)
                     imagem_bulbasauro.image_types = image_bulbasaur
+                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+                    btn_proximo2.place(x=650, y=387)
 
     elif nome == 'Squirtle':
         with open("pokemonsIniciais.csv", "r") as pokemons_data:
@@ -119,6 +121,8 @@ def evento_botao_pokemon_inicial(nome):
                     image_squirtle = ImageTk.PhotoImage(image_squirtle)
                     imagem_squirtle.config(image=image_squirtle)
                     imagem_squirtle.image_types = image_squirtle
+                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+                    btn_proximo2.place(x=650, y=387)
 
     elif nome == 'Charmander':
         with open("pokemonsIniciais.csv", "r") as pokemons_data:
@@ -132,17 +136,11 @@ def evento_botao_pokemon_inicial(nome):
                     image_charmander = ImageTk.PhotoImage(image_charmander)
                     imagem_charmander.config(image=image_charmander)
                     imagem_charmander.image_types = image_charmander
+                    btn_proximo2 = tk.Button(frame_pokebolas, command=lambda:iniciar_menu(btn_proximo2), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+                    btn_proximo2.place(x=650, y=387)
 
 def iniciar_menu(pokemon_inicial):
-    imagem_caixaTexto2.destroy()
-    imagem_mesaPokebola.destroy()
-    lbl_escolheuBulbasaur.destroy()
-    lbl_escolheuSquirtle.destroy()
-    lbl_escolheuCharmander.destroy()
-    imagem_bulbasauro.destroy()
-    imagem_squirtle.destroy()
-    imagem_charmander.destroy()
-    btn_avancar.destroy()
+    frame_pokebolas.destroy()
 
     menu_frame = tk.Frame(janela)
     menu_frame.place(relx=0, rely=0, relwidth=0.2, relheight=1)
