@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
 import csv
+from pygame import mixer
 
 def iniciar_jogo():
     # Definindo tela inicial com imagem do Pokémon Fire Red
@@ -14,9 +15,16 @@ def iniciar_jogo():
     imagem_telaInicial.image_types = image_homeScreen
     # Adicionando botão "Jogar"
     btn_jogar.config(text="Jogar")
+    mixer.init()
+    mixer.music.load("tela-inicial-music.mp3")
+    mixer.music.play()
+    input()
     
 
 def exibir_fala_professor(event):
+    mixer.music.stop()
+    mixer.quit()
+    
     btn_jogar.destroy()
     imagem_telaInicial.destroy()
 
@@ -41,6 +49,7 @@ def exibir_fala_professor(event):
     image_backgroundTeacher = ImageTk.PhotoImage(image_backgroundTeacher)
     imagem_fundoProfessor.config(image=image_backgroundTeacher)
     imagem_fundoProfessor.image_types = image_backgroundTeacher
+
 
 pokebolas = 3
 mochilas = []  
@@ -151,26 +160,16 @@ def evento_botao_pokemon_inicial(nome):
                     btn_proximo2 = tk.Button(frame_pokemonInicial, command=lambda:iniciar_menu(btn_proximo2, pokebolas = 3), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=680, y=68)
 
+
 def encontrar_pokebolas():
     num = random.randint(0,2)
     return num
+
 
 def sorteio_pokemon(lista_pokemons):
     indice_sorteado = random.randint(0, len(lista_pokemons)-1)
     pokemon_sorteado = lista_pokemons[indice_sorteado]
     return pokemon_sorteado
-
-def mostrar_pokedex(event):
-    frame_menu.pack_forget()
-    frame_entrarCaverna.pack_forget()
-    frame_menuCaverna.pack_forget()
-    frame_entrarMato.pack_forget()
-    frame_menuMato.pack_forget()
-    frame_pokedex.pack()
-
-def pokedex_to_menu(event):
-    frame_pokedex.pack_forget()
-    frame_menu.pack()
 
 
 def entrar_caverna(event, pokebolas):
@@ -192,6 +191,7 @@ def entrar_caverna(event, pokebolas):
     image_textBox3 = ImageTk.PhotoImage(image_textBox3)
     imagem_caixaTexto3.config(image=image_textBox3)
     imagem_caixaTexto3.image_types = image_textBox3
+
 
 def menu_caverna(event, pokebolas):
     frame_entrarCaverna.pack_forget()
@@ -302,6 +302,7 @@ def cave_to_menu(event):
     frame_menuMato.pack_forget()
     frame_menu.pack()
 
+
 def mato_to_menu(event):
     frame_pokedex.pack_forget()
     frame_menuCaverna.pack_forget()
@@ -311,8 +312,18 @@ def mato_to_menu(event):
     frame_menu.pack()
 
 
-def mostrar_mochila(event):
-    print("Mostrar mochila")
+def mostrar_pokedex(event):
+    frame_menu.pack_forget()
+    frame_entrarCaverna.pack_forget()
+    frame_menuCaverna.pack_forget()
+    frame_entrarMato.pack_forget()
+    frame_menuMato.pack_forget()
+    frame_pokedex.pack()
+
+
+def pokedex_to_menu(event):
+    frame_pokedex.pack_forget()
+    frame_menu.pack()
 
 
 def atualizar_informacoes_bulbasaur(event):
@@ -486,7 +497,7 @@ def atualizar_informacoes_ekans(event):
     lbl_image.image_types(imagePokemon)        
 
 
-def atualizar_informacoes_pikachu(event):
+def atualizar_informacoes_pikachu():
     lbl_name.config(text=pokedex[9][0])
     lbl_type.config(text=f"Tipo: {pokedex[9][2]}")
     lbl_secondtype.config(text=f"Tipo secundário: {pokedex[9][3]}")
@@ -503,6 +514,9 @@ def atualizar_informacoes_pikachu(event):
     imagePokemon = ImageTk.PhotoImage(imagePokemon)
     lbl_image.config(image=imagePokemon)
     lbl_image.image_types(imagePokemon)
+
+def mostrar_mochila(event):
+    print("Mostrar mochila")
 
 def iniciar_menu(event, pokebolas):
     frame_pokemonInicial.destroy()
@@ -655,13 +669,13 @@ frame_menuCaverna.pack()
 imagem_caverna2 = tk.Canvas(frame_menuCaverna, width=800, height=600)
 imagem_caverna2.pack()
 
-imagem_CapWeedle = Label(frame_menuCaverna, bg="#cfffd3")
+imagem_CapWeedle = Label(frame_menuCaverna, bg="#bdb06e")
 imagem_CapWeedle.place(x=530, y=75)
 
-imagem_CapRattata = Label(frame_menuCaverna, bg="#cfffd3")
+imagem_CapRattata = Label(frame_menuCaverna, bg="#bdb06e")
 imagem_CapRattata.place(x=530, y=75)
 
-imagem_CapEkans= Label(frame_menuCaverna, bg="#cfffd3")
+imagem_CapEkans= Label(frame_menuCaverna, bg="#bdb06e")
 imagem_CapEkans.place(x=530, y=75)
 
 lbl_pokemonCaverna2 = Label(frame_menuCaverna, text="", relief="flat", font=("Fixedsys 18"), fg="white", bg="#29506d")
@@ -857,10 +871,8 @@ btn_Ekans.place(x=10, y=480)
 imagePikachuIcone = Image.open("imagens/icone-pikachu.png")
 imagePikachuIcone = imagePikachuIcone.resize((40, 43))
 imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
-btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(btn_Pikachu), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
+btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
 btn_Pikachu.place(x=10, y=530)
-
-
 
 iniciar_jogo()
 janela.mainloop()
