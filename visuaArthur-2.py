@@ -221,13 +221,13 @@ def pokedex_to_menu(event):
     frame_pokedex.pack_forget()
     frame_menu.pack()
 
-'''def caverna_to_menu(event):
-    frame_caverna.pack_forget()
+def cave_to_menu(event):
+    frame_menuCaverna.pack_forget()
     frame_menu.pack()
 
 def mato_to_menu(event):
     frame_mato.pack_forget()
-    frame_menu.pack()'''
+    frame_menu.pack()
 
 def mostrar_mochila(event):
     print("Itens na sua mochila:")
@@ -603,8 +603,8 @@ imagem_menuCaverna.place(x=535, y=220)
 btn_capturarCaverna = tk.Button(frame_menuCaverna, command=lambda: capturar_pokemonCaverna(nome, pokebolas), text="Capturar", width=8, height=0, relief="raised", anchor="center", padx=30, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_capturarCaverna.place(x=548, y=250)
 
-btn_capturarCaverna = tk.Button(frame_menuCaverna, command=lambda: cave_to_menu(pokebolas), text="Fugir", width=8, height=0, relief="raised", anchor="center", padx=30, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
-btn_capturarCaverna.place(x=548, y=300)
+btn_voltarCavernaMenu = tk.Button(frame_menuCaverna, command=lambda: cave_to_menu(btn_voltarCavernaMenu), text="Fugir", width=8, height=0, relief="raised", anchor="center", padx=30, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_voltarCavernaMenu.place(x=548, y=300)
 
 #TELA DA POKEDEX#
 frame_pokedex = Frame(janela, width=1200, height=1000, bg ="#d93035")
