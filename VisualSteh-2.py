@@ -164,6 +164,8 @@ def mostrar_pokedex(event):
     frame_menu.pack_forget()
     frame_entrarCaverna.pack_forget()
     frame_menuCaverna.pack_forget()
+    frame_entrarMato.pack_forget()
+    frame_menuMato.pack_forget()
     frame_pokedex.pack()
 
 def pokedex_to_menu(event):
@@ -204,17 +206,108 @@ def menu_caverna(event, pokebolas):
     pokemon = sorteio_pokemon(pokemonsCaverna)
     lbl_pokemonCaverna.config(text=f"Um {pokemon} selvagem apareceu!\n"
                               "O que você deseja fazer?")
+
+    if pokemon == "Weedle":
+        image_textBox4 = Image.open("imagens/weedle.png")
+        image_textBox4 = image_textBox4.resize((100, 100))
+        image_textBox4 = ImageTk.PhotoImage(image_textBox4)
+        imagem_caixaTexto4.config(image=image_textBox4)
+        imagem_caixaTexto4.image_types = image_textBox4
+    elif pokemon == "Rattata":
+        image_textBox4 = Image.open("imagens/rattata.png")
+        image_textBox4 = image_textBox4.resize((100, 100))
+        image_textBox4 = ImageTk.PhotoImage(image_textBox4)
+        imagem_caixaTexto4.config(image=image_textBox4)
+        imagem_caixaTexto4.image_types = image_textBox4
+    elif pokemon == "Ekans":
+        image_textBox4 = Image.open("imagens/ekans.png")
+        image_textBox4 = image_textBox4.resize((100, 100))
+        image_textBox4 = ImageTk.PhotoImage(image_textBox4)
+        imagem_caixaTexto4.config(image=image_textBox4)
+        imagem_caixaTexto4.image_types = image_textBox4
+
     image_textBox4 = Image.open("imagens/caixa-texto3.png")
     image_textBox4 = image_textBox4.resize((620, 80))
     image_textBox4 = ImageTk.PhotoImage(image_textBox4)
     imagem_caixaTexto4.config(image=image_textBox4)
     imagem_caixaTexto4.image_types = image_textBox4
 
-    image_cave_menu = Image.open("imagens/caixa-texto3.png")
-    image_cave_menu = image_cave_menu.resize((170, 150))
+    image_cave_menu = Image.open("imagens/menu-capturar-fugir.png")
+    image_cave_menu = image_cave_menu.resize((150, 120))
     image_cave_menu = ImageTk.PhotoImage(image_cave_menu)
     imagem_menuCaverna.config(image=image_cave_menu)
     imagem_menuCaverna.image_types = image_cave_menu
+
+def entrar_mato(event, pokebolas):
+    frame_menu.pack_forget()
+    frame_entrarCaverna.pack_forget()
+    frame_menuCaverna.pack_forget()
+    frame_entrarMato.pack()
+
+    pokebolas_encontradas = encontrar_pokebolas()
+    pokebolas += pokebolas_encontradas
+    lbl_pokebolasMato.config(text=f"Você encontrou {pokebolas_encontradas} Pokébolas")
+
+    image_textBox3 = Image.open("imagens/caixa-texto3.png")
+    image_textBox3 = image_textBox3.resize((620, 80))
+    image_textBox3 = ImageTk.PhotoImage(image_textBox3)
+    imagem_caixaTexto3.config(image=image_textBox3)
+    imagem_caixaTexto3.image_types = image_textBox3
+
+    image_mato = Image.open("imagens/mato.jpg")
+    image_mato = image_mato.resize((800, 600))
+    image_mato = ImageTk.PhotoImage(image_mato)
+    imagem_Mato.create_image(0,0, anchor="nw", image=image_mato)
+    imagem_Mato.image_types = image_mato
+
+
+def menu_Mato(event, pokebolas):
+    frame_entrarMato.pack_forget()
+    frame_menuMato.pack()
+
+    image_mato2= Image.open("imagens/captura-mato.png")
+    image_mato2 = image_mato2.resize((800, 600))
+    image_mato2 = ImageTk.PhotoImage(image_mato2)
+    imagem_Mato2.create_image(0,0, anchor="nw", image=image_mato2)
+    imagem_Mato2.image_types = image_mato2
+
+    pokemonsMato = ["Pikachu","Pidgey","Spearow", "Caterpie"]
+    pokemon = sorteio_pokemon(pokemonsMato)
+
+    lbl_pokemonMato.config(text=f"Um {pokemon} selvagem apareceu!\n"
+                              "O que você deseja fazer?")
+
+    if pokemon == "Pikachu":
+        image_capPikachu = Image.open("imagens/pikachu-captura.png")
+        image_capPikachu = image_capPikachu.resize((130, 130))
+        image_capPikachu = ImageTk.PhotoImage(image_capPikachu)
+        imagem_CapPikachu.config(image=image_capPikachu)
+        imagem_CapPikachu.image_types = image_capPikachu
+    if pokemon == "Caterpie":
+        image_capCaterpie = Image.open("imagens/caterpie-captura.png")
+        image_capCaterpie = image_capCaterpie.resize((130, 130))
+        image_capCaterpie = ImageTk.PhotoImage(image_capCaterpie)
+        imagem_CapCaterpie.config(image=image_capCaterpie)
+        imagem_CapCaterpie.image_types = image_capCaterpie
+    if pokemon == "Pidgey":
+        image_capPidgey = Image.open("imagens/pidgey-captura.png")
+        image_capPidgey = image_capPidgey.resize((130, 130))
+        image_capPidgey = ImageTk.PhotoImage(image_capPidgey)
+        imagem_CapPidgey.config(image=image_capPidgey)
+        imagem_CapPidgey.image_types = image_capPidgey
+    if pokemon == "Spearow":
+        image_capSpearow = Image.open("imagens/spearow-captura.png")
+        image_capSpearow= image_capSpearow.resize((130, 130))
+        image_capSpearow = ImageTk.PhotoImage(image_capSpearow)
+        imagem_CapSpearow.config(image=image_capSpearow)
+        imagem_CapSpearow.image_types = image_capSpearow
+
+
+    image_Mato_menu = Image.open("imagens/menu-capturar-fugir.png")
+    image_Mato_menu = image_Mato_menu.resize((150, 120))
+    image_Mato_menu = ImageTk.PhotoImage(image_Mato_menu)
+    imagem_menuMato.config(image=image_Mato_menu)
+    imagem_menuMato.image_types = image_Mato_menu
 
 
 def cave_to_menu(event):
@@ -223,9 +316,11 @@ def cave_to_menu(event):
     frame_entrarCaverna.pack_forget()
     frame_menu.pack()
 
-
-def entrar_mato():
-    print("ol")
+def mato_to_menu(event):
+    frame_menuMato.pack_forget()
+    frame_pokedex.pack_forget()
+    frame_entrarMato.pack_forget()
+    frame_menu.pack()
 
 
 def mostrar_mochila(event):
@@ -468,7 +563,7 @@ imagem_fundoProfessor.place(x=0, y=0)
 imagem_caixaTexto = Label(frame_falaprofessor, bg="#587873")
 imagem_caixaTexto.place(x=50, y=400)
 
-lbl_fala = Label(frame_falaprofessor, text="",  relief="flat", font=("Fixedsys 15"), fg="black", bg="#d8e3e3")
+lbl_fala = Label(frame_falaprofessor, text="",  relief="flat", font=("Fixedsys 15"), fg="#20506E", bg="#d8e3e3")
 lbl_fala.place(x= 75, y=430)
 
 imagem_professor = Label(frame_falaprofessor, bg="#b9d4cd")
@@ -561,7 +656,7 @@ lbl_pokebolasCaverna = Label(frame_entrarCaverna, text="", relief="flat", font=(
 lbl_pokebolasCaverna.place(x=275, y=78)
 
 btn_proximo3 = tk.Button(frame_entrarCaverna, command=lambda:menu_caverna(btn_proximo3, pokebolas), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
-btn_proximo3.place(x=625, y=70)
+btn_proximo3.place(x=625, y=78)
 
 #menu da caverna
 
@@ -579,13 +674,64 @@ lbl_pokemonCaverna = Label(frame_menuCaverna, text="", relief="flat", font=("Fix
 lbl_pokemonCaverna.place(x=270, y=68)
 
 imagem_menuCaverna = Label(frame_menuCaverna, bg="#ECECEC")
-imagem_menuCaverna.place(x=535, y=220)
+imagem_menuCaverna.place(x=542, y=235)
 
-btn_capturarCaverna = tk.Button(frame_menuCaverna, command=lambda: capturar_pokemonCaverna(nome, pokebolas), text="Capturar", width=8, height=0, relief="raised", anchor="center", padx=30, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
-btn_capturarCaverna.place(x=548, y=250)
+btn_capturarCaverna = tk.Button(frame_menuCaverna, command=lambda: capturar_pokemonCaverna(nome, pokebolas), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_capturarCaverna.place(x=555, y=250)
 
-btn_voltarCavernaMenu = tk.Button(frame_menuCaverna, command=lambda: cave_to_menu(btn_voltarCavernaMenu), text="Fugir", width=8, height=0, relief="raised", anchor="center", padx=30, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
-btn_voltarCavernaMenu.place(x=548, y=300)
+btn_voltarCavernaMenu = tk.Button(frame_menuCaverna, command=lambda: cave_to_menu(btn_voltarCavernaMenu), text="Fugir", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_voltarCavernaMenu.place(x=555, y=300)
+
+
+##FRAME MATO
+frame_entrarMato = Frame(janela, width=800, height=600, bg="#f2f2f2")
+frame_entrarMato.pack()
+
+imagem_Mato = tk.Canvas(frame_entrarMato, width=800, height=600)
+imagem_Mato.pack()
+
+imagem_caixaTexto3 = Label(frame_entrarMato, bg="#587873")
+imagem_caixaTexto3.place(x=88, y=50)
+
+lbl_pokebolasMato = Label(frame_entrarMato, text="", relief="flat", font=("Fixedsys 17"), fg="#20506E", bg="#ECECEC")
+lbl_pokebolasMato.place(x=275, y=78)
+
+btn_proximo4 = tk.Button(frame_entrarMato, command=lambda:menu_Mato(btn_proximo4, pokebolas), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
+btn_proximo4.place(x=625, y=78)
+
+#Menu do Mato
+
+#Frame menu Mato
+
+frame_menuMato = Frame(janela, width=800, height=600, bg="#f2f2f2")
+frame_menuMato.pack()
+
+imagem_Mato2 = tk.Canvas(frame_menuMato, width=800, height=600)
+imagem_Mato2.pack()
+
+imagem_CapPikachu = Label(frame_menuMato, bg="#cfffd3")
+imagem_CapPikachu.place(x=530, y=75)
+
+imagem_CapCaterpie = Label(frame_menuMato, bg="#cfffd3")
+imagem_CapCaterpie.place(x=530, y=75)
+
+imagem_CapPidgey = Label(frame_menuMato, bg="#cfffd3")
+imagem_CapPidgey.place(x=530, y=75)
+
+imagem_CapSpearow= Label(frame_menuMato, bg="#cfffd3")
+imagem_CapSpearow.place(x=530, y=75)
+
+imagem_menuMato = Label(frame_menuCaverna, bg="#ECECEC")
+imagem_menuMato.place(x=542, y=450)
+
+btn_capturarMato = tk.Button(frame_menuMato, command=lambda: capturar_pokemonCaverna(nome, pokebolas), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_capturarMato.place(x=590, y=460)
+
+btn_voltarMatoMenu = tk.Button(frame_menuMato, command=lambda: mato_to_menu(btn_voltarCavernaMenu), text="Fugir", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_voltarMatoMenu.place(x=590, y=510)
+
+lbl_pokemonMato = Label(frame_menuMato, text="", relief="flat", font=("Fixedsys 18"), fg="#20506E", bg="#ECECEC")
+lbl_pokemonMato.place(x=65, y=465)
 
 #TELA DA POKEDEX#
 frame_pokedex = Frame(janela, width=800, height=600, bg ="#d93035")
@@ -631,7 +777,7 @@ btn_voltar.place(x=15, y=30)
 
 
 #Habilidade  do Pokemons
-lbl_habilities = Label(frame_pokedex, text="Habilidade", relief="flat", anchor=CENTER, font=("Fixedsys 13"), fg="black", bg="#8dc73f")
+lbl_habilities = Label(frame_pokedex, text="Habilidade:", relief="flat", anchor=CENTER, font=("Fixedsys 13"), fg="black", bg="#8dc73f")
 lbl_habilities.place(x=522, y=420)
 
 lbl_type = Label(frame_pokedex, text="", relief="flat", anchor=CENTER, font=("Fixedsys 10"), fg="black", bg="#8dc73f")
@@ -641,7 +787,7 @@ lbl_secondtype = Label(frame_pokedex, text="", relief="flat", anchor=CENTER, fon
 lbl_secondtype.place(x=522, y=470)
 
 #Atributos de cada Pokemon
-lbl_status = Label(frame_pokedex, text="Status", relief="flat", anchor=CENTER, font=("Fixedsys 13"), fg="black", bg="#8dc73f")
+lbl_status = Label(frame_pokedex, text="Status:", relief="flat", anchor=CENTER, font=("Fixedsys 13"), fg="black", bg="#8dc73f")
 lbl_status.place(x=250, y=420)
 
 lbl_hp = Label(frame_pokedex, text="", relief="flat", anchor=CENTER, font=("Fixedsys 10"), fg="black", bg="#8dc73f")
@@ -660,10 +806,10 @@ lbl_spDefense = Label(frame_pokedex, text="", relief="flat", anchor=CENTER, font
 lbl_spDefense.place(x=250, y=545)
 
 lbl_speed = Label(frame_pokedex, text="", relief="flat", anchor=CENTER, font=("Fixedsys 10"), fg="black", bg="#8dc73f")
-lbl_speed.place(x=380, y=445)
+lbl_speed.place(x=370, y=445)
 
 lbl_total = Label(frame_pokedex, text="", relief="flat", anchor=CENTER, font=("Fixedsys 10"), fg="black", bg="#8dc73f")
-lbl_total.place(x=380, y=470)
+lbl_total.place(x=370, y=470)
 
 #Botoes para cada Pokemon
 imageBulbasaurIcone = Image.open("imagens/icone-bulbasaur.png")
