@@ -697,7 +697,7 @@ def atualizar_informacoes_pikachu():
 def persistencia_de_dados():
     janela.destroy()
     with open('dados.txt','r+') as arquivo:
-        arquivo.write("Pokemons capturados:\n")
+        arquivo.write("\nPokemons capturados:\n")
         for pokemon in pokedex:
             arquivo.write(f'{pokemon}\n')
         arquivo.write("\nPokemons na regiao:\n")
