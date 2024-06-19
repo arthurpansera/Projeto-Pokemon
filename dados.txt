@@ -15,4 +15,4 @@ Pokemons na regiao:
 ['Pikachu', 'imagens/pikachu.png', 'ELECTRIC', '', 55, 40, 35, 50, 50, 90, 320]
 
 Itens na mochila:
-7 Pokebolas
+5 Pokebolas
