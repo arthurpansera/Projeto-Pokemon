@@ -296,14 +296,15 @@ def capturar_pokemon_caverna(nome):
                             lbl_capturaCaverna.config(text="Você não tem mais Pokébolas.\n"
                                                     "*O Pokémon fugiu")
 
-def batalhar_pokemon_caverna(nome, pokemonCave, pokemonInicial):
+def batalhar_pokemon_caverna(nome):
+    global pokemonsCave, pokemonInicial
     pokemonInicial_dados = None
     pokemonCave_dados = None
     
     for pokemon in pokemons_regiao:
         if pokemon[0] == pokemonInicial:
             pokemonInicial_dados = pokemon
-        if pokemon[0] == pokemonCave:
+        if pokemon[0] == pokemonsCave:
             pokemonCave_dados = pokemon
 
     if not pokemonInicial_dados or not pokemonCave_dados:
@@ -316,7 +317,7 @@ def batalhar_pokemon_caverna(nome, pokemonCave, pokemonInicial):
     if speed_pokemonInicial > speed_pokemonCave:
         print(f"{pokemonInicial} venceu a batalha!")
     elif speed_pokemonInicial < speed_pokemonCave:
-        print(f"{pokemonCave} venceu a batalha!")
+        print(f"{pokemonsCave} venceu a batalha!")
     else:
         print("Empate!")
 
@@ -439,14 +440,15 @@ def capturar_pokemon_mato(nome):
                             lbl_capturaMato.config(text="Você não tem mais Pokébolas.\n"
                                                     "*O Pokémon fugiu")
 
-def batalhar_pokemon_mato(nome, pokemonMato, pokemonInicial):
+def batalhar_pokemon_mato(nome):
+    global pokemonsMato, pokemonInicial
     pokemonInicial_dados = None
     pokemonMato_dados = None
     
     for pokemon in pokemons_regiao:
         if pokemon[0] == pokemonInicial:
             pokemonInicial_dados = pokemon
-        if pokemon[0] == pokemonMato:
+        if pokemon[0] == pokemonsMato:
             pokemonMato_dados = pokemon
 
     if not pokemonInicial_dados or not pokemonMato_dados:
@@ -459,11 +461,12 @@ def batalhar_pokemon_mato(nome, pokemonMato, pokemonInicial):
     if speed_pokemonInicial > speed_pokemonMato:
         print(f"{pokemonInicial} venceu a batalha!")
     elif speed_pokemonInicial < speed_pokemonMato:
-        print(f"{pokemonMato} venceu a batalha!")
+        print(f"{pokemonsMato} venceu a batalha!")
     else:
         print("Empate!")
 
 def mostrar_mochila(event):
+
     frame_menu.pack_forget()
     frame_menuCaverna.pack_forget()
     frame_entrarCaverna.pack_forget()
