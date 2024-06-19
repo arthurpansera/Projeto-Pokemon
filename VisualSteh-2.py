@@ -428,6 +428,8 @@ def cave_to_menu():
     frame_entrarMato.pack_forget()
     frame_menuMato.pack_forget()
     frame_mochila.pack_forget()
+    frame_capturaMato.pack_forget()
+    frame_capturaCaverna.pack_forget()
     frame_menu.pack()
 
 
@@ -439,6 +441,7 @@ def mato_to_menu():
     frame_menuMato.pack_forget()
     frame_mochila.pack_forget()
     frame_capturaMato.pack_forget()
+    frame_capturaCaverna.pack_forget()
     frame_menu.pack()
 
 
@@ -450,6 +453,7 @@ def capturaMato_to_menu():
     frame_menuMato.pack_forget()
     frame_mochila.pack_forget()
     frame_capturaMato.pack_forget()
+    frame_capturaCaverna.pack_forget()
     frame_menu.pack()
 
 def capturaCaverna_to_menu():
