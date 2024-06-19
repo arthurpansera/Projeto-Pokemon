@@ -232,24 +232,24 @@ def menu_caverna(event, pokebolas):
     imagem_caverna2.image_types = image_cave2
 
     pokemonsCave = ["Weedle","Rattata","Ekans"]
-    pokemonsCave = sorteio_pokemon_caverna(pokemonsCave)
+    pokemonsCaverna = sorteio_pokemon_caverna(pokemonsCave)
 
-    lbl_pokemonCaverna2.config(text=f"Um {pokemonsCave} selvagem apareceu!\n"
+    lbl_pokemonCaverna2.config(text=f"Um {pokemonsCaverna} selvagem apareceu!\n"
                               "O que você deseja fazer?")
 
-    if pokemonsCave == "Rattata":
+    if pokemonsCaverna == "Rattata":
         image_capEkans = Image.open("imagens/rattata-captura.png")
         image_capEkans = image_capEkans.resize((130, 130))
         image_capEkans = ImageTk.PhotoImage(image_capEkans)
         imagem_CapEkans.config(image=image_capEkans)
         imagem_CapEkans.image_types = image_capEkans
-    elif pokemonsCave == "Ekans":
+    elif pokemonsCaverna == "Ekans":
         image_capEkans = Image.open("imagens/ekans-captura.png")
         image_capEkans = image_capEkans.resize((130, 130))
         image_capEkans = ImageTk.PhotoImage(image_capEkans)
         imagem_CapEkans.config(image=image_capEkans)
         imagem_CapEkans.image_types = image_capEkans
-    elif pokemonsCave == "Weedle":
+    elif pokemonsCaverna == "Weedle":
         image_capWeedle = Image.open("imagens/weedle-captura.png")
         image_capWeedle = image_capWeedle.resize((130, 130))
         image_capWeedle = ImageTk.PhotoImage(image_capWeedle)
@@ -322,7 +322,7 @@ def batalhar_pokemon_caverna(nome):
             pokemonCave_dados = pokemon
 
     if not pokemonInicial_dados or not pokemonCave_dados:
-        print("Erro: Pokémon não encontrado na região.")
+        lbl_batalhaCaverna1.config(text=f"{pokemonInicial} venceu a batalha!")
         return
     
     speed_pokemonInicial = pokemonInicial_dados[9]
@@ -994,6 +994,9 @@ imagem_caverna4.pack()
 
 btn_caverna_to_menu= tk.Button(frame_batalhaCaverna, command=capturaCaverna_to_menu, text="Voltar", width=4, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_caverna_to_menu.place(x=680, y=480)
+
+lbl_batalhaCaverna1 = Label(frame_batalhaCaverna, text="", relief="flat", font=("Fixedsys 18"), fg="white", bg="#29506d")
+lbl_batalhaCaverna1.place(x=50, y=465)
 
 lbl_batalhaCaverna = Label(frame_batalhaCaverna, text="", relief="flat", font=("Fixedsys 18"), fg="white", bg="#29506d")
 lbl_batalhaCaverna.place(x=50, y=465)

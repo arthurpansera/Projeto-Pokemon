@@ -2,8 +2,6 @@
 Pokemons capturados:
 Charmander
 ["'Charmander'", "'imagens/charmander.png'", "'FIRE'", "''", '52', '43', '39', '60', '50', '65', '309']
-Rattata
-Weedle
 
 Pokemons na regiao:
 ['Bulbasaur', 'imagens/bulbasaur.png', 'GRASS', 'POISON', 49, 49, 45, 65, 65, 45, 318]
@@ -18,4 +16,5 @@ Pokemons na regiao:
 ['Pikachu', 'imagens/pikachu.png', 'ELECTRIC', '', 55, 40, 35, 50, 50, 90, 320]
 
 Itens na mochila:
+6 Pokebolasila:
 7 Pokebolas
