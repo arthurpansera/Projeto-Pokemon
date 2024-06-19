@@ -291,6 +291,13 @@ def capturar_pokemon_caverna(nome):
                             lbl_capturaCaverna.config(text="Você não tem mais Pokébolas.\n"
                                                     "*O Pokémon fugiu")
 
+def batalhar_pokemon_caverna(nome, pokemonCave):
+    import random
+    resultado = random.choice(['vitória', 'derrota'])
+    if resultado == 'vitória':
+        return f"{nome} derrotou o pokemon {pokemonCave} na caverna!"
+    else:
+        return f"{nome} foi derrotado pelo pokemon {pokemonCave} na caverna."
 
 def entrar_mato(event):
     global pokebolas
@@ -929,7 +936,7 @@ lbl_pokemonMato2.place(x=65, y=465)
 btn_capturarMato = tk.Button(frame_menuMato, command=lambda:capturar_pokemon_mato(nome="Capturar"), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_capturarMato.place(x=635, y=460)
 
-btn_batalharMato = tk.Button(frame_menuMato, command=lambda: batalhar_pokemon_mato(nome="Batalhar"), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_batalharMato = tk.Button(frame_menuMato, command=lambda: batalhar_pokemon_mato(nome="Batalhar", pokemonCave), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_batalharMato.place(x=500, y=510)
 
 btn_mato_to_menu= tk.Button(frame_menuMato, command=mato_to_menu, text="Fugir", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
