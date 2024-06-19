@@ -106,7 +106,7 @@ def evento_botao_pokemon_inicial(nome):
                 if i == 1:
                     pokedex.append('Bulbasaur')
                     pokedex.append(linha)
-                    
+
                     lbl_escolheuBulbasaur.config(text="Ótima escolha! Bulbasaur foi adicionado a sua Pokédex\n")
                     image_bulbasaur = Image.open("imagens/bulbasaur.png")
                     image_bulbasaur = image_bulbasaur.resize((150, 150))
@@ -1110,6 +1110,17 @@ imagePikachuIcone = imagePikachuIcone.resize((40, 43))
 imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
 btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
 btn_Pikachu.place(x=10, y=530)
+
+#Persistência de dados
+with open('dados.txt','a') as arquivo:
+    arquivo.write("Pokemons capturados:\n")
+    for pokemon in pokedex:
+        arquivo.write(f'{pokemon}\n')
+    arquivo.write("\nPokemons na regiao:\n")
+    for pokemon in pokemons_regiao:
+        arquivo.write(f'{pokemon}\n')
+    arquivo.write("\nItens na mochila:\n")
+    arquivo.write(f"{pokebolas} Pokebolas")
 
 
 iniciar_jogo()
