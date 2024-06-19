@@ -492,15 +492,15 @@ def pokedex_to_menu(event):
 
 
 def mochila_to_menu(event):
-    frame_menu.pack_forget()
+    frame_mochila.pack_forget()
+    frame_pokedex.pack_forget()
     frame_menuCaverna.pack_forget()
     frame_entrarCaverna.pack_forget()
     frame_entrarMato.pack_forget()
     frame_menuMato.pack_forget()
-    frame_mochila.pack_forget()
     frame_capturaCaverna.pack_forget()
     frame_capturaMato.pack_forget()
-    frame_pokedex.pack()
+    frame_menu.pack()
 
 
 def atualizar_informacoes_bulbasaur(event):
@@ -1090,6 +1090,18 @@ imagePikachuIcone = imagePikachuIcone.resize((40, 43))
 imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
 btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
 btn_Pikachu.place(x=10, y=530)
+
+#Persistência de dados
+with open('dados.txt','w') as arquivo:
+    arquivo.write("Pokémons capturados:\n")
+    for pokemon in pokedex:
+        arquivo.write(f'{pokemon}\n')
+    arquivo.write("Pokémons na região:\n")
+    for pokemon in pokemons_regiao:
+        arquivo.write(f'{pokemon}\n')
+    arquivo.write("Items na mochila:\n")
+    for item in mochila:
+        arquivo.write(f'{item}\n')
 
 iniciar_jogo()
 janela.mainloop()
