@@ -88,7 +88,7 @@ def escolher_pokemon_inicial(event):
     imagem_caixaTexto2.image_types = image_textBox2
 
     lbl_escolhaPokemon.config(text="Primeiro você deve escolher o seu Pokémon inicial. Há três opções: ")
- 
+
 
 def evento_botao_pokemon_inicial(nome):
     imagem_pokebola1.destroy()
@@ -162,6 +162,12 @@ def evento_botao_pokemon_inicial(nome):
                     btn_proximo2 = tk.Button(frame_pokemonInicial, command=lambda:iniciar_menu(btn_proximo2, pokebolas = 3), image=image_proximo, width=0, height=0, relief="raised", anchor=NW, padx=1, pady=1, bg='#d8e3e3')
                     btn_proximo2.place(x=680, y=68)
 
+if 'Bulbasaur' in pokedex:
+    pokemonInicial = 'Bulbasur'
+elif 'Squirtle' in pokedex:
+    pokemonInicial = 'Squirtle'
+else:
+    pokemonInicial = 'Charmander'
 
 pokebolas = 3
 probCaverna = 0.35
@@ -291,13 +297,29 @@ def capturar_pokemon_caverna(nome):
                             lbl_capturaCaverna.config(text="Você não tem mais Pokébolas.\n"
                                                     "*O Pokémon fugiu")
 
-def batalhar_pokemon_caverna(nome, pokemonCave):
-    import random
-    resultado = random.choice(['vitória', 'derrota'])
-    if resultado == 'vitória':
-        return f"{nome} derrotou o pokemon {pokemonCave} na caverna!"
+def batalhar_pokemon_caverna(nome, pokemonCave, pokemonInicial):
+    pokemonInicial_dados = None
+    pokemonCave_dados = None
+    
+    for pokemon in pokemons_regiao:
+        if pokemon[0] == pokemonInicial:
+            pokemonInicial_dados = pokemon
+        if pokemon[0] == pokemonCave:
+            pokemonCave_dados = pokemon
+
+    if not pokemonInicial_dados or not pokemonCave_dados:
+        print("Erro: Pokémon não encontrado na região.")
+        return
+    
+    speed_pokemonInicial = pokemonInicial_dados[9]
+    speed_pokemonCave = pokemonCave_dados[9]
+    
+    if speed_pokemonInicial > speed_pokemonCave:
+        print(f"{pokemonInicial} venceu a batalha!")
+    elif speed_pokemonInicial < speed_pokemonCave:
+        print(f"{pokemonCave} venceu a batalha!")
     else:
-        return f"{nome} foi derrotado pelo pokemon {pokemonCave} na caverna."
+        print("Empate!")
 
 def entrar_mato(event):
     global pokebolas
@@ -417,6 +439,29 @@ def capturar_pokemon_mato(nome):
                             lbl_capturaMato.config(text="Você não tem mais Pokébolas.\n"
                                                     "*O Pokémon fugiu")
 
+def batalhar_pokemon_mato(nome, pokemonMato, pokemonInicial):
+    pokemonInicial_dados = None
+    pokemonMato_dados = None
+    
+    for pokemon in pokemons_regiao:
+        if pokemon[0] == pokemonInicial:
+            pokemonInicial_dados = pokemon
+        if pokemon[0] == pokemonMato:
+            pokemonMato_dados = pokemon
+
+    if not pokemonInicial_dados or not pokemonMato_dados:
+        print("Erro: Pokémon não encontrado na região.")
+        return
+    
+    speed_pokemonInicial = pokemonInicial_dados[9]
+    speed_pokemonMato = pokemonMato_dados[9]
+    
+    if speed_pokemonInicial > speed_pokemonMato:
+        print(f"{pokemonInicial} venceu a batalha!")
+    elif speed_pokemonInicial < speed_pokemonMato:
+        print(f"{pokemonMato} venceu a batalha!")
+    else:
+        print("Empate!")
 
 def mostrar_mochila(event):
     frame_menu.pack_forget()
@@ -870,7 +915,7 @@ lbl_pokemonCaverna2.place(x=65, y=465)
 btn_capturarCaverna = tk.Button(frame_menuCaverna, command=lambda: capturar_pokemon_caverna(nome="Capturar"), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_capturarCaverna.place(x=635, y=460)
 
-btn_batalharCaverna = tk.Button(frame_menuCaverna, command=lambda: batalhar_pokemon_caverna(nome="Batalhar"), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_batalharCaverna = tk.Button(frame_menuCaverna, command=lambda: batalhar_pokemon_caverna(nome="Batalhar", pokemonCave, pokemonInicial), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_batalharCaverna.place(x=500, y=510)
 
 btn_voltarCavernaMenu = tk.Button(frame_menuCaverna, command=cave_to_menu, text="Fugir", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
@@ -936,7 +981,7 @@ lbl_pokemonMato2.place(x=65, y=465)
 btn_capturarMato = tk.Button(frame_menuMato, command=lambda:capturar_pokemon_mato(nome="Capturar"), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_capturarMato.place(x=635, y=460)
 
-btn_batalharMato = tk.Button(frame_menuMato, command=lambda: batalhar_pokemon_mato(nome="Batalhar", pokemonCave), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_batalharMato = tk.Button(frame_menuMato, command=lambda: batalhar_pokemon_mato(nome="Batalhar", pokemonMato, pokemonInicial), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_batalharMato.place(x=500, y=510)
 
 btn_mato_to_menu= tk.Button(frame_menuMato, command=mato_to_menu, text="Fugir", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
@@ -1117,7 +1162,6 @@ imagePikachuIcone = imagePikachuIcone.resize((40, 43))
 imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
 btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
 btn_Pikachu.place(x=10, y=530)
-
 
 iniciar_jogo()
 janela.mainloop()
