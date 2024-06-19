@@ -266,6 +266,7 @@ def capturar_pokemon_caverna(nome):
         frame_mochila.pack_forget()
         frame_capturaMato.pack_forget()
         frame_batalhaMato.pack_forget()
+        frame_batalhaCaverna.pack_forget()
         frame_capturaCaverna.pack()
 
         image_caverna3= Image.open("imagens/captura-caverna.jpg")
@@ -302,15 +303,17 @@ def batalhar_pokemon_caverna(nome):
     frame_mochila.pack_forget()
     frame_capturaMato.pack_forget()
     frame_capturaCaverna.pack_forget()
+    frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_batalhaCaverna.pack()
     pokemonInicial_dados = None
     pokemonCave_dados = None
     
-    image_caverna3= Image.open("imagens/captura-caverna.jpg")
-    image_caverna3 = image_caverna3.resize((800, 600))
-    image_caverna3 = ImageTk.PhotoImage(image_caverna3)
-    imagem_caverna3.create_image(0,0, anchor="nw", image=image_caverna3)
-    imagem_caverna3.image_types = image_caverna3
+    image_caverna4= Image.open("imagens/captura-caverna.jpg")
+    image_caverna4 = image_caverna4.resize((800, 600))
+    image_caverna4 = ImageTk.PhotoImage(image_caverna4)
+    imagem_caverna4.create_image(0,0, anchor="nw", image=image_caverna4)
+    imagem_caverna4.image_types = image_caverna4
 
     for pokemon in pokemons_regiao:
         if pokemon[0] == pokemonInicial:
@@ -343,6 +346,7 @@ def entrar_mato(event):
     frame_mochila.pack_forget()
     frame_pokedex.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_entrarMato.pack()
 
     pokebolas_encontradas = encontrar_pokebolas()
@@ -376,6 +380,7 @@ def menu_Mato(event):
     frame_mochila.pack_forget()
     frame_capturaMato.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_menuMato.pack()
 
     image_mato2= Image.open("imagens/captura-mato.png")
@@ -425,6 +430,7 @@ def capturar_pokemon_mato(nome):
         frame_mochila.pack_forget()
         frame_capturaCaverna.pack_forget()
         frame_batalhaMato.pack_forget()
+        frame_batalhaCaverna.pack_forget()
         frame_capturaMato.pack()
 
         image_mato3= Image.open("imagens/captura-mato.png")
@@ -460,6 +466,7 @@ def batalhar_pokemon_mato(nome):
     frame_mochila.pack_forget()
     frame_capturaCaverna.pack_forget()
     frame_capturaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_batalhaMato.pack()
 
     global pokemonsMato, pokemonInicial
@@ -502,6 +509,7 @@ def mostrar_mochila(event):
     frame_capturaCaverna.pack_forget()
     frame_capturaMato.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_mochila.pack()
 
     image_backpack = Image.open("imagens/mochila.png")
@@ -532,6 +540,7 @@ def cave_to_menu():
     frame_capturaMato.pack_forget()
     frame_capturaCaverna.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_menu.pack()
 
 def mato_to_menu():
@@ -544,6 +553,7 @@ def mato_to_menu():
     frame_capturaMato.pack_forget()
     frame_capturaCaverna.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_menu.pack()
 
 def capturaMato_to_menu():
@@ -556,6 +566,7 @@ def capturaMato_to_menu():
     frame_capturaMato.pack_forget()
     frame_capturaCaverna.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_menu.pack()
 
 def batalhaMato_to_menu():
@@ -567,6 +578,7 @@ def batalhaMato_to_menu():
     frame_mochila.pack_forget()
     frame_capturaMato.pack_forget()
     frame_capturaCaverna.pack_forget()
+    frame_batalhaMato.pack_forget()
     frame_batalhaMato.pack_forget()
     frame_menu.pack()
 
@@ -581,6 +593,7 @@ def capturaCaverna_to_menu():
     frame_capturaCaverna.pack_forget()
     frame_batalhaCaverna.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_menu.pack()
 
 def mostrar_pokedex(event):
@@ -593,6 +606,7 @@ def mostrar_pokedex(event):
     frame_capturaCaverna.pack_forget()
     frame_capturaMato.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_pokedex.pack()
 
 def pokedex_to_menu(event):
@@ -609,6 +623,7 @@ def mochila_to_menu(event):
     frame_capturaCaverna.pack_forget()
     frame_capturaMato.pack_forget()
     frame_batalhaMato.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_menu.pack()
 
 def atualizar_informacoes_bulbasaur(event):
@@ -974,8 +989,8 @@ imagem_pokebola5.place(x=575, y=165)
 frame_batalhaCaverna = Frame(janela, width=800, height=600, bg="#f2f2f2")
 frame_batalhaCaverna.pack()
 
-imagem_caverna3 = tk.Canvas(frame_batalhaCaverna, width=800, height=600)
-imagem_caverna3.pack()
+imagem_caverna4 = tk.Canvas(frame_batalhaCaverna, width=800, height=600)
+imagem_caverna4.pack()
 
 btn_caverna_to_menu= tk.Button(frame_batalhaCaverna, command=capturaCaverna_to_menu, text="Voltar", width=4, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
 btn_caverna_to_menu.place(x=680, y=480)
