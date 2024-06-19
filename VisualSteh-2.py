@@ -218,6 +218,9 @@ def menu_caverna(event, pokebolas):
     frame_entrarCaverna.pack_forget()
     frame_menuCaverna.pack()
 
+    pokemonsCaverna = ["Weedle","Rattata","Ekans"]
+    pokemonCave = sorteio_pokemon_caverna(pokemonsCaverna)
+
     image_cave2 = Image.open("imagens/captura-caverna.jpg")
     image_cave2 = image_cave2.resize((800, 600))
     image_cave2 = ImageTk.PhotoImage(image_cave2)
@@ -227,14 +230,7 @@ def menu_caverna(event, pokebolas):
     lbl_pokemonCaverna2.config(text=f"Um {pokemonCave} selvagem apareceu!\n"
                               "O que você deseja fazer?")
 
-    if pokemonCave == "Weedle":
-        image_capWeedle = Image.open("imagens/weedle-captura.png")
-        image_capWeedle = image_capWeedle.resize((130, 130))
-        image_capWeedle = ImageTk.PhotoImage(image_capWeedle)
-        imagem_CapWeedle.config(image=image_capWeedle)
-        imagem_CapWeedle.image_types = image_capWeedle
-
-    elif pokemonCave == "Rattata":
+    if pokemonCave == "Rattata":
         image_capEkans = Image.open("imagens/rattata-captura.png")
         image_capEkans = image_capEkans.resize((130, 130))
         image_capEkans = ImageTk.PhotoImage(image_capEkans)
@@ -246,6 +242,12 @@ def menu_caverna(event, pokebolas):
         image_capEkans = ImageTk.PhotoImage(image_capEkans)
         imagem_CapEkans.config(image=image_capEkans)
         imagem_CapEkans.image_types = image_capEkans
+    elif pokemonCave == "Weedle":
+        image_capWeedle = Image.open("imagens/weedle-captura.png")
+        image_capWeedle = image_capWeedle.resize((130, 130))
+        image_capWeedle = ImageTk.PhotoImage(image_capWeedle)
+        imagem_CapWeedle.config(image=image_capWeedle)
+        imagem_CapWeedle.image_types = image_capWeedle
 
 def capturar_pokemon_caverna(nome):
         global pokebolas
@@ -329,6 +331,9 @@ def menu_Mato(event):
     imagem_Mato2.create_image(0,0, anchor="nw", image=image_mato2)
     imagem_Mato2.image_types = image_mato2
 
+    pokemonsMato = ["Pikachu","Pidgey","Spearow", "Caterpie"]
+    pokemonMato = sorteio_pokemon_mato(pokemonsMato,probPikachu)
+
     lbl_pokemonMato2.config(text=f"Um {pokemonMato} selvagem apareceu!\n"
                               "O que você deseja fazer?")
 
@@ -402,7 +407,6 @@ def mostrar_mochila(event):
     frame_menuMato.pack_forget()
     frame_capturaCaverna.pack_forget()
     frame_capturaMato.pack_forget()
-    frame_pokedex.pack()
     frame_mochila.pack()
 
     image_backpack = Image.open("imagens/mochila.png")
