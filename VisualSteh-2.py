@@ -298,9 +298,24 @@ def capturar_pokemon_caverna(nome):
 
 def batalhar_pokemon_caverna(nome):
     global pokemonsCave, pokemonInicial
+    frame_pokedex.pack_forget()
+    frame_menuCaverna.pack_forget()
+    frame_entrarCaverna.pack_forget()
+    frame_entrarMato.pack_forget()
+    frame_menuMato.pack_forget()
+    frame_mochila.pack_forget()
+    frame_capturaMato.pack_forget()
+    frame_capturaCaverna.pack_forget()
+    frame_batalhaCaverna.pack()
     pokemonInicial_dados = None
     pokemonCave_dados = None
     
+    image_caverna3= Image.open("imagens/captura-caverna.jpg")
+    image_caverna3 = image_caverna3.resize((800, 600))
+    image_caverna3 = ImageTk.PhotoImage(image_caverna3)
+    imagem_caverna3.create_image(0,0, anchor="nw", image=image_caverna3)
+    imagem_caverna3.image_types = image_caverna3
+
     for pokemon in pokemons_regiao:
         if pokemon[0] == pokemonInicial:
             pokemonInicial_dados = pokemon
@@ -315,11 +330,11 @@ def batalhar_pokemon_caverna(nome):
     speed_pokemonCave = pokemonCave_dados[9]
     
     if speed_pokemonInicial > speed_pokemonCave:
-        print(f"{pokemonInicial} venceu a batalha!")
+        lbl_batalhaCaverna.config(text=f"{pokemonInicial} venceu a batalha!")
     elif speed_pokemonInicial < speed_pokemonCave:
-        print(f"{pokemonsCave} venceu a batalha!")
+        lbl_batalhaCaverna.config(text=f"{pokemonsCave} venceu a batalha!")
     else:
-        print("Empate!")
+        lbl_batalhaCaverna.config(text="Empate")
 
 def entrar_mato(event):
     global pokebolas
@@ -539,8 +554,8 @@ def capturaCaverna_to_menu():
     frame_mochila.pack_forget()
     frame_capturaMato.pack_forget()
     frame_capturaCaverna.pack_forget()
+    frame_batalhaCaverna.pack_forget()
     frame_menu.pack()
-
 
 def mostrar_pokedex(event):
     frame_menu.pack_forget()
@@ -942,6 +957,19 @@ lbl_capturaCaverna.place(x=50, y=465)
 imagem_pokebola5 = Label(frame_capturaCaverna, bg="#cec35a")
 imagem_pokebola5.place(x=575, y=165)
 
+#Frame de batalha na caverna
+
+frame_batalhaCaverna = Frame(janela, width=800, height=600, bg="#f2f2f2")
+frame_batalhaCaverna.pack()
+
+imagem_caverna3 = tk.Canvas(frame_batalhaCaverna, width=800, height=600)
+imagem_caverna3.pack()
+
+btn_caverna_to_menu= tk.Button(frame_batalhaCaverna, command=capturaCaverna_to_menu, text="Voltar", width=4, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_caverna_to_menu.place(x=680, y=480)
+
+lbl_batalhaCaverna = Label(frame_batalhaCaverna, text="", relief="flat", font=("Fixedsys 18"), fg="white", bg="#29506d")
+lbl_batalhaCaverna.place(x=50, y=465)
 
 #FRAME MATO#
 frame_entrarMato = Frame(janela, width=800, height=600, bg="#f2f2f2")
