@@ -295,8 +295,13 @@ def capturar_pokemon_caverna(nome):
 def entrar_mato(event):
     global pokebolas
     frame_menu.pack_forget()
-    frame_entrarCaverna.pack_forget()
     frame_menuCaverna.pack_forget()
+    frame_entrarCaverna.pack_forget()
+    frame_menuMato.pack_forget()
+    frame_capturaCaverna.pack_forget()
+    frame_capturaMato.pack_forget()
+    frame_mochila.pack_forget()
+    frame_pokedex.pack_forget()
     frame_entrarMato.pack()
 
     pokebolas_encontradas = encontrar_pokebolas()
@@ -689,6 +694,17 @@ def atualizar_informacoes_pikachu():
     lbl_image.config(image=imagePokemon)
     lbl_image.image_types(imagePokemon)
 
+def persistencia_de_dados():
+    janela.destroy()
+    with open('dados.txt','r+') as arquivo:
+        arquivo.write("Pokemons capturados:\n")
+        for pokemon in pokedex:
+            arquivo.write(f'{pokemon}\n')
+        arquivo.write("\nPokemons na regiao:\n")
+        for pokemon in pokemons_regiao:
+            arquivo.write(f'{pokemon}\n')
+        arquivo.write("\nItens na mochila:\n")
+        arquivo.write(f"{pokebolas} Pokebolas")
 
 def iniciar_menu(event, pokebolas):
     frame_pokemonInicial.destroy()
@@ -705,7 +721,7 @@ def iniciar_menu(event, pokebolas):
     btn_mochila = Button(frame_menu, text="Mostrar Mochila",command=lambda:mostrar_mochila(btn_mochila), width=30, height=2, relief="raised", anchor=CENTER, padx=18, pady=5, font=("Fixedsys 17 bold"), bg="#ffdf00", fg="#6E5820")
     btn_mochila.place(x=220, y=410)
 
-    btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=30, height=2, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 17 bold"), bg="#ffdf00", fg="#6E5820")
+    btn_sair = tk.Button(frame_menu, text="Sair", command=persistencia_de_dados, width=30, height=2, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 17 bold"), bg="#ffdf00", fg="#6E5820")
     btn_sair.place(x=220, y=490)
 
 #Definindo as variáveis
@@ -1095,16 +1111,6 @@ imagePikachuIcone = ImageTk.PhotoImage(imagePikachuIcone)
 btn_Pikachu = Button(frame_pokedex, command=lambda:atualizar_informacoes_pikachu(), image=imagePikachuIcone, text=(f"Pikachu   "), width=120, height=45, relief="raised", overrelief=RIDGE, compound=RIGHT, anchor=NW, padx=10, font=("Fixedsys 10"), bg='white', fg='black')
 btn_Pikachu.place(x=10, y=530)
 
-#Persistência de dados
-with open('dados.txt','w') as arquivo:
-    arquivo.write("Pokemons capturados:\n")
-    for pokemon in pokedex:
-        arquivo.write(f'{pokemon}\n')
-    arquivo.write("\nPokemons na regiao:\n")
-    for pokemon in pokemons_regiao:
-        arquivo.write(f'{pokemon}\n')
-    arquivo.write("\nItens na mochila:\n")
-    arquivo.write(f"{pokebolas} Pokebolas")
 
 iniciar_jogo()
 janela.mainloop()
