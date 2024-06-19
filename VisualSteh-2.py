@@ -167,6 +167,8 @@ pokebolas = 3
 probCaverna = 0.35
 probMato = 0.5
 probPikachu = 0.02
+pokemonsCave = ""
+pokemonsMato = ""
 
 def encontrar_pokebolas():
     num = random.randint(0,2)
@@ -186,12 +188,7 @@ def sorteio_pokemon_mato(lista_pokemons, probPikachu):
     else:
         pokemon_sorteado = lista_pokemons[indice_sorteado]
         return pokemon_sorteado
-    
-pokemonsMato = ["Pikachu","Pidgey","Spearow", "Caterpie"]
-pokemonMato = sorteio_pokemon_mato(pokemonsMato,probPikachu)
 
-pokemonsCaverna = ["Weedle","Rattata","Ekans"]
-pokemonCave = sorteio_pokemon_caverna(pokemonsCaverna)
 
 def entrar_caverna(event):
     global pokebolas
@@ -222,11 +219,10 @@ def entrar_caverna(event):
 
 
 def menu_caverna(event, pokebolas):
+    global pokemonsCave, pokemonsCave
     frame_entrarCaverna.pack_forget()
     frame_menuCaverna.pack()
 
-    pokemonsCaverna = ["Weedle","Rattata","Ekans"]
-    pokemonCave = sorteio_pokemon_caverna(pokemonsCaverna)
 
     image_cave2 = Image.open("imagens/captura-caverna.jpg")
     image_cave2 = image_cave2.resize((800, 600))
@@ -234,22 +230,25 @@ def menu_caverna(event, pokebolas):
     imagem_caverna2.create_image(0,0, anchor="nw", image=image_cave2)
     imagem_caverna2.image_types = image_cave2
 
-    lbl_pokemonCaverna2.config(text=f"Um {pokemonCave} selvagem apareceu!\n"
+    pokemonsCave = ["Weedle","Rattata","Ekans"]
+    pokemonsCave = sorteio_pokemon_caverna(pokemonsCave)
+
+    lbl_pokemonCaverna2.config(text=f"Um {pokemonsCave} selvagem apareceu!\n"
                               "O que você deseja fazer?")
 
-    if pokemonCave == "Rattata":
+    if pokemonsCave == "Rattata":
         image_capEkans = Image.open("imagens/rattata-captura.png")
         image_capEkans = image_capEkans.resize((130, 130))
         image_capEkans = ImageTk.PhotoImage(image_capEkans)
         imagem_CapEkans.config(image=image_capEkans)
         imagem_CapEkans.image_types = image_capEkans
-    elif pokemonCave == "Ekans":
+    elif pokemonsCave == "Ekans":
         image_capEkans = Image.open("imagens/ekans-captura.png")
         image_capEkans = image_capEkans.resize((130, 130))
         image_capEkans = ImageTk.PhotoImage(image_capEkans)
         imagem_CapEkans.config(image=image_capEkans)
         imagem_CapEkans.image_types = image_capEkans
-    elif pokemonCave == "Weedle":
+    elif pokemonsCave == "Weedle":
         image_capWeedle = Image.open("imagens/weedle-captura.png")
         image_capWeedle = image_capWeedle.resize((130, 130))
         image_capWeedle = ImageTk.PhotoImage(image_capWeedle)
@@ -257,7 +256,7 @@ def menu_caverna(event, pokebolas):
         imagem_CapWeedle.image_types = image_capWeedle
 
 def capturar_pokemon_caverna(nome):
-        global pokebolas
+        global pokebolas, pokemonsCave
         frame_pokedex.pack_forget()
         frame_menuCaverna.pack_forget()
         frame_entrarCaverna.pack_forget()
@@ -275,16 +274,16 @@ def capturar_pokemon_caverna(nome):
 
         if  nome == "Capturar":
             if pokebolas != 0:
-                if pokemonCave not in pokedex:
+                if pokemonsCave not in pokedex:
                     pokebolas -= 1
                     if random.random() < probCaverna:
-                        lbl_capturaCaverna.config(text=f"Você capturou o {pokemonCave}!\n*{pokemonCave} foi adicionado a sua Pokédex")
+                        lbl_capturaCaverna.config(text=f"Você capturou o {pokemonsCave}!\n*{pokemonsCave} foi adicionado a sua Pokédex")
                         image_pokeball5 = Image.open("imagens/pokebola1.png")
                         image_pokeball5 = image_pokeball5.resize((75, 75))
                         image_pokeball5 = ImageTk.PhotoImage(image_pokeball5)
                         imagem_pokebola5.config(image=image_pokeball5)
                         imagem_pokebola5.image_types = image_pokeball5
-                        pokedex.append(pokemonCave)
+                        pokedex.append(pokemonsCave)
                     else:
                         lbl_capturaCaverna.config(text="*O Pokémon escapou")
                         if pokebolas == 0:
@@ -328,7 +327,7 @@ def entrar_mato(event):
 
 
 def menu_Mato(event):
-    global pokebolas
+    global pokebolas, pokemonsMato
     frame_pokedex.pack_forget()
     frame_menuCaverna.pack_forget()
     frame_entrarCaverna.pack_forget()
@@ -343,31 +342,32 @@ def menu_Mato(event):
     imagem_Mato2.create_image(0,0, anchor="nw", image=image_mato2)
     imagem_Mato2.image_types = image_mato2
 
-    pokemonsMato = ["Pikachu","Pidgey","Spearow", "Caterpie"]
-    pokemonMato = sorteio_pokemon_mato(pokemonsMato,probPikachu)
 
-    lbl_pokemonMato2.config(text=f"Um {pokemonMato} selvagem apareceu!\n"
+    pokemonsMato = ["Pikachu","Pidgey","Spearow", "Caterpie"]
+    pokemonsMato = sorteio_pokemon_mato(pokemonsMato,probPikachu)
+
+    lbl_pokemonMato2.config(text=f"Um {pokemonsMato} selvagem apareceu!\n"
                               "O que você deseja fazer?")
 
-    if pokemonMato == "Pikachu":
+    if pokemonsMato == "Pikachu":
         image_capPikachu = Image.open("imagens/pikachu-captura.png")
         image_capPikachu = image_capPikachu.resize((130, 130))
         image_capPikachu = ImageTk.PhotoImage(image_capPikachu)
         imagem_CapPikachu.config(image=image_capPikachu)
         imagem_CapPikachu.image_types = image_capPikachu
-    if pokemonMato == "Caterpie":
+    elif pokemonsMato == "Caterpie":
         image_capCaterpie = Image.open("imagens/caterpie-captura.png")
         image_capCaterpie = image_capCaterpie.resize((130, 130))
         image_capCaterpie = ImageTk.PhotoImage(image_capCaterpie)
         imagem_CapCaterpie.config(image=image_capCaterpie)
         imagem_CapCaterpie.image_types = image_capCaterpie
-    if pokemonMato == "Pidgey":
+    elif pokemonsMato == "Pidgey":
         image_capPidgey = Image.open("imagens/pidgey-captura.png")
         image_capPidgey = image_capPidgey.resize((130, 130))
         image_capPidgey = ImageTk.PhotoImage(image_capPidgey)
         imagem_CapPidgey.config(image=image_capPidgey)
         imagem_CapPidgey.image_types = image_capPidgey
-    if pokemonMato == "Spearow":
+    elif pokemonsMato == "Spearow":
         image_capSpearow = Image.open("imagens/spearow-captura.png")
         image_capSpearow= image_capSpearow.resize((130, 130))
         image_capSpearow = ImageTk.PhotoImage(image_capSpearow)
@@ -376,7 +376,7 @@ def menu_Mato(event):
 
 
 def capturar_pokemon_mato(nome):
-        global pokebolas
+        global pokebolas, pokemonsMato
         frame_pokedex.pack_forget()
         frame_menuCaverna.pack_forget()
         frame_entrarCaverna.pack_forget()
@@ -394,16 +394,16 @@ def capturar_pokemon_mato(nome):
 
         if  nome == "Capturar":
             if pokebolas != 0:
-                if pokemonMato not in pokedex:
+                if pokemonsMato not in pokedex:
                     pokebolas -= 1
                     if random.random() < probCaverna:
-                        lbl_capturaMato.config(text=f"Você capturou o {pokemonMato}!\n*{pokemonMato} foi adicionado a sua Pokédex")
+                        lbl_capturaMato.config(text=f"Você capturou o {pokemonsMato}!\n*{pokemonsMato} foi adicionado a sua Pokédex")
                         image_pokeball4 = Image.open("imagens/pokebola1.png")
                         image_pokeball4 = image_pokeball4.resize((75, 75))
                         image_pokeball4 = ImageTk.PhotoImage(image_pokeball4)
                         imagem_pokebola4.config(image=image_pokeball4)
                         imagem_pokebola4.image_types = image_pokeball4
-                        pokedex.append(pokemonMato)
+                        pokedex.append(pokemonsMato)
                     else:
                         lbl_capturaMato.config(text="*O Pokémon escapou")
                         if pokebolas == 0:
