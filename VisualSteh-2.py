@@ -396,10 +396,13 @@ def capturar_pokemon_mato(nome):
 
 def mostrar_mochila(event):
     frame_menu.pack_forget()
-    frame_entrarCaverna.pack_forget()
     frame_menuCaverna.pack_forget()
+    frame_entrarCaverna.pack_forget()
     frame_entrarMato.pack_forget()
     frame_menuMato.pack_forget()
+    frame_capturaCaverna.pack_forget()
+    frame_capturaMato.pack_forget()
+    frame_pokedex.pack()
     frame_mochila.pack()
 
     image_backpack = Image.open("imagens/mochila.png")
@@ -485,13 +488,15 @@ def pokedex_to_menu(event):
 
 
 def mochila_to_menu(event):
-    frame_pokedex.pack_forget()
+    frame_menu.pack_forget()
     frame_menuCaverna.pack_forget()
     frame_entrarCaverna.pack_forget()
     frame_entrarMato.pack_forget()
     frame_menuMato.pack_forget()
     frame_mochila.pack_forget()
-    frame_menu.pack()
+    frame_capturaCaverna.pack_forget()
+    frame_capturaMato.pack_forget()
+    frame_pokedex.pack()
 
 
 def atualizar_informacoes_bulbasaur(event):
@@ -692,7 +697,6 @@ def iniciar_menu(event, pokebolas):
     btn_sair = tk.Button(frame_menu, text="Sair", command=janela.destroy, width=30, height=2, relief="raised", anchor=CENTER, padx=18, pady=8, font=("Fixedsys 17 bold"), bg="#ffdf00", fg="#6E5820")
     btn_sair.place(x=220, y=490)
 
-escolha = 0
 #Definindo as variáveis
 janela = Tk()
 janela.title("Jogo Pokemon")
