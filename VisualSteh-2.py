@@ -5,6 +5,9 @@ from PIL import Image, ImageTk
 import csv
 from pygame import mixer
 
+pokedex = []
+mochila = []
+
 def iniciar_jogo():
     # Definindo tela inicial com imagem do Pokémon Fire Red
     imagem_telaInicial.delete("all")
@@ -101,7 +104,9 @@ def evento_botao_pokemon_inicial(nome):
             dados_pokemons = csv.reader(pokemons_data, delimiter=",")
             for i, linha in enumerate(dados_pokemons):
                 if i == 1:
+                    pokedex.append('Bulbasaur')
                     pokedex.append(linha)
+                    
                     lbl_escolheuBulbasaur.config(text="Ótima escolha! Bulbasaur foi adicionado a sua Pokédex\n")
                     image_bulbasaur = Image.open("imagens/bulbasaur.png")
                     image_bulbasaur = image_bulbasaur.resize((150, 150))
@@ -120,6 +125,7 @@ def evento_botao_pokemon_inicial(nome):
             dados_pokemons = csv.reader(pokemons_data, delimiter=",")
             for i, linha in enumerate(dados_pokemons):
                 if i == 2:
+                    pokedex.append('Squirtle')
                     pokedex.append(linha)
                     lbl_escolheuSquirtle.config(text="Ótima escolha! Squirtle foi adicionado a sua Pokédex\n")
 
@@ -140,6 +146,7 @@ def evento_botao_pokemon_inicial(nome):
             dados_pokemons = csv.reader(pokemons_data, delimiter=",")
             for i, linha in enumerate(dados_pokemons):
                 if i == 3:
+                    pokedex.append('Charmander')
                     pokedex.append(linha)
 
                     lbl_escolheuCharmander.config(text="Ótima escolha! Charmander foi adicionado a sua Pokédex\n")
@@ -709,9 +716,6 @@ janela.iconphoto(False, PhotoImage(file="imagens/logo1.png"))
 janela.resizable(width=False,height=False)
 janela.config(bg ="#d93035")
 
-pokedex = []
-mochila = []
-
 #TELA INICIAL
 imagem_telaInicial = tk.Canvas(janela, width=800, height=600)
 imagem_telaInicial.pack()
@@ -1093,15 +1097,14 @@ btn_Pikachu.place(x=10, y=530)
 
 #Persistência de dados
 with open('dados.txt','w') as arquivo:
-    arquivo.write("Pokémons capturados:\n")
+    arquivo.write("Pokemons capturados:\n")
     for pokemon in pokedex:
         arquivo.write(f'{pokemon}\n')
-    arquivo.write("Pokémons na região:\n")
+    arquivo.write("\nPokemons na regiao:\n")
     for pokemon in pokemons_regiao:
         arquivo.write(f'{pokemon}\n')
-    arquivo.write("Items na mochila:\n")
-    for item in mochila:
-        arquivo.write(f'{item}\n')
+    arquivo.write("\nItens na mochila:\n")
+    arquivo.write(f"{pokebolas} Pokebolas")
 
 iniciar_jogo()
 janela.mainloop()

@@ -1,5 +1,6 @@
-Pokémons capturados:
-Pokémons na região:
+Pokemons capturados:
+
+Pokemons na regiao:
 ['Bulbasaur', 'imagens/bulbasaur.png', 'GRASS', 'POISON', 49, 49, 45, 65, 65, 45, 318]
 ['Charmander', 'imagens/charmander.png', 'FIRE', '', 52, 43, 39, 60, 50, 65, 309]
 ['Squirtle', 'imagens/squirtle.png', 'WATER', '', 48, 65, 44, 50, 64, 43, 314]
@@ -10,4 +11,6 @@ Pokémons na região:
 ['Rattata', 'imagens/rattata.png', 'NORMAL', '', 56, 35, 30, 25, 35, 72, 253]
 ['Ekans', 'imagens/ekans.png', 'POISON', '', 60, 44, 35, 40, 54, 55, 288]
 ['Pikachu', 'imagens/pikachu.png', 'ELECTRIC', '', 55, 40, 35, 50, 50, 90, 320]
-Items na mochila:
+
+Itens na mochila:
+3 Pokebolas
