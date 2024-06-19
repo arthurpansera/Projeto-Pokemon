@@ -837,13 +837,16 @@ lbl_pokemonCaverna2 = Label(frame_menuCaverna, text="", relief="flat", font=("Fi
 lbl_pokemonCaverna2.place(x=65, y=465)
 
 btn_capturarCaverna = tk.Button(frame_menuCaverna, command=lambda: capturar_pokemon_caverna(nome="Capturar"), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
-btn_capturarCaverna.place(x=590, y=460)
+btn_capturarCaverna.place(x=635, y=460)
+
+btn_batalharCaverna = tk.Button(frame_menuCaverna, command=lambda: batalhar_pokemon_caverna(nome="Batalhar"), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_batalharCaverna.place(x=500, y=510)
 
 btn_voltarCavernaMenu = tk.Button(frame_menuCaverna, command=cave_to_menu, text="Fugir", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
-btn_voltarCavernaMenu.place(x=590, y=510)
+btn_voltarCavernaMenu.place(x=635, y=510)
 
 
-#FRAME DE CAPTURA DO POKEMON NO MATO
+#FRAME DE CAPTURA DO POKEMON NA CAVERNA
 
 frame_capturaCaverna = Frame(janela, width=800, height=600, bg="#f2f2f2")
 frame_capturaCaverna.pack()
@@ -896,14 +899,17 @@ imagem_CapPidgey.place(x=530, y=75)
 imagem_CapSpearow= Label(frame_menuMato, bg="#cfffd3")
 imagem_CapSpearow.place(x=530, y=75)
 
-btn_capturarMato = tk.Button(frame_menuMato, command=lambda:capturar_pokemon_mato(nome="Capturar"), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
-btn_capturarMato.place(x=590, y=460)
-
 lbl_pokemonMato2 = Label(frame_menuMato, text="", relief="flat", font=("Fixedsys 18"), fg="white", bg="#29506d")
 lbl_pokemonMato2.place(x=65, y=465)
 
+btn_capturarMato = tk.Button(frame_menuMato, command=lambda:capturar_pokemon_mato(nome="Capturar"), text="Capturar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_capturarMato.place(x=635, y=460)
+
+btn_batalharMato = tk.Button(frame_menuMato, command=lambda: batalhar_pokemon_mato(nome="Batalhar"), text="Batalhar", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
+btn_batalharMato.place(x=500, y=510)
+
 btn_mato_to_menu= tk.Button(frame_menuMato, command=mato_to_menu, text="Fugir", width=8, height=0, relief="raised", anchor=CENTER, padx=20, pady=5, font=("Fixedsys 17"), bg="#818690", fg="#ECECEC")
-btn_mato_to_menu.place(x=590, y=510)
+btn_mato_to_menu.place(x=635, y=510)
 
 
 #FRAME DE CAPTURA DO POKEMON NO MATO
