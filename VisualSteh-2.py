@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import *
 from PIL import Image, ImageTk
 import csv
+from pygame import mixer
 
 def iniciar_jogo():
     # Definindo tela inicial com imagem do Pokémon Fire Red
@@ -14,9 +15,16 @@ def iniciar_jogo():
     imagem_telaInicial.image_types = image_homeScreen
     # Adicionando botão "Jogar"
     btn_jogar.config(text="Jogar")
+    mixer.init()
+    mixer.music.load("tela-inicial-music.mp3")
+    mixer.music.play()
+    input()
+
+
     
 
 def exibir_fala_professor(event):
+    mixer.music.stop()
     btn_jogar.destroy()
     imagem_telaInicial.destroy()
 
